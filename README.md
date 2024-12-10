@@ -42,3 +42,10 @@ Step 6:
 ```
 VITE_BACKEND_URL="http://localhost:9000"
 ```
+
+# Running the program:
+In one terminal window, navigate to `/server`
+Then run `npm run dev`
+
+Then, in another terminal window, navigate to `/client`
+Then run `npm run dev`
