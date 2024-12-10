@@ -11,9 +11,15 @@ brew install mongodb-community@8.0
 
 Step 3: Run mongodb:
 `brew services start mongodb-community@8.0`
-^ swap `start` for `stop` to stop mongodb
+^ you can swap `start` for `stop` to stop mongodb
 
-Step 4: Create `/server/.env` with the following contents:
+Step 4: 
+- go to the server directory with `cd server`
+- then run `npm install`
+
+Step 5:
+- While still in the server directory, create `.env` with `touch .env`
+- This file needs the following contents:
 ```
 MONGODB_URL="mongodb://0.0.0.0/mean-money"
 PORT = 9000
@@ -24,9 +30,15 @@ Down the line, we may also want:
 NODE_ENV="development"
 JWT_SECRET="secret"
 ``` 
-so we can write code that only runs if process.env.NODE_ENV is 'development', etc. and JWT_SECRET relates to tokens when those are implemented.
+so we can write code that only runs if process.env.NODE_ENV is 'development', etc. and JWT_SECRET relates to tokens when those are implemented. For now this is not used/needed.
 
-Step 5: Create `/client/.env` with the following contents:
+Step 5:
+- navigate to the client directory (if you're in server, run `cd ../client`)
+- then run `npm install`
+
+Step 6:
+- While still in the client directory, create `.env`
+- Then add the following contents to `.env`:
 ```
 VITE_BACKEND_URL="http://localhost:9000"
 ```
