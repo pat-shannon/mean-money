@@ -17,11 +17,11 @@ const UserSchema = new mongoose.Schema({
     },
     currentSavings: {
         type: Number,
-        required: true,
+        default: 0,
     },
     disposableIncome: {
         type: Number,
-        required: true,
+        default: 0,
         min: [0, 'Disposable income must be a positive number']
     },
     foodAndDrinkGoal: {
