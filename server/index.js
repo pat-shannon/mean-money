@@ -10,7 +10,7 @@ function listenForRequests() {
         console.log(`Server listening on port ${port}`);
     });
 }
-
+console.log('test');
 connectToDatabase().then(() => {
     listenForRequests();
 });

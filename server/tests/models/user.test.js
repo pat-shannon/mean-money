@@ -5,6 +5,7 @@ const User = require("../../models/user");
 describe("User model", () => {
     beforeEach(async () => {
         await User.deleteMany({});
+        console.log('test');
     });
 
     it("has all required fields", () => {
@@ -26,11 +27,11 @@ describe("User model", () => {
         });
     
         await user.save();
-        const users = await User.find();
+        users = await User.find();
     
         expect(users[0].name).toEqual("Reena");
         expect(users[0].email).toEqual("reena@example.com");
         expect(users[0].password).toEqual("12345678");
-      });
+    });
 
 });
