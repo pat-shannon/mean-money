@@ -18,6 +18,6 @@ app.get("/test", (req, res) => {
 // -----------------------------------
 // app.use("/users", usersRouter);
 // app.use("/tokens", authenticationRouter);
-
+app.use("/diary", diaryEntryRouter);
 
 module.exports = app;
