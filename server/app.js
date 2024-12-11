@@ -2,11 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+const savingsGoalRouter = require("./routes/savings_goal");
+
 app.use(cors());
 app.use(express.json());
 
 // initial test routes:
-app.get('/',(req,res) => {
+app.get('/',(req, res) => {
     res.send('Hello from MERN stack!');
 })
 app.get("/test", (req, res) => {
@@ -18,6 +20,8 @@ app.get("/test", (req, res) => {
 // -----------------------------------
 // app.use("/users", usersRouter);
 // app.use("/tokens", authenticationRouter);
+
+app.use("/savings-goal", savingsGoalRouter);
 
 
 module.exports = app;
