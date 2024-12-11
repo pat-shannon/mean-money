@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import placeholderImg from './assets/placeholder_img.png'
+
+import { NavBar } from './components/NavBar'
+
 import './App.css'
 
 function App() {
@@ -7,7 +10,9 @@ function App() {
 
   return (
     <>
+    {/* <NavBar /> */}
       <div>
+        <NavBar />
         <a href="https://react.dev" target="_blank">
           <img src={placeholderImg} className="logo react" alt="React logo" />
         </a>
