@@ -5,10 +5,11 @@ import { NavBar } from './components/NavBar'
 
 import './App.css'
 // import DiaryEntryForm from './components/DiaryEntry'
-import { LoginPage } from './pages/Login/LoginPage'
-import { Dashboard } from './pages/Dashboard/Dashboard'
-import { Homepage } from './pages/Homepage/Homepage'
-// import { signup } from './pages/signup'
+import { LoginPage } from './pages/Login/LoginPage';
+import { Dashboard } from './pages/Dashboard/Dashboard';
+import { Homepage } from './pages/Homepage/Homepage';
+import { SignUpPage } from './pages/SignUpPage/SignUpPage';
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
 
   {
     path: "/signup",
-    element: <signup />,
+    element: <SignUpPage />,
   },
 
   {
