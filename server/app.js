@@ -3,13 +3,15 @@ const cors = require('cors');
 const app = express();
 const authenticationRouter = require("./routes/authentication")
 
+const savingsGoalRouter = require("./routes/savings_goal");
+
 app.use(cors());
 app.use(express.json());
 
 const usersRouter = require("./routes/users");
 
 // initial test routes:
-app.get('/',(req,res) => {
+app.get('/',(req, res) => {
     res.send('Hello from MERN stack!');
 })
 app.get("/test", (req, res) => {
@@ -29,6 +31,8 @@ app.use("/users", usersRouter);
 
 
 // app.use("/diary", diaryEntryRouter);
+
+app.use("/savings-goal", savingsGoalRouter);
 
 
 module.exports = app;
