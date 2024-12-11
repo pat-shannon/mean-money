@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const authenticationRouter = require("./routes/authentication")
 
 app.use(cors());
 app.use(express.json());
@@ -17,7 +18,7 @@ app.get("/test", (req, res) => {
 // API ROUTES - uncomment or add when needed:
 // -----------------------------------
 // app.use("/users", usersRouter);
-// app.use("/tokens", authenticationRouter);
+app.use("/tokens", authenticationRouter);
 
 
 module.exports = app;

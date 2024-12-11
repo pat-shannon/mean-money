@@ -1,4 +1,3 @@
-// docs: https://vitejs.dev/guide/env-and-mode.html
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function login(email, password) {
@@ -17,7 +16,6 @@ export async function login(email, password) {
 
     const response = await fetch(`${BACKEND_URL}/tokens`, requestOptions);
 
-    // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
     if (response.status === 201) {
         let data = await response.json();
         return data.token;
@@ -30,11 +28,9 @@ export async function login(email, password) {
 
 export async function signup(userInfo) {
     const payload = {
+        name: userInfo.name,
         email: userInfo.email,
-        password: userInfo.password,
-        username: userInfo.username,
-        firstname: userInfo.firstname,
-        lastname: userInfo.lastname
+        password: userInfo.password
     };
 
     const requestOptions = {
@@ -47,7 +43,6 @@ export async function signup(userInfo) {
 
     let response = await fetch(`${BACKEND_URL}/users`, requestOptions);
 
-    // docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201
     if (response.status === 201) {
         return;
     } else {
