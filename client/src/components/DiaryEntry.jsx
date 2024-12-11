@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-const DiaryEntryForm = ({token, setUpdateForm }) => {
+const DiaryEntryForm = () => {
 
     const [formData, setFormData] = useState({
         amount: "",
@@ -71,20 +71,13 @@ const DiaryEntryForm = ({token, setUpdateForm }) => {
 
 
     return (
-        <div style={{
-            maxWidth: '400px',
-            margin: '0 auto',
-            padding: '20px',
-            border: '1px solid #ddd',
-            borderRadius: '8px'
-        }}>
-            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>
-                New Diary Entry
-            </h2>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                <div>
-                    <label htmlFor="amount" style={{ marginBottom: '5px', display: 'block' }}>
-                        Amount
+        <div className = "form-container">
+            <div className = "form-container">
+            <h2 className = "form-title"> New Diary Entry</h2>
+            <form onSubmit={handleSubmit} className = "form">
+                <div className ="form-group">
+                    <label htmlFor="amount" className="form-label">
+                        Amount(£): 
                     </label>
                     <input
                         type="number"
@@ -93,22 +86,15 @@ const DiaryEntryForm = ({token, setUpdateForm }) => {
                         value={formData.amount}
                         onChange={handleChange}
                         placeholder="Enter amount"
-                        step="0.01"
+                        step="1"
                         min="0"
                         required
-                        style={{
-                            width: '100%',
-                            padding: '8px',
-                            borderRadius: '4px',
-                            border: '1px solid #ddd'
-                        }}
+                        className="form-input"
                     />
                 </div>
 
-                <div>
-                    <label htmlFor="date" style={{ marginBottom: '5px', display: 'block' }}>
-                        Date
-                    </label>
+                <div className="form-group">
+                    <label htmlFor="date" className="form-label">Date: </label>
                     <input
                         type="date"
                         id="date"
@@ -116,19 +102,12 @@ const DiaryEntryForm = ({token, setUpdateForm }) => {
                         value={formData.date}
                         onChange={handleChange}
                         required
-                        style={{
-                            width: '100%',
-                            padding: '8px',
-                            borderRadius: '4px',
-                            border: '1px solid #ddd'
-                        }}
+                        className="form-input"
                     />
                 </div>
 
-                <div>
-                    <label htmlFor="businessName" style={{ marginBottom: '5px', display: 'block' }}>
-                        Business Name
-                    </label>
+                <div className="form-group">
+                    <label htmlFor="businessName" className="form-label">Business Name: </label>
                     <input
                         type="text"
                         id="businessName"
@@ -138,30 +117,18 @@ const DiaryEntryForm = ({token, setUpdateForm }) => {
                         placeholder="Enter business name"
                         required
                         maxLength={100}
-                        style={{
-                            width: '100%',
-                            padding: '8px',
-                            borderRadius: '4px',
-                            border: '1px solid #ddd'
-                        }}
+                        className="form-input"
                     />
                 </div>
 
-                <div>
-                    <label style={{ marginBottom: '5px', display: 'block' }}>
-                        Category
-                    </label>
+                <div className="form-label">
+                    <label className="form-label">Category: </label>
                     <select
                         name="category"
                         value={formData.category}
                         onChange={handleChange}
                         required
-                        style={{
-                            width: '100%',
-                            padding: '8px',
-                            borderRadius: '4px',
-                            border: '1px solid #ddd'
-                        }}
+                        className="form-input"
                     >
                         <option value="">Select a category</option>
                         {categories.map((category) => (
@@ -174,20 +141,13 @@ const DiaryEntryForm = ({token, setUpdateForm }) => {
 
                 <button
                     type="submit"
-                    style={{
-                        width: '100%',
-                        padding: '10px',
-                        backgroundColor: '#007bff',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '4px',
-                        cursor: 'pointer'
-                    }}
+                    className="submit-btn"
                 >
                     Save Diary Entry
                 </button>
             </form>
         </div>
+    </div>
     );
 };
 

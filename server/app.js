@@ -18,7 +18,10 @@ app.get("/test", (req, res) => {
 // API ROUTES - uncomment or add when needed:
 // -----------------------------------
 // app.use("/users", usersRouter);
+
 app.use("/tokens", authenticationRouter);
+
+app.use("/diary", diaryEntryRouter);
 
 
 module.exports = app;

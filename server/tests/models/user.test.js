@@ -7,7 +7,7 @@ describe("User model", () => {
         await User.deleteMany({});
     });
 
-    it("has all required fields", () => {
+    it("User can set their required details", () => {
         const user = new User({
             name: "Reena",
             email: "reena@example.com",
@@ -18,7 +18,7 @@ describe("User model", () => {
         expect(user.password).toEqual("12345678");
     });
 
-    it("can save a user", async () => {
+    it("User can save their required details", async () => {
         const user = new User({
             name: "Reena",
             email: "reena@example.com",
@@ -31,6 +31,38 @@ describe("User model", () => {
         expect(users[0].name).toEqual("Reena");
         expect(users[0].email).toEqual("reena@example.com");
         expect(users[0].password).toEqual("12345678");
-      });
-
+    });
+    
+    it("Users's non-required details are set to default values", () => {
+        const user = new User({
+            name: "Reena",
+            email: "reena@example.com",
+            password: "12345678"
+        });
+        expect(user.currentSavings).toEqual(0);
+        expect(user.disposableIncome).toEqual(0);
+        expect(user.foodAndDrinkGoal).toEqual(0);
+        expect(user.socialOutingsGoal).toEqual(0);
+        expect(user.entertainmentAndAppsGoal).toEqual(0);
+        expect(user.holidayAndTravelGoal).toEqual(0);
+        expect(user.healthAndBeautyGoal).toEqual(0);
+        expect(user.miscGoal).toEqual(0);
+    });
+    it("Users's non-required details are saved as default values", async () => {
+        const user = new User({
+            name: "Reena",
+            email: "reena@example.com",
+            password: "12345678"
+        });
+        await user.save();
+        const users = await User.find();
+        expect(users[0].currentSavings).toEqual(0);
+        expect(users[0].disposableIncome).toEqual(0);
+        expect(users[0].foodAndDrinkGoal).toEqual(0);
+        expect(users[0].socialOutingsGoal).toEqual(0);
+        expect(users[0].entertainmentAndAppsGoal).toEqual(0);
+        expect(users[0].holidayAndTravelGoal).toEqual(0);
+        expect(users[0].healthAndBeautyGoal).toEqual(0);
+        expect(user.miscGoal).toEqual(0);
+    });
 });
