@@ -15,7 +15,7 @@
     transition: color 0.3s;
 }
 
-.nav-link:hover {
+.navbar a:hover {
     color: white;
     animation-name: navbarhover;
     animation-duration: 0.5s;
@@ -23,6 +23,6 @@
 }
 
 @keyframes navbarhover {
-    0% {background-color:#cf21ff; box-shadow: 0px 0px 00px #cf21ff;}
+    0% {background-color:#313131; box-shadow: 0px 0px 00px #cf21ff;}
     100% {background-color:#cf21ff; box-shadow: 0px 4px 10px #cf21ff}
 }
