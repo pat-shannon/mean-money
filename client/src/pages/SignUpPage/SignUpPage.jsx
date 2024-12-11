@@ -3,13 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { submitNewUser } from "../../services/users.js";
 import "./SignUpPage.css"
 
+
 export function SignUpPage() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+
+
 
 
     const handleSubmit = async (event) => {
@@ -17,12 +21,15 @@ export function SignUpPage() {
         try {
             setErrorMessage("");
 
+
             const formData = new FormData();
             formData.append("name", name);
             formData.append("email", email);
             formData.append("password", password);
 
+
             const data = await submitNewUser(formData);
+
 
             console.log("Signup successful:", data);
             navigate("/login");
@@ -32,12 +39,14 @@ export function SignUpPage() {
         }
     };
 
+
     return (
         <div>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <form className="sign-up-form" onSubmit={handleSubmit}>
-                <h2>Signup</h2>
+                <h2>Sign Up</h2>
                 <label htmlFor="name">Name:</label>
+                <br></br>
                 <input
                     id="name"
                     type="text"
@@ -48,6 +57,7 @@ export function SignUpPage() {
                 <br />
                 <br />
                 <label htmlFor="email">Email:</label>
+                <br></br>
                 <input
                     id="email"
                     type="email"
@@ -58,6 +68,7 @@ export function SignUpPage() {
                 <br />
                 <br />
                 <label htmlFor="password">Password:</label>
+                <br></br>
                 <input
                     id="password"
                     type="password"
@@ -68,7 +79,7 @@ export function SignUpPage() {
                 />
                 <br />
                 <br />
-                <button type="submit">Sign Up Now!</button>
+                <button className="submit-button" type="submit">Join Mean Money Now!</button>
             </form>
         </div>
     );

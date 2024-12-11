@@ -5,6 +5,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const usersRouter = require("./routes/users");
+
 // initial test routes:
 app.get('/',(req,res) => {
     res.send('Hello from MERN stack!');
@@ -16,7 +18,7 @@ app.get("/test", (req, res) => {
 // -----------------------------------
 // API ROUTES - uncomment or add when needed:
 // -----------------------------------
-// app.use("/users", usersRouter);
+app.use("/users", usersRouter);
 // app.use("/tokens", authenticationRouter);
 app.use("/diary", diaryEntryRouter);
 
