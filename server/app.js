@@ -28,7 +28,7 @@ app.use("/tokens", authenticationRouter);
 app.use("/users", usersRouter);
 
 
-app.use("/diary", diaryEntryRouter);
+// app.use("/diary", diaryEntryRouter);
 
 
 module.exports = app;
