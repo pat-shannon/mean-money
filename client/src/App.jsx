@@ -46,6 +46,7 @@ const router = createBrowserRouter([
   {
     path: "/new-savings-goal",
     element: <SavingsGoalPage />,
+  },
   {
     path: "/new-diary-entry",
     element: <DiaryEntryPage />,
