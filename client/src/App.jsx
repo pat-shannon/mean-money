@@ -1,5 +1,5 @@
-// import { useState } from 'react'
-// import placeholderImg from './assets/placeholder_img.png'
+import { useState } from 'react'
+import placeholderImg from './assets/placeholder_img.png'
 
 import { NavBar } from './components/NavBar'
 
@@ -9,6 +9,7 @@ import { LoginPage } from './pages/Login/LoginPage';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Homepage } from './pages/Homepage/Homepage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
+import { SavingsGoalPage } from './pages/SavingsGoal/SavingsGoalPage';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+  },
+
+  {
+    path: "/new-savings-goal",
+    element: <SavingsGoalPage />,
   },
 ]);
 
@@ -61,3 +67,66 @@ function App() {
 }
 
 export default App
+
+
+// import { LoginPage } from './pages/Login/LoginPage'; 
+// import { Dashboard } from './pages/Dashboard/Dashboard'; 
+// import { Homepage } from './pages/Homepage/Homepage'; 
+// import { SignUpPage } from './pages/SignUpPage/SignUpPage'; 
+// import { SavingsGoalPage } from './pages/SavingsGoal/SavingsGoalPage';  
+// import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+// import NavBar from './components/NavBar'; // Make sure to import NavBar
+
+// const router = createBrowserRouter([   
+//   {     
+//     path: "/",     
+//     element: (
+//       <>
+//         <NavBar />
+//         <Homepage /> 
+//       </>
+//     ),   
+//   },    
+//   {     
+//     path: "/login",     
+//     element: (
+//       <>
+//         <NavBar />
+//         <LoginPage /> 
+//       </>
+//     ),   
+//   },    
+//   {     
+//     path: "/signup",     
+//     element: (
+//       <>
+//         <NavBar />
+//         <SignUpPage /> 
+//       </>
+//     ),   
+//   },    
+//   {     
+//     path: "/dashboard",     
+//     element: (
+//       <>
+//         <NavBar />
+//         <Dashboard /> 
+//       </>
+//     ),   
+//   },    
+//   {     
+//     path: "/new-savings-goal",     
+//     element: (
+//       <>
+//         <NavBar />
+//         <SavingsGoalPage /> 
+//       </>
+//     ),   
+//   }, 
+// ]);
+
+// function App() {
+//   return <RouterProvider router={router} />
+// }
+
+// export default App

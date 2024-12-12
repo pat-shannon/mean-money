@@ -32,7 +32,7 @@ app.use("/users", usersRouter);
 
 // app.use("/diary", diaryEntryRouter);
 
-app.use("/savings-goal", savingsGoalRouter);
+app.use("/", savingsGoalRouter);
 
 
 module.exports = app;
