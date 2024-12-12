@@ -10,7 +10,7 @@ export async function CreateEntry(token, body) {
       body: JSON.stringify({ message: body }),
     };
   
-    const response = await fetch(`${BACKEND_URL}/diary`, requestOptions);
+    const response = await fetch(`${BACKEND_URL}/diary-entry`, requestOptions);
   
     if (response.status !== 201) {
       throw new Error("Unable to create diary entry");
