@@ -7,6 +7,7 @@ const router = express.Router();
 router.post("/", UsersController.create);
 router.get("/find/:email", UsersController.findByEmail);
 router.get("/findById/:id", UsersController.findById);
+router.post("/set-spending-goals", UsersController.setSpendingGoals)
 
 
 module.exports = router;
