@@ -7,7 +7,7 @@ async function createEntry(req, res) {
     try {
         const { amount, date, businessName, category } = req.body
 
-        if (!amount || !date || !businessName, !category) {
+        if (!amount || !date || !businessName || !category) {
             return res.status(400).json({ message: 'All fields are required.' });
         }
 
