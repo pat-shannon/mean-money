@@ -1,2 +1,6 @@
 .DS_Store
 .vscode
+
+diary_entry_seed_file.csv
+savings_goal_seed_file.csv
+user_seed_file.csv
