@@ -1,14 +1,6 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export async function createSavingsGoal(token, savingsGoalData) {
-    const payload = {
-        savingsTitle: savingsGoalData.savingsTitle,
-        savingsTarget: savingsGoalData.savingsTarget,
-        savingsCategory: savingsGoalData.savingsCategory,
-        startDate: savingsGoalData.startDate,
-        endDate: savingsGoalData.endDate,
-        isComplete: false,
-    };
+export async function createSavingsGoal(token, body) {
 
     const requestOptions = {
         method: "POST",
@@ -16,7 +8,7 @@ export async function createSavingsGoal(token, savingsGoalData) {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ message: body }),
     };
 
     const response = await fetch(`${BACKEND_URL}/savings-goal`, requestOptions);
@@ -25,7 +17,7 @@ export async function createSavingsGoal(token, savingsGoalData) {
         throw new Error("Failed to create savings goal");
     }
 
-    return await response.json();
+    return response;
 }
 
 // export async function getSavingsGoal(token) {
@@ -45,3 +37,12 @@ export async function createSavingsGoal(token, savingsGoalData) {
 //     const data = await response.json();
 //     return data;
 // }
+
+
+    //     savingsTitle: savingsGoalData.savingsTitle,
+    //     savingsTarget: savingsGoalData.savingsTarget,
+    //     savingsCategory: savingsGoalData.savingsCategory,
+    //     startDate: savingsGoalData.startDate,
+    //     endDate: savingsGoalData.endDate,
+    //     isComplete: false,
+    // };

@@ -6,32 +6,22 @@ const User = require("../models/user");
 
 async function createSavingsGoal(req, res) {
     try {
-        const newSavingGoalData = {
-            savingsTitle: req.body.savingsTitle,
-            savingsTarget: req.body.savingsTarget,
-            savingsCategory: req.body.savingsCategory,
-            startDate: req.body.startDate || Date.now(),
-            endDate: req.body.endDate,
-            isComplete: false,
-        };
-        const savingsGoal = new SavingsGoal(newSavingGoalData);
-        await savingsGoal.save();
+        const { savingsTitle, savingsTarget, savingsCategory, startDate, endDate } = req.body
 
-        const newToken = generateToken(req.user_id);
+        if ( !savingsTitle || !savingsTarget || !savingsCategory || !startDate || !endDate) {
+            return res.status(400).json({ message: 'All fields required'});
+        }
 
-        res.status(201).json({
-            message: "Savings goal created successfully",
-            token: newToken,
-            savingsGoalId: savingsGoal._id.toString(),
-        });
-    } catch (error) {
-        res.status(500).json({
-            message: "Error creating savings goal",
-            error: error.message,
-        });
+        const newSavingsGoal = new SavingsGoal({ savingsTitle, savingsTarget, savingsCategory, startDate, endDate });
+
+        await newSavingsGoal.save()
+        res.status(201).json({ message: 'Savings goal created'});
+        } 
+        catch (error) {
+            console.error('Error creating savings goal', error);
+            res.status(500).json({ message: 'Failed to create savings goal', error: error.message });
+        }
     }
-}
-
 
 
 const SavingsGoalController = {
