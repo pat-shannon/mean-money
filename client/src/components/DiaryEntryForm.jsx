@@ -1,4 +1,5 @@
 import { useState } from "react";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const DiaryEntryForm = () => {
 
@@ -38,7 +39,7 @@ const DiaryEntryForm = () => {
 console.log(formData)
         try {
             // Sending the data to the server backend
-            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/server/diary-entry`, {
+            const response = await fetch(`${BACKEND_URL}/server/diary-entry`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,30 +55,18 @@ console.log(formData)
             const responseText = await response.text();
             console.log('Response text:', responseText);
 
-            // if (response.ok) {
-            //     alert('Diary entry saved successfully!');
-            //     // Reset form or navigate away???
-            //     setFormData({
-            //         amount: '',
-            //         date: new Date().toISOString().split('T')[0],
-            //         businessName: '',
-            //         category: ''
-            //     });
-            // } else {
-            //     const errorData = await response.json();
-            //     alert(`Error: ${errorData.message}`);
-            // }
             if (response.ok) {
-                try {
-                    const data = JSON.parse(responseText);
-                    alert('Diary entry saved successfully!');
-                    // Reset form logic
-                } catch (parseError) {
-                    console.error('Parsing error:', parseError);
-                    alert('Received non-JSON response');
-                }
+                alert('Diary entry saved successfully!');
+                // Reset form or navigate away???
+                setFormData({
+                    amount: '',
+                    date: new Date().toISOString().split('T')[0],
+                    businessName: '',
+                    category: ''
+                });
             } else {
-                alert(`Error: ${responseText}`);
+                const errorData = await response.json();
+                alert(`Error: ${errorData.message}`);
             }
         } catch (error) {
             console.error('Submission error:', error);

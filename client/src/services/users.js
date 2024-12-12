@@ -20,7 +20,7 @@ export async function getUserByEmail(token, email) {
 }
 
 
-export async function getUserByUsername(token, username) {
+export async function getUserByName(token, name) {
     const requestOptions = {
         method: "GET",
         headers: {
@@ -28,7 +28,7 @@ export async function getUserByUsername(token, username) {
             "Content-Type": "application/json"
         },
     };
-    const response = await fetch(`${BACKEND_URL}/users/find/${username}`, requestOptions);
+    const response = await fetch(`${BACKEND_URL}/users/find/${name}`, requestOptions);
 
     if (!response.ok) {
         throw new Error(`User not found or error: ${response.statusText}`);
