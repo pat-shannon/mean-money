@@ -1,5 +1,5 @@
-// import { useState } from 'react'
-// import placeholderImg from './assets/placeholder_img.png'
+import { useState } from 'react'
+import placeholderImg from './assets/placeholder_img.png'
 
 import { NavBar } from './components/NavBar'
 
@@ -9,6 +9,11 @@ import { LoginPage } from './pages/Login/LoginPage';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Homepage } from './pages/Homepage/Homepage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
+
+import { SpendingGoalsPage } from './pages/SpendingGoals/SpendingGoalsPage';
+
+import { SavingsGoalPage } from './pages/SavingsGoal/SavingsGoalPage';
+
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -32,9 +37,20 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
   },
+
+  {
+    path: "/spending-goals",
+    element: <SpendingGoalsPage />,
+  },
+  
+  {
+    path: "/new-savings-goal",
+    element: <SavingsGoalPage />,
+  },
   {
     path: "/new-diary-entry",
     element: <DiaryEntryPage />,
+
   },
 ]);
 
@@ -43,8 +59,6 @@ function App() {
 
   return (
     <>
-      <div>
-        <NavBar />
         {/* <a href="https://react.dev" target="_blank">
           <img src={placeholderImg} className="logo react" alt="React logo" />
         </a>
@@ -58,9 +72,71 @@ function App() {
         <h1>Add a new diary entry</h1> */}
         {/* <DiaryEntryForm /> */}
         <RouterProvider router={router} />
-      </div>
     </>
   )
 }
 
 export default App
+
+
+// import { LoginPage } from './pages/Login/LoginPage'; 
+// import { Dashboard } from './pages/Dashboard/Dashboard'; 
+// import { Homepage } from './pages/Homepage/Homepage'; 
+// import { SignUpPage } from './pages/SignUpPage/SignUpPage'; 
+// import { SavingsGoalPage } from './pages/SavingsGoal/SavingsGoalPage';  
+// import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+// import NavBar from './components/NavBar'; // Make sure to import NavBar
+
+// const router = createBrowserRouter([   
+//   {     
+//     path: "/",     
+//     element: (
+//       <>
+//         <NavBar />
+//         <Homepage /> 
+//       </>
+//     ),   
+//   },    
+//   {     
+//     path: "/login",     
+//     element: (
+//       <>
+//         <NavBar />
+//         <LoginPage /> 
+//       </>
+//     ),   
+//   },    
+//   {     
+//     path: "/signup",     
+//     element: (
+//       <>
+//         <NavBar />
+//         <SignUpPage /> 
+//       </>
+//     ),   
+//   },    
+//   {     
+//     path: "/dashboard",     
+//     element: (
+//       <>
+//         <NavBar />
+//         <Dashboard /> 
+//       </>
+//     ),   
+//   },    
+//   {     
+//     path: "/new-savings-goal",     
+//     element: (
+//       <>
+//         <NavBar />
+//         <SavingsGoalPage /> 
+//       </>
+//     ),   
+//   }, 
+// ]);
+
+// function App() {
+//   return <RouterProvider router={router} />
+// }
+
+// export default App

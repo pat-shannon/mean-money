@@ -1,4 +1,4 @@
-const User = require("../models/user.js");
+const User = require("../models/user");
 const mongoose = require("mongoose");
 
 // Create a new User
@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 async function create(req, res) {
     const { name, email, password } = req.body;
 
-    if (!name || !email || !password ) {
+    if (!name || !email || !password) {
         return res.status(400).json({ message: 'All fields are required.' });
     }
 
@@ -36,6 +36,7 @@ async function create(req, res) {
         });
     }
 }
+
 
 // Find a User by Email
 
@@ -74,10 +75,24 @@ async function findById(req, res) {
     }
 };
 
+// Set a User's spending goals
+
+async function setSpendingGoals(req, res){
+    try{
+        console.log(req.params);
+        const { id } = req.params;
+        const user = await User.findById(id);
+
+    } catch (error) {
+        res.status(500).json({message: "Error setting user spending goals", error: error.message})
+
+    }
+}
 
 const UsersController = {
-    create,
+    create: create,
     findByEmail,
     findById,
+    setSpendingGoals,
 };
 module.exports = UsersController;

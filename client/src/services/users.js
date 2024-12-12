@@ -38,14 +38,16 @@ export async function getUserByUsername(token, username) {
 }
 
 
-export const submitNewUser = async (formData) => {
+export const submitNewUser = async ( name, email, password ) => {
     try {
-        const response = await fetch('http://localhost:3000/users', {
+        const response = await fetch('http://localhost:9000/users', {
             method: 'POST',
-            body: formData,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password }),
         });
 
         const data = await response.json();
+        
         if (response.ok) {
             return data;
         } else {
@@ -56,3 +58,34 @@ export const submitNewUser = async (formData) => {
         throw error;
     }
 };
+
+export async function setSpendingGoals(token, currentSavings, disposableIncome, foodAndDrinkGoal, socialOutingsGoal, entertainmentAndAppsGoal, holidayAndTravelGoal, healthAndBeautyGoal, miscGoal) {
+    const payload = {
+        currentSavings: currentSavings,
+        disposableIncome: disposableIncome,
+        foodAndDrinkGoal: foodAndDrinkGoal,
+        socialOutingsGoal: socialOutingsGoal,
+        entertainmentAndAppsGoal: entertainmentAndAppsGoal,
+        holidayAndTravelGoal: holidayAndTravelGoal,
+        healthAndBeautyGoal: healthAndBeautyGoal,
+        miscGoal: miscGoal
+    }
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+    
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
+    }
+    const response = await fetch(`${BACKEND_URL}/users/set-spending-goals`, requestOptions)
+    if (response.status === 200){
+        return;
+        
+    } else{
+        throw new Error(
+            `Received status ${response.status} when attempting to set spending goals. Expected 200`
+        )
+    }
+}

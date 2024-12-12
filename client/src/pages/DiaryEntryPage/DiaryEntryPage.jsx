@@ -1,5 +1,6 @@
 import DiaryEntryForm from "../../components/DiaryEntryForm"
 
+
 export function DiaryEntryPage() {
 
     return (
@@ -7,6 +8,7 @@ export function DiaryEntryPage() {
         <div className="diary-entry-page">
         <h1>Add a new diary entry</h1>
         <DiaryEntryForm />
+        
         </div>
 );
 }
