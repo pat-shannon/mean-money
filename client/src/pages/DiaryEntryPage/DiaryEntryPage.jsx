@@ -1,9 +1,6 @@
 
 import DiaryEntryForm from "../../components/DiaryEntry"
 
-import DiaryEntryForm from "../../components/DiaryEntryForm"
-
-
 export function DiaryEntryPage() {
 
     return (
