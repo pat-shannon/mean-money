@@ -4,7 +4,7 @@ import placeholderImg from './assets/placeholder_img.png'
 import { NavBar } from './components/NavBar'
 
 import './App.css'
-// import DiaryEntryForm from './components/DiaryEntry'
+import { DiaryEntryPage } from './pages/DiaryEntryPage/DiaryEntryPage';
 import { LoginPage } from './pages/Login/LoginPage';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Homepage } from './pages/Homepage/Homepage';
@@ -33,10 +33,13 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
   },
-
   {
     path: "/new-savings-goal",
     element: <SavingsGoalPage />,
+  {
+    path: "/new-diary-entry",
+    element: <DiaryEntryPage />,
+
   },
 ]);
 
@@ -45,7 +48,6 @@ function App() {
 
   return (
     <>
-    {/* <NavBar /> */}
       <div>
         <NavBar />
         {/* <a href="https://react.dev" target="_blank">
