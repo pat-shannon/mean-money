@@ -1,5 +1,5 @@
+import DiaryEntryForm from "../../components/DiaryEntryForm"
 
-import DiaryEntryForm from "../../components/DiaryEntry"
 
 export function DiaryEntryPage() {
 
