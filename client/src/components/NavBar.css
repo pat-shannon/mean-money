@@ -23,6 +23,6 @@
 }
 
 @keyframes navbarhover {
-    0% {background-color:#313131; box-shadow: 0px 0px 00px #cf21ff;}
+    0% {background-color:#313131; box-shadow: 0px 0px 00px #313131;}
     100% {background-color:#cf21ff; box-shadow: 0px 4px 10px #cf21ff}
 }

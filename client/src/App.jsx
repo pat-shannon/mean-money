@@ -9,7 +9,11 @@ import { LoginPage } from './pages/Login/LoginPage';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Homepage } from './pages/Homepage/Homepage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
+
+import { SpendingGoalsPage } from './pages/SpendingGoals/SpendingGoalsPage';
+
 import { SavingsGoalPage } from './pages/SavingsGoal/SavingsGoalPage';
+
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -33,6 +37,12 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
   },
+
+  {
+    path: "/spending-goals",
+    element: <SpendingGoalsPage />,
+  },
+  
   {
     path: "/new-savings-goal",
     element: <SavingsGoalPage />,
@@ -48,8 +58,6 @@ function App() {
 
   return (
     <>
-      <div>
-        <NavBar />
         {/* <a href="https://react.dev" target="_blank">
           <img src={placeholderImg} className="logo react" alt="React logo" />
         </a>
@@ -63,7 +71,6 @@ function App() {
         <h1>Add a new diary entry</h1> */}
         {/* <DiaryEntryForm /> */}
         <RouterProvider router={router} />
-      </div>
     </>
   )
 }

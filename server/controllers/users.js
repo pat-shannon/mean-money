@@ -75,10 +75,24 @@ async function findById(req, res) {
     }
 };
 
+// Set a User's spending goals
+
+async function setSpendingGoals(req, res){
+    try{
+        console.log(req.params);
+        const { id } = req.params;
+        const user = await User.findById(id);
+
+    } catch (error) {
+        res.status(500).json({message: "Error setting user spending goals", error: error.message})
+
+    }
+}
 
 const UsersController = {
     create: create,
     findByEmail,
     findById,
+    setSpendingGoals,
 };
 module.exports = UsersController;
