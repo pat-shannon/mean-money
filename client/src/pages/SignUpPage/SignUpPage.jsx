@@ -5,6 +5,14 @@ import "./SignUpPage.css"
 
 
 export function SignUpPage() {
+
+    // const [formStuff, setFormStuff] = useState({
+    //     name: "",
+    //     email: "",
+    //     password: "",
+    // });
+
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -14,7 +22,13 @@ export function SignUpPage() {
     const navigate = useNavigate();
 
 
-
+    // const handleChange = (event) => {
+    //     const { name, value } = event.target;
+    //     setFormData(prev => ({
+    //         ...prev,
+    //         [name]: value
+    //     }));
+    // }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -22,13 +36,13 @@ export function SignUpPage() {
             setErrorMessage("");
 
 
-            const formData = new FormData();
-            formData.append("name", name);
-            formData.append("email", email);
-            formData.append("password", password);
+            // const formData = new FormData();
+            // formData.append("name", name);
+            // formData.append("email", email);
+            // formData.append("password", password);
 
 
-            const data = await submitNewUser(formData);
+            const data = await submitNewUser(name, email, password);
 
 
             console.log("Signup successful:", data);
@@ -52,6 +66,8 @@ export function SignUpPage() {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    // value={formStuff.name}
+                    // onChange={(handleChange)}
                     required
                 />
                 <br />
@@ -63,6 +79,8 @@ export function SignUpPage() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    // value={formStuff.email}
+                    // onChange={(handleChange)}
                     required
                 />
                 <br />
@@ -74,6 +92,8 @@ export function SignUpPage() {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    // value={formStuff.password}
+                    // onChange={(handleChange)}
                     required
                     minLength={4}
                 />

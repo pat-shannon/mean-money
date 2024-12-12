@@ -1,26 +1,30 @@
-const DiaryEntry = require("../models/diary_entry")
-const { generateToken } = require("../lib/token");
+const DiaryEntry = require("../models/diary_entry");
+const mongoose = require("mongoose");
+// const { generateToken } = require("../lib/token");
 
 
 async function createEntry(req, res) {
-    
-    const amount = req.body.name
-    const date = req.body.date
-    const businessName = req.body.businessName
-    const category = req.body.category
+    try {
+        const { amount, date, businessName, category } = req.body
 
-    const diaryEntry = new DiaryEntry({amount, date, businessName, category});
-  
-    await diaryEntry
-    .save()
-    .then
-  
-    const newToken = generateToken(user_ID);
-    res.status(201).json({ message: "Diary entry created", token: newToken });
-  }
+        if (!amount || !date || !businessName || !category) {
+            return res.status(400).json({ message: 'All fields are required.' });
+        }
 
+        const newDiaryEntry = new DiaryEntry({ amount, date, businessName, category });
 
-const diaryEntryController = {
-    createEntry: createEntry};
+        await newDiaryEntry.save()
+        // const newToken = generateToken(user_ID);
+        res.status(201).json({ message: "Diary entry created" });
+    }
+    catch (error) {
+        console.error('Error creating diary entry:', error);
+        res.status(500).json({ message: 'Failed to create diary entry', error: error.message });
+    }
+}
 
-module.exports = diaryEntryController;
+    const diaryEntryController = {
+        createEntry
+    };
+
+    module.exports = diaryEntryController;

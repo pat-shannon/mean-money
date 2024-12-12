@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -55,6 +56,28 @@ const UserSchema = new mongoose.Schema({
         min: [0, 'Estimate cannot be negative']
     }
 });
+
+UserSchema.path('email').validate(function (email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}, 'Invalid email format');
+
+UserSchema.pre('save', async function(next) {
+    if(!this.isModified('password')) return next();
+
+    try {
+        const salt = await bcrypt.genSalt(10);
+
+        this.password = await bcrypt.hash(this.password, salt);
+        next();
+    } catch (error) {
+        next(error)
+    }
+});
+
+UserSchema.methods.comparePassword = async function(userPassword) {
+    return bcrypt.compare(userPassword, this.password);
+}
 
 const User = mongoose.model("User", UserSchema);
 module.exports = User;

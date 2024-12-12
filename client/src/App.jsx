@@ -4,7 +4,7 @@
 import { NavBar } from './components/NavBar'
 
 import './App.css'
-// import DiaryEntryForm from './components/DiaryEntry'
+import { DiaryEntryPage } from './pages/DiaryEntryPage/DiaryEntryPage';
 import { LoginPage } from './pages/Login/LoginPage';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Homepage } from './pages/Homepage/Homepage';
@@ -37,6 +37,11 @@ const router = createBrowserRouter([
   {
     path: "/spending-goals",
     element: <SpendingGoalsPage />,
+  },
+  
+  {
+    path: "/new-diary-entry",
+    element: <DiaryEntryPage />,
   },
 ]);
 
