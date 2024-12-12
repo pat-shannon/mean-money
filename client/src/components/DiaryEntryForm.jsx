@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 const DiaryEntryForm = () => {
 
     const [formData, setFormData] = useState({
@@ -36,10 +35,10 @@ const DiaryEntryForm = () => {
             alert('Please fill in all required fields');
             return;
         }
-
+console.log(formData)
         try {
             // Sending the data to the server backend
-            const response = await fetch('/server/diary-entries', {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/server/diary-entry`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -50,18 +49,35 @@ const DiaryEntryForm = () => {
                 })
             });
 
+            console.log('Response status:', response.status);
+
+            const responseText = await response.text();
+            console.log('Response text:', responseText);
+
+            // if (response.ok) {
+            //     alert('Diary entry saved successfully!');
+            //     // Reset form or navigate away???
+            //     setFormData({
+            //         amount: '',
+            //         date: new Date().toISOString().split('T')[0],
+            //         businessName: '',
+            //         category: ''
+            //     });
+            // } else {
+            //     const errorData = await response.json();
+            //     alert(`Error: ${errorData.message}`);
+            // }
             if (response.ok) {
-                alert('Diary entry saved successfully!');
-                // Reset form or navigate away???
-                setFormData({
-                    amount: '',
-                    date: new Date().toISOString().split('T')[0],
-                    businessName: '',
-                    category: ''
-                });
+                try {
+                    const data = JSON.parse(responseText);
+                    alert('Diary entry saved successfully!');
+                    // Reset form logic
+                } catch (parseError) {
+                    console.error('Parsing error:', parseError);
+                    alert('Received non-JSON response');
+                }
             } else {
-                const errorData = await response.json();
-                alert(`Error: ${errorData.message}`);
+                alert(`Error: ${responseText}`);
             }
         } catch (error) {
             console.error('Submission error:', error);
@@ -77,7 +93,7 @@ const DiaryEntryForm = () => {
             <form onSubmit={handleSubmit} className = "form">
                 <div className ="form-group">
                     <label htmlFor="amount" className="form-label">
-                        Amount(£): 
+                        Amount: 
                     </label>
                     <input
                         type="number"

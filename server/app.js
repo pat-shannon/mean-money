@@ -4,6 +4,7 @@ const app = express();
 const authenticationRouter = require("./routes/authentication")
 
 const savingsGoalRouter = require("./routes/savings_goal");
+const diaryEntryRouter = require("./routes/diaryEntry")
 
 app.use(cors());
 app.use(express.json());
@@ -29,8 +30,7 @@ app.use("/tokens", authenticationRouter);
 
 app.use("/users", usersRouter);
 
-
-// app.use("/diary", diaryEntryRouter);
+app.use(diaryEntryRouter);
 
 app.use("/savings-goal", savingsGoalRouter);
 
