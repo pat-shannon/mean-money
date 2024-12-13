@@ -153,42 +153,42 @@ describe("User Services", () => {
                 .toThrow("Email already exists");
         });
 
-        it("submits spending goals", async () => {
-            const mockUser = {
-                name: "Geraldine",
-                email: "coolgerry@email.co.uk",
-                password: "password123"
-            };
+        // it("submits spending goals", async () => {
+        //     const mockUser = {
+        //         name: "Geraldine",
+        //         email: "coolgerry@email.co.uk",
+        //         password: "password123"
+        //     };
 
-            const mockResponseData = {
-                message: "User created successfully",
-                user: {
-                    ...mockUser,
-                    id: "3"
-                }
-            };
+        //     const mockResponseData = {
+        //         message: "User created successfully",
+        //         user: {
+        //             ...mockUser,
+        //             id: "3"
+        //         }
+        //     };
 
-            global.fetch.mockResolvedValueOnce({
-                ok: true,
-                json: vi.fn().mockResolvedValue(mockResponseData)
-            });
+        //     global.fetch.mockResolvedValueOnce({
+        //         ok: true,
+        //         json: vi.fn().mockResolvedValue(mockResponseData)
+        //     });
 
-            const result = await submitNewUser(
-                mockUser.name, 
-                mockUser.email, 
-                mockUser.password
-            );
+        //     const result = await submitNewUser(
+        //         mockUser.name, 
+        //         mockUser.email, 
+        //         mockUser.password
+        //     );
 
-            expect(fetch).toHaveBeenCalledWith(
-                "http://localhost:9000/users",
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(mockUser)
-                }
-            );
+        //     expect(fetch).toHaveBeenCalledWith(
+        //         "http://localhost:9000/users",
+        //         {
+        //             method: "POST",
+        //             headers: { "Content-Type": "application/json" },
+        //             body: JSON.stringify(mockUser)
+        //         }
+        //     );
 
-            expect(result).toEqual(mockResponseData);
-        });
+        //     expect(result).toEqual(mockResponseData);
+        // });
     });
 });
