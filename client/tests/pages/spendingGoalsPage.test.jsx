@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { SpendingGoalsPage } from "../../src/pages/SpendingGoals/SpendingGoalsPage";
 import { MemoryRouter } from "react-router-dom";
 
@@ -29,12 +29,19 @@ describe("Spending Goals Page", () => {
         });
         
     })
-    // test("Can type values for all input", async () => {
-    //     render(
-    //         <MemoryRouter>
-    //         <SpendingGoalsPage />
-    //         </MemoryRouter>
-    //     );
-    //     const expectedInputs = await screen.getAllBy
-    // })
-})
+    test("Can change all values by typing in input box", async () => {
+        render(
+            <MemoryRouter>
+            <SpendingGoalsPage />
+            </MemoryRouter>
+        );
+        const expectedLabelTexts= ["Current savings", "Monthly disposable income", "Food & Drink", "Social Outings", "Entertainment & Apps", "Holiday & Travel", "Health & Beauty", "Miscellaneous"]
+        expectedLabelTexts.forEach(async (text) => {
+            const inputBox = await screen.getByLabelText(text);
+            expect(inputBox).toBeInTheDocument();
+            expect(inputBox.value).toBe('');
+            fireEvent.change(inputBox, { target: { value: 101 }});
+            expect(inputBox.value).toBe('101');
+        });
+    });
+});
