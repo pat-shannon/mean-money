@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const mongoose = require("mongoose");
+const { generateToken } = require("../lib/token");
 
 // Create a new User
 
@@ -79,13 +80,25 @@ async function findById(req, res) {
 
 async function setSpendingGoals(req, res){
     try{
-        console.log(req.params);
-        const { id } = req.params;
-        const user = await User.findById(id);
+        const token = generateToken(req.user_id);
+        const id = req.user_id
+        const updateSpendingGoals = await User.updateOne(
+            {_id: req.user_id},
+            {$set: {
+                currentSavings: req.body.currentSavings,
+                disposableIncome: req.body.disposableIncome,
+                foodAndDrinkGoal: req.body.foodAndDrinkGoal,
+                socialOutingsGoal: req.body.socialOutingsGoal,
+                entertainmentAndAppsGoal: req.body.entertainmentAndAppsGoal,
+                holidayAndTravelGoal: req.body.holidayAndTravelGoal,
+                healthAndBeautyGoal: req.body.healthAndBeautyGoal,
+                miscGoal: req.body.miscGoal
+            }}).then((updateSpendingGoals) => {
+                res.status(201).json({token: token});
+            });
 
     } catch (error) {
-        res.status(500).json({message: "Error setting user spending goals", error: error.message})
-
+        res.status(400).json({message: "Error setting user spending goals", token: token})
     }
 }
 
