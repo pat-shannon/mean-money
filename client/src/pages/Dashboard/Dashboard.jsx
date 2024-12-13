@@ -11,6 +11,7 @@ export function Dashboard() {
 
             <Link to="/new-diary-entry">
                 <button>Add a diary entry</button>
+                </Link>
             <Link to="/new-savings-goal">
                 <button>Add a new saving goal</button>
             </Link>
