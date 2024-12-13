@@ -1,8 +1,3 @@
-import { useState } from 'react'
-import placeholderImg from './assets/placeholder_img.png'
-
-import { NavBar } from './components/NavBar'
-
 import './App.css'
 import { DiaryEntryPage } from './pages/DiaryEntryPage/DiaryEntryPage';
 import { LoginPage } from './pages/Login/LoginPage';

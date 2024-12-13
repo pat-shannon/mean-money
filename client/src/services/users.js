@@ -78,14 +78,15 @@ export async function setSpendingGoals(token, currentSavings, disposableIncome, 
             "Content-Type": "application/json",
         },
         body: JSON.stringify(payload)
-    }
+    };
     const response = await fetch(`${BACKEND_URL}/users/set-spending-goals`, requestOptions)
-    if (response.status === 200){
-        return;
+
+    if (response.status === 201){
+        return await response.json();
         
     } else{
         throw new Error(
-            `Received status ${response.status} when attempting to set spending goals. Expected 200`
+            `Received status ${response.status} when attempting to set spending goals. Expected 201`
         )
     }
 }

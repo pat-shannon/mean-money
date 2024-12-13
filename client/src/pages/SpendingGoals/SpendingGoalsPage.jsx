@@ -18,8 +18,11 @@ export function SpendingGoalsPage() {
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
+        const token = localStorage.getItem("token");
+        event.preventDefault();
+        console.log('button pushes');
         try{
-            await setSpendingGoals(currentSavings, disposableIncome, foodAndDrinkGoal, socialOutingsGoal, entertainmentAndAppsGoal, holidayAndTravelGoal, healthAndBeautyGoal, miscGoal);
+            await setSpendingGoals(token, currentSavings, disposableIncome, foodAndDrinkGoal, socialOutingsGoal, entertainmentAndAppsGoal, holidayAndTravelGoal, healthAndBeautyGoal, miscGoal);
             navigate("/dashboard")
         } catch (err) {
             console.error(err);
@@ -42,7 +45,7 @@ export function SpendingGoalsPage() {
                         onChange={(event) => setCurrentSavings(event.target.value)}
                     />
                     <br></br>
-                    <label>Monthly disposable income</label>
+                    <label htmlFor="disposableIncome">Monthly disposable income</label>
                     <input
                         id="disposableIncome"
                         type="number"
@@ -52,7 +55,7 @@ export function SpendingGoalsPage() {
 
                     <h3>How much would you like to try and spend per month on the following categories?</h3>
 
-                    <label>Food & Drink</label>
+                    <label htmlFor="foodAndDrinkGoal">Food & Drink</label>
                     <input
                         id="foodAndDrinkGoal"
                         type="number"
@@ -60,7 +63,7 @@ export function SpendingGoalsPage() {
                         onChange={(event) => setFoodAndDrinkGoal(event.target.value)}
                     />
                     <br></br>
-                    <label>Social Outings</label>
+                    <label htmlFor="socialOutingsGoal">Social Outings</label>
                     <input
                         id="socialOutingsGoal"
                         type="number"
@@ -68,7 +71,7 @@ export function SpendingGoalsPage() {
                         onChange={(event) => setSocialOutingsGoal(event.target.value)}
                     />
                     <br></br>
-                    <label>Entertainment & Apps</label>
+                    <label htmlFor="entertainmentAndAppsGoal">Entertainment & Apps</label>
                     <input
                         id="entertainmentAndAppsGoal"
                         type="number"
@@ -76,7 +79,7 @@ export function SpendingGoalsPage() {
                         onChange={(event) => setEntertainmentAndAppsGoal(event.target.value)}
                     />
                     <br></br>
-                    <label>Holiday & Travel</label>
+                    <label htmlFor="holidayAndTravelGoal">Holiday & Travel</label>
                     <input
                         id="holidayAndTravelGoal"
                         type="number"
@@ -84,7 +87,7 @@ export function SpendingGoalsPage() {
                         onChange={(event) => setHolidayAndTravelGoal(event.target.value)}
                     />
                     <br></br>
-                    <label>Health & Beauty</label>
+                    <label htmlFor="healthAndBeautyGoal">Health & Beauty</label>
                     <input
                         id="healthAndBeautyGoal"
                         type="number"
@@ -92,7 +95,7 @@ export function SpendingGoalsPage() {
                         onChange={(event) => setHealthAndBeautyGoal(event.target.value)}
                     />
                     <br></br>
-                    <label>Miscellaneous</label>
+                    <label htmlFor="miscGoal">Miscellaneous</label>
                     <input
                         id="miscGoal"
                         type="number"
