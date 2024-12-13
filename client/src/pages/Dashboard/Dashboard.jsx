@@ -1,5 +1,6 @@
 import { NavBar } from "../../components/NavBar";
 import { Link } from "react-router-dom";
+import { SpendingGoalButton } from "../../components/SpendingGoalButton";
 
 export function Dashboard() {
 
@@ -9,6 +10,7 @@ export function Dashboard() {
         <div className="home">
             <h1>WELCOME TO YOUR DASHBOARD</h1>
 
+            <SpendingGoalButton />
             <Link to="/new-diary-entry">
                 <button>Add a diary entry</button>
                 </Link>
