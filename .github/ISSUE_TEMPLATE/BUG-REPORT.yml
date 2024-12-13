@@ -4,22 +4,18 @@ body:
   - type: dropdown
     id: version
     attributes:
-      label: Version
+      label: Feature
       options:
-        - v1
-        - v2
-        - v3
-        - v4
-  - type: dropdown
-    id: severity
-    attributes:
-      label: Severity
-      options:
-        - "Critical"
-        - "High"
-        - "Medium"
-        - "Low"
-        - "Trivial"
+        - Log in
+        - Log out
+        - Sign up
+        - Saving goals form
+        - Spending goals form
+        - Diary entry form
+        - Nav bar
+        - Homepage
+        - Dashboard
+        - Other
   - type: dropdown
     id: suggested_priority
     attributes:
