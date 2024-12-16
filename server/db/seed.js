@@ -49,14 +49,12 @@ async function seedData() {
 
         const diaryEntries = [
             {
-                name: "Reena",
                 amount: 100,
                 date: "2024/03/03",
                 businessName: "Starbucks",
                 category: "Food and Drink",
             },
             {
-                name: "Reena",
                 amount: 100,
                 date: "2024/03/03",
                 businessName: "Starbucks",
