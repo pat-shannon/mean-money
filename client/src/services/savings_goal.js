@@ -8,7 +8,7 @@ export async function createSavingsGoal(token, body) {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: body }),
+        body: JSON.stringify(body),
     };
 
     const response = await fetch(`${BACKEND_URL}/savings-goal`, requestOptions);
@@ -20,29 +20,18 @@ export async function createSavingsGoal(token, body) {
     return response;
 }
 
-// export async function getSavingsGoal(token) {
-//     const requestOptions = {
-//         method: "GET",
-//         headers: {
-//             Authorization: `Bearer ${token}`,
-//         },
-//     }
+export async function fetchUserSavingsGoal(token) {
+    const response = await fetch(`${BACKEND_URL}/savings-goal`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        }
+    })
 
-//     const response = await fetch(`${BACKEND_URL}/savings-goal`, requestOptions);
+    if (!response.ok) {
+        throw new Error('Failed to fetch savings goal')
+    }
 
-//     if (response.status !== 200) {
-//         throw new Error("Unable to fetch savings goal");
-//     }
-
-//     const data = await response.json();
-//     return data;
-// }
-
-
-    //     savingsTitle: savingsGoalData.savingsTitle,
-    //     savingsTarget: savingsGoalData.savingsTarget,
-    //     savingsCategory: savingsGoalData.savingsCategory,
-    //     startDate: savingsGoalData.startDate,
-    //     endDate: savingsGoalData.endDate,
-    //     isComplete: false,
-    // };
+    return response.json();
+}
