@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createSavingsGoal } from "../services/savings_goal";
 
 const SavingsGoalForm = () => {
     const [formData, setFormData] = useState({
@@ -38,19 +39,22 @@ const SavingsGoalForm = () => {
         }
     
         try {
-            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/savings-goal`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    savingsTitle,
-                    savingsTarget: parseFloat(savingsTarget),
-                    savingsCategory,
-                    startDate,
-                    endDate
-                })
-            });
+            createSavingsGoal();
+            // const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/savings-goal`, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({
+            //         savingsTitle,
+            //         savingsTarget: parseFloat(savingsTarget),
+            //         savingsCategory,
+            //         startDate,
+            //         endDate
+            //     })
+            // });
+
+
     
             const responseText = await response.text();
     
