@@ -2,12 +2,18 @@ import { render, screen } from "@testing-library/react";
 import { NavBar } from "../../src/components/NavBar";
 import { MemoryRouter } from "react-router-dom";
 
+vi.mock("../../src/components/LogOutButton", () => ({
+        LogOutButton: () => <button>Log Out</button>,
+}));
+
 describe("Navbar", () => {
     test("Navbar displays buttons", () => {
+        
         render(<MemoryRouter><NavBar /></MemoryRouter>);
         const navLinks = screen.getAllByRole("link");
+        const logOutButton = screen.getByRole("button");
         expect(navLinks[1].textContent).toBe("Dashboard");
-        expect(navLinks[2].textContent).toBe("Logout");
+        expect(logOutButton.textContent).toBe("Log Out");
     });
 
     test("Navbar displays logo image", () => {

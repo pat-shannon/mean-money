@@ -11,7 +11,7 @@ export function NavBar() {
             <nav className="navbar">
                 <Link><img width="140rem" height="70rem" src={placeholderImg} ></img></Link>
                 <Link className="nav-link" to="/dashboard">Dashboard</Link>
-                <LogOutButton className="nav-link"/>
+                <LogOutButton/>
             </nav>
 
     )
