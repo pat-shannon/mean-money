@@ -7,7 +7,7 @@ import { getMyUserDetails } from "../../services/users";
 export function SpendingGoalsPage() {
 
     const [errorStatus, setErrorStatus] = useState(false);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
     const [currentSavings, setCurrentSavings] = useState();
     const [disposableIncome, setDisposableIncome] = useState();
@@ -34,12 +34,13 @@ export function SpendingGoalsPage() {
             setEntertainmentAndAppsGoal(data.entertainmentAndAppsGoal.toFixed(2)),
             setHolidayAndTravelGoal(data.holidayAndTravelGoal.toFixed(2)),
             setHealthAndBeautyGoal(data.healthAndBeautyGoal.toFixed(2)),
-            setMiscGoal(data.miscGoal.toFixed(2)),
-            setLoading(false)))
+            setMiscGoal(data.miscGoal.toFixed(2))
+            // setLoading(false)
+            ))
             
         .catch(error => {
             console.error("Error fetching user details:", error);
-            setLoading(false);
+            // setLoading(false);
         });
     }, []);
 
@@ -77,12 +78,12 @@ export function SpendingGoalsPage() {
         // }
     }
 
-    if(loading){
-        return(
-            <>
-            <p>loading...</p></>
-        )
-    }
+    // if(loading){
+    //     return(
+    //         <>
+    //         <p>loading...</p></>
+    //     )
+    // }
     return (
         <>
             <NavBar />
