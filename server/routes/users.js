@@ -9,6 +9,7 @@ router.post("/", UsersController.create);
 router.get("/find/:email", UsersController.findByEmail);
 router.get("/findById/:id", UsersController.findById);
 router.post("/set-spending-goals", tokenChecker, UsersController.setSpendingGoals)
+router.get("/find", tokenChecker, UsersController.findUser);
 
 
 module.exports = router;
