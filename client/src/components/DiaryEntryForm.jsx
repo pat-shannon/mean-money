@@ -21,9 +21,10 @@ const DiaryEntryForm = () => {
     //this handles changes to the input
     const handleChange = (event) => {
         const { name, value } = event.target;
+        const cappedValue = name === "businessName" && value.length > 100 ? value.slice(0, 100) : value;
         setFormData(prev => ({
             ...prev,
-            [name]: value
+            [name]: cappedValue
         }));
     };
 
@@ -78,7 +79,7 @@ console.log(formData)
     return (
         <div className = "form-container">
             <div className = "form-container">
-            <h2 className = "form-title"> New Diary Entry</h2>
+            <h2 className = "form-title">New Diary Entry</h2>
             <form onSubmit={handleSubmit} className = "form">
                 <div className ="form-group">
                     <label htmlFor="amount" className="form-label">
@@ -91,7 +92,7 @@ console.log(formData)
                         value={formData.amount}
                         onChange={handleChange}
                         placeholder="Enter amount"
-                        step="1"
+                        step="0.01"
                         min="0"
                         required
                         className="form-input"
@@ -119,16 +120,17 @@ console.log(formData)
                         name="businessName"
                         value={formData.businessName}
                         onChange={handleChange}
-                        placeholder="Enter business name"
+                        placeholder="Max 100 characters"
                         required
                         maxLength={100}
                         className="form-input"
                     />
                 </div>
 
-                <div className="form-label">
-                    <label className="form-label">Category: </label>
+                <div className="form-group">
+                    <label htmlFor="category" className="form-label">Category: </label>
                     <select
+                        id="category"
                         name="category"
                         value={formData.category}
                         onChange={handleChange}
