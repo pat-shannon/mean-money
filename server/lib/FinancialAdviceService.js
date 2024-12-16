@@ -44,7 +44,6 @@ class FinancialAdvisorService {
     _analyseSpendingPatterns(user, diaryEntries){
         const advice = [];
         const categorySpending = this._calculateCategorySpending(diaryEntries);
-
         if(categorySpending['Food and Drink'] > user.foodAndDrinkGoal * 1.2) {
             advice.push("Whoa, big spender! Your food budget is eating your wallet. Maybe cook at home once in a while?")
         }
@@ -55,9 +54,8 @@ class FinancialAdvisorService {
     _checkSavingGoalProgress(user, savingsGoals) {
         const advice = [];
         savingsGoals.forEach(goal => {
-            const daysRemaining = math.ceil((goal.endDate - Date.now()) / (24 * 60 * 60 * 1000));
+            const daysRemaining = Math.ceil((goal.endDate - Date.now()) / (24 * 60 * 60 * 1000));
             const progressPercentage = (user.currentSavings / goal.savingsTarget) * 100;
-
             if (daysRemaining < 30 && progressPercentage < 50) {
                 advice.push(`Your ${goal.savingsTitle} goal is looking slim. Panic mode: activated! 🚨`)
             }
