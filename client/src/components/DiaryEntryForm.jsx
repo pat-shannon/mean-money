@@ -5,7 +5,7 @@ const DiaryEntryForm = () => {
 
     const [formData, setFormData] = useState({
         amount: "",
-        date: new Date().toISOString().split('T')[0], //this is going to default to today's date- do we need to change this?
+        date: new Date().toISOString().split('T')[0],
         businessName: "",
         category: ""
     });
@@ -18,20 +18,54 @@ const DiaryEntryForm = () => {
         'Health and Beauty',
         'Miscellaneous'
     ];
-    //this handles changes to the input
+
     const handleChange = (event) => {
         const { name, value } = event.target;
-        const cappedValue = name === "businessName" && value.length > 100 ? value.slice(0, 100) : value;
+
+        if (name === "amount") {
+
+        let currencyValue = value.replace(/[^0-9.]/g, '');
+
+        if (currencyValue.startsWith('-')) {
+            alert("Amount must be a positive number")
+            return;
+        }
+
+        const decimalParts = currencyValue.split('.');
+        if (decimalParts.length > 2) {
+            currencyValue = decimalParts[0] + '.' + decimalParts.slice(1).join('');
+        }  
+        if (decimalParts.length === 2 && decimalParts[1].length > 2) {
+            currencyValue = parseFloat(currencyValue).toFixed(2);
+        }
+
         setFormData(prev => ({
             ...prev,
-            [name]: cappedValue
+            [name]: currencyValue
         }));
-    };
+
+    } else if (name === "businessName") {
+        const safebusinessName = value
+        .replace(/[<>;&'"]/g, '')
+        .trim()
+        .slice(0, 50);
+
+        setFormData(prev => ({
+            ...prev,
+            [name]: safebusinessName
+        }));
+
+    } else {
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    }
+};
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        //check what is entered in the form is valid
         const { amount, date, businessName, category } = formData;
         if (!amount || !date || !businessName || !category) {
             alert('Please fill in all required fields');
@@ -39,7 +73,7 @@ const DiaryEntryForm = () => {
         }
 console.log(formData)
         try {
-            // Sending the data to the server backend
+
             const response = await fetch(`${BACKEND_URL}/server/diary-entry`, {
                 method: 'POST',
                 headers: {
@@ -58,7 +92,7 @@ console.log(formData)
 
             if (response.ok) {
                 alert('Diary entry saved successfully!');
-                // Reset form or navigate away???
+
                 setFormData({
                     amount: '',
                     date: new Date().toISOString().split('T')[0],
@@ -83,15 +117,15 @@ console.log(formData)
             <form onSubmit={handleSubmit} className = "form">
                 <div className ="form-group">
                     <label htmlFor="amount" className="form-label">
-                        Amount: 
+                        Amount (£): 
                     </label>
                     <input
-                        type="number"
+                        type="text"
                         id="amount"
                         name="amount"
                         value={formData.amount}
                         onChange={handleChange}
-                        placeholder="Enter amount"
+                        placeholder="Enter what you spent"
                         step="0.01"
                         min="0"
                         required
@@ -120,9 +154,9 @@ console.log(formData)
                         name="businessName"
                         value={formData.businessName}
                         onChange={handleChange}
-                        placeholder="Max 100 characters"
+                        placeholder="Max 50 characters"
                         required
-                        maxLength={100}
+                        maxLength={50}
                         className="form-input"
                     />
                 </div>
@@ -157,5 +191,6 @@ console.log(formData)
     </div>
     );
 };
+
 
 export default DiaryEntryForm;
