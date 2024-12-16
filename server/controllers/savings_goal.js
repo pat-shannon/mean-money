@@ -12,7 +12,11 @@ async function createSavingsGoal(req, res) {
             return res.status(400).json({ message: 'All fields required'});
         }
 
-        const newSavingsGoal = new SavingsGoal({ savingsTitle, savingsTarget, savingsCategory, startDate, endDate });
+        const token = req.headers.authorization.split(' ')[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const userId = decoded.user_id;
+
+        const newSavingsGoal = new SavingsGoal({ user_id: userId, savingsTitle, savingsTarget, savingsCategory, startDate, endDate });
 
         await newSavingsGoal.save()
         res.status(201).json({ message: 'Savings goal created'});
@@ -23,9 +27,39 @@ async function createSavingsGoal(req, res) {
         }
     }
 
+async function getUserSavingsGoals(req, res) {
+    try {
+        const token = req.headers.authorization.split(' ')[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const userId = decoded.user_id;
+
+        const savingsGoals = await SavingsGoal.find({ user_id: userId });
+
+        res.status(200).json(savingsGoals);
+    } catch (error) {
+        console.error('Error fetching savings goals', error);
+        res.status(500).json({ message: 'Failed to fetch savings goals', error: error.message });
+    }
+}
+
+async function getUserSavingsGoal(req, res) {
+    try {
+        const token = req.headers.authorization.split(' ')[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const userId = decoded.user_id;
+
+        const savingsGoals = await SavingsGoal.find({ user_id: userId });
+
+        res.status(200).json(savingsGoals);
+    } catch (error) {
+        console.error('Error fetching savings goals', error);
+        res.status(500).json({ message: 'Failed to fetch savings goals', error: error.message });
+    }
+}
 
 const SavingsGoalController = {
-    createSavingsGoal: createSavingsGoal
+    createSavingsGoal: createSavingsGoal,
+    getUserSavingsGoal: getUserSavingsGoal
 }
 
 module.exports = SavingsGoalController
