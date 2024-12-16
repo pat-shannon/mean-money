@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { NavBar } from "../../components/NavBar";
 import { useState, useEffect } from "react";
-import { Alert } from '@mui/material/';
+// import { Alert } from '@mui/material/';
 import { setSpendingGoals } from "../../services/users"
 import { getMyUserDetails } from "../../services/users";
 export function SpendingGoalsPage() {
