@@ -41,7 +41,6 @@ async function create(req, res) {
 // Find own user
 
 async function findUser(req,res){
-    console.log('yoooo')
     const user = await User.find({_id: req.user_id});
     const token = generateToken(req.user_id);
 

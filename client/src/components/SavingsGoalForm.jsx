@@ -31,15 +31,17 @@ const SavingsGoalForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const token = localStorage.getItem("token");
     
         const { savingsTitle, savingsTarget, savingsCategory, startDate, endDate } = formData;
+        console.log(formData);
         if (!savingsTitle || !savingsTarget || !savingsCategory || !startDate || !endDate) {
             alert('Please fill in all fields');
             return;
         }
     
         try {
-            createSavingsGoal();
+            const response = await createSavingsGoal(token, formData);
             // const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/savings-goal`, {
             //     method: 'POST',
             //     headers: {

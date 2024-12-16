@@ -6,7 +6,7 @@ const User = require("../models/user");
 
 async function createSavingsGoal(req, res) {
     const token = generateToken(req.user_id);
-    console.log(req);
+
     try {
         const { savingsTitle, savingsTarget, savingsCategory, startDate, endDate } = req.body
 
@@ -20,9 +20,6 @@ async function createSavingsGoal(req, res) {
         // const userId = decoded.user_id;
         // const userId = req.user_id;
         // console.log('user id created: ', userId);
-        console.log('we are--->');
-        console.log(req.user_id);
-        console.log('<--- we were');
         const object_user_id = new mongoose.Types.ObjectId(req.user_id);
         const newSavingsGoal = new SavingsGoal({ user_id: object_user_id, savingsTitle, savingsTarget, savingsCategory, startDate, endDate });
 
@@ -53,12 +50,10 @@ async function createSavingsGoal(req, res) {
 async function getUserSavingsGoal(req, res) {
     try {
         const token = generateToken(req.user_id);
-        console.log('here we go!')
-        console.log(token);
         // const decoded = jwt.verify(token, process.env.JWT_SECRET);
         // const userId = decoded.user_id;
 
-        const savingsGoals = await SavingsGoal.find({ user_id: userId });
+        const savingsGoals = await SavingsGoal.find({ user_id: req.user_id });
 
         res.status(200).json(savingsGoals);
     } catch (error) {

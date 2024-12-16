@@ -71,7 +71,6 @@ const DiaryEntryForm = () => {
             alert('Please fill in all required fields');
             return;
         }
-console.log(formData)
         try {
 
             const response = await fetch(`${BACKEND_URL}/server/diary-entry`, {

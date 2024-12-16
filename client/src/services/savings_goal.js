@@ -1,6 +1,6 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export async function createSavingsGoal(token, body) {
+export async function createSavingsGoal(token, formData) {
 
     const requestOptions = {
         method: "POST",
@@ -8,7 +8,7 @@ export async function createSavingsGoal(token, body) {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify(formData),
     };
 
     const response = await fetch(`${BACKEND_URL}/savings-goal`, requestOptions);
