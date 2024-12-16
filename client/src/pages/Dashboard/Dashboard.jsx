@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import SavingsGoalPost from "../../components/SavingsGoalPost";
 
 import { SpendingGoalButton } from "../../components/SpendingGoalButton";
+import FinancialAdviceComponent from "../../components/FinancialAdvice";
 
 
 export function Dashboard() {
@@ -26,6 +27,8 @@ export function Dashboard() {
             <Link to="/new-savings-goal">
                 <button>Add a new saving goal</button>
             </Link>
+
+            < FinancialAdviceComponent />
         </div>
         </>
     );

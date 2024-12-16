@@ -18,6 +18,9 @@ export async function login(email, password) {
 
     if (response.status === 201) {
         let data = await response.json();
+
+        localStorage.setItem("authToken", data.token);
+        
         return data.token;
     } else {
         throw new Error(
