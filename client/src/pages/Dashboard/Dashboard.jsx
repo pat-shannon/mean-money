@@ -1,6 +1,10 @@
 import { NavBar } from "../../components/NavBar";
 import { Link } from "react-router-dom";
+
 import SavingsGoalPost from "../../components/SavingsGoalPost";
+
+import { SpendingGoalButton } from "../../components/SpendingGoalButton";
+
 
 export function Dashboard() {
 
@@ -9,10 +13,16 @@ export function Dashboard() {
         <NavBar />
         <div className="home">
             <h1>WELCOME TO YOUR DASHBOARD</h1>
+
             <SavingsGoalPost />
+
+
+            <SpendingGoalButton />
+
             <Link to="/new-diary-entry">
                 <button>Add a diary entry</button>
-                </Link>
+            </Link>
+
             <Link to="/new-savings-goal">
                 <button>Add a new saving goal</button>
             </Link>

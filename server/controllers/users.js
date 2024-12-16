@@ -38,6 +38,26 @@ async function create(req, res) {
     }
 }
 
+// Find own user
+
+async function findUser(req,res){
+    console.log('yoooo')
+    const user = await User.find({_id: req.user_id});
+    const token = generateToken(req.user_id);
+
+    const returnUserData = {
+        name: user[0].name,
+        currentSavings: user[0].currentSavings,
+        disposableIncome: user[0].disposableIncome,
+        foodAndDrinkGoal: user[0].foodAndDrinkGoal,
+        socialOutingsGoal: user[0].socialOutingsGoal,
+        entertainmentAndAppsGoal: user[0].entertainmentAndAppsGoal,
+        holidayAndTravelGoal: user[0].holidayAndTravelGoal,
+        healthAndBeautyGoal: user[0].healthAndBeautyGoal,
+        miscGoal: user[0].miscGoal
+    }
+    res.status(200).json({userData: returnUserData, token: token });
+}
 
 // Find a User by Email
 
@@ -79,20 +99,26 @@ async function findById(req, res) {
 // Set a User's spending goals
 
 async function setSpendingGoals(req, res){
+    const token = generateToken(req.user_id);
     try{
-        const token = generateToken(req.user_id);
+        
         const id = req.user_id
+        for (const key in req.body){
+            if (!isNaN(req.body[key]) && (req.body[key])>=0){
+            
+            }
+        }
         const updateSpendingGoals = await User.updateOne(
             {_id: req.user_id},
             {$set: {
-                currentSavings: req.body.currentSavings,
-                disposableIncome: req.body.disposableIncome,
-                foodAndDrinkGoal: req.body.foodAndDrinkGoal,
-                socialOutingsGoal: req.body.socialOutingsGoal,
-                entertainmentAndAppsGoal: req.body.entertainmentAndAppsGoal,
-                holidayAndTravelGoal: req.body.holidayAndTravelGoal,
-                healthAndBeautyGoal: req.body.healthAndBeautyGoal,
-                miscGoal: req.body.miscGoal
+                currentSavings: req.body.currentSavings.toFixed(2),
+                disposableIncome: req.body.disposableIncome.toFixed(2),
+                foodAndDrinkGoal: req.body.foodAndDrinkGoal.toFixed(2),
+                socialOutingsGoal: req.body.socialOutingsGoal.toFixed(2),
+                entertainmentAndAppsGoal: req.body.entertainmentAndAppsGoal.toFixed(2),
+                holidayAndTravelGoal: req.body.holidayAndTravelGoal.toFixed(2),
+                healthAndBeautyGoal: req.body.healthAndBeautyGoal.toFixed(2),
+                miscGoal: req.body.miscGoal.toFixed(2)
             }}).then((updateSpendingGoals) => {
                 res.status(201).json({token: token});
             });
@@ -107,5 +133,6 @@ const UsersController = {
     findByEmail,
     findById,
     setSpendingGoals,
+    findUser,
 };
 module.exports = UsersController;

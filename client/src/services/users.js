@@ -1,5 +1,22 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
+export async function getMyUserDetails(token) {
+    const requestOptions = {
+        method: "GET",
+        headers:{
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+        },
+    }
+    // THAT LINE: ?
+    const response = await fetch(`${BACKEND_URL}/users/find`, requestOptions);
+    if (response.status !== 200) {
+        throw new Error("Unable to fetch user details");
+    }
+
+    const data = await response.json();
+    return data;
+}
 
 export async function getUserByEmail(token, email) {
     const requestOptions = {
@@ -18,7 +35,6 @@ export async function getUserByEmail(token, email) {
     const user = await response.json();
     return user;
 }
-
 
 export async function getUserByName(token, name) {
     const requestOptions = {
