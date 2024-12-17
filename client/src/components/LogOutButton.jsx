@@ -6,14 +6,15 @@ import "./NavBar.css"
 
 export const LogOutButton = () => {
     const navigate = useNavigate();
+    const isLoggedIn = localStorage.getItem('token') !== null;
 
     function logOut() {
         localStorage.clear()
         navigate("/");
     };
 
-    return (
+    return isLoggedIn ? (
         <Link className="nav-link" onClick={logOut}>Log Out</Link>
-    );
+    ) : null;
 };
 

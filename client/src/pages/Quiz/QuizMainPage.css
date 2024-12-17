@@ -1,0 +1,44 @@
+.container {
+    width: 80%;
+    margin: 130px auto;
+    border: 7px solid #1E90FF;
+    border-radius: 10px;
+}
+
+.instructions {
+    text-align: left;
+}
+
+.submit-button {
+    background-color: #0047AB;
+    color: white;
+    padding: 10px 20px;
+    border: black;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold, italic;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+    background-color: #1F75FE;
+    transform: scale(1.05);
+    color: white;
+}
+
+input[type=radio]:checked ~ .check {
+    border: 5px solid var(--#1F75FE)
+}
+
+input[type=radio]:checked Z .check::before {
+    background: var(--#0047AB)
+}
+
+.checked {
+    border: 5pm solid var(--#0047AB)
+}
+
+.checked::before {
+    background: var(--#0047AB)
+}
