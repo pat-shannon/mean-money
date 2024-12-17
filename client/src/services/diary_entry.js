@@ -86,3 +86,21 @@ export async function deleteDiaryEntry(token, entryId) {
       throw error;
   }
 }
+  
+export async function getLastMonthSpending(token) {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    };
+  
+    const response = await fetch(`${BACKEND_URL}/get-last-month-spending`, requestOptions);
+  
+    if (response.status !== 200) {
+      throw new Error("Unable to get monthly spending");
+    }
+  
+    return response;
+  }

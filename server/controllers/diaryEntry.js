@@ -69,10 +69,41 @@ async function deleteDiaryEntry(req, res) {
     }
 }
 
-    const diaryEntryController = {
+
+async function getLastMonthSpending(req, res) {
+    const token = generateToken(req.user_id);
+    try{
+        const spendingData = DiaryEntry.find({user_id: req.user_id})
+        // console.log(spendingData)
+        res.status(200).json({spendingData: spendingData, message: "Successfully retrieved last month's spending", token: token})
+    } catch (error) {
+        console.error('Error retrieving monthly spending: ', error);
+        res.status(400).json({message: 'Failed to retrieve monthly spending: ', error, token: token})
+    }
+}
+
+// async function findUser(req,res){
+//     const user = await User.find({_id: req.user_id});
+//     const token = generateToken(req.user_id);
+
+//     const returnUserData = {
+//         name: user[0].name,
+//         currentSavings: user[0].currentSavings,
+//         disposableIncome: user[0].disposableIncome,
+//         foodAndDrinkGoal: user[0].foodAndDrinkGoal,
+//         socialOutingsGoal: user[0].socialOutingsGoal,
+//         entertainmentAndAppsGoal: user[0].entertainmentAndAppsGoal,
+//         holidayAndTravelGoal: user[0].holidayAndTravelGoal,
+//         healthAndBeautyGoal: user[0].healthAndBeautyGoal,
+//         miscGoal: user[0].miscGoal
+//     }
+//     res.status(200).json({userData: returnUserData, token: token });
+// }
+
+const diaryEntryController = {
         createDiaryEntry,
         getDiaryEntries,
-        deleteDiaryEntry
-    };
-
+        deleteDiaryEntry,
+        getLastMonthSpending
+};
     module.exports = diaryEntryController;
