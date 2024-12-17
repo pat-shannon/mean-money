@@ -4,14 +4,18 @@ import { LoginPage } from './pages/Login/LoginPage';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Homepage } from './pages/Homepage/Homepage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
-
 import { SpendingGoalsPage } from './pages/SpendingGoals/SpendingGoalsPage';
-
 import { SavingsGoalPage } from './pages/SavingsGoal/SavingsGoalPage';
+import { QuizMainPage } from "./pages/Quiz/QuizMainPage";
 
+// import quiz components:
+import Quiz from "./components/Quiz";
+import QuizResult from "./components/QuizResult";
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+
+// react routes:
 const router = createBrowserRouter([
   {
     path: "/",
@@ -45,8 +49,19 @@ const router = createBrowserRouter([
   {
     path: "/new-diary-entry",
     element: <DiaryEntryPage />,
-
   },
+  {
+    path:"/quizstart",
+    element: <QuizMainPage />
+  },
+  {
+    path: "/quiz",
+    element: <Quiz></Quiz>
+  },
+  {
+    path: "/result",
+    element: <QuizResult></QuizResult>
+  }
 ]);
 
 function App() {
