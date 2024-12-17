@@ -72,12 +72,14 @@ export function SpendingGoalsPage() {
         if (value.toFixed(2) != value || value < 0) {
           errorHelp = true;
           setErrorStatus(true);
-          toast.error("Please ensure all spending goals are positive, numerical amounts of money.", { 
-            role: "alert",
-            ariaLive: "assertive"});
         }
       });
-      if (!errorHelp) {
+      if (errorHelp){
+        toast.error("Please ensure all spending goals are positive, numerical amounts of money.", { 
+          role: "alert",
+          ariaLive: "assertive"});
+        }
+      else {
         await setSpendingGoals(
           token,
           Number(currentSavings),
