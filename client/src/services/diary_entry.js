@@ -87,20 +87,22 @@ export async function deleteDiaryEntry(token, entryId) {
   }
 }
   
-export async function getLastMonthSpending(token) {
+export async function getLastMonthSpending(token, formData) {
     const requestOptions = {
-      method: "GET",
+      method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
+      body: JSON.stringify(formData),
     };
   
-    const response = await fetch(`${BACKEND_URL}/get-last-month-spending`, requestOptions);
-  
+    const response = await fetch(`${BACKEND_URL}/diary/get-last-month-spending`, requestOptions);
+    const data = await response.json()
+    
     if (response.status !== 200) {
       throw new Error("Unable to get monthly spending");
     }
   
-    return response;
+    return data.spendingValues;
   }
