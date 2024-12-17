@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
 const DiaryEntrySchema = new mongoose.Schema({
+    user_id: { type: mongoose.Schema.Types.ObjectId, required: true},
     amount: {
         type: Number,
-        required: true,
+        required: true
     },
     date: {
         type: Date,

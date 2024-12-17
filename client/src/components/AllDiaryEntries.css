@@ -1,0 +1,77 @@
+.diary-container {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.diary-header {
+    margin-bottom: 1.5rem;
+}
+
+.diary-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.loading-container {
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-text {
+    color: #6b7280;
+}
+
+.error-message {
+    background-color: #fef2f2;
+    color: #ef4444;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem 0;
+    color: #6b7280;
+}
+
+.empty-state-subtitle {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.entries-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.entry-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s;
+}
+
+.entry-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.entry-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.entry-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}

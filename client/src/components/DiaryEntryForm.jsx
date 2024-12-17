@@ -1,7 +1,10 @@
 import { useState } from "react";
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+import { useNavigate } from "react-router-dom";
+import { createDiaryEntry } from "../services/diary_entry";
+// const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const DiaryEntryForm = () => {
+  
   const [formData, setFormData] = useState({
     amount: "",
     date: new Date().toISOString().split("T")[0],
@@ -54,7 +57,7 @@ const DiaryEntryForm = () => {
     } else {
       setFormData((prev) => ({
         ...prev,
-        [name]: value,
+        [name]: value
       }));
     }
   };

@@ -83,7 +83,7 @@ describe("Diary Entry form component", () => {
 
         await waitFor(() => {
             expect(global.fetch).toHaveBeenCalledWith(
-                expect.stringContaining('/server/diary-entry'),
+                expect.stringContaining('/diary/diary-entry'),
                 expect.objectContaining({
                     method: 'POST',
                     headers: {
