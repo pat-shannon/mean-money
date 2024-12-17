@@ -28,6 +28,7 @@ export function Dashboard() {
     return (
         <>
         <NavBar />
+
         <div className="container">
             <div>
             <h1>Welcome {userData?.name || "to your dashboard" }</h1>
@@ -35,6 +36,7 @@ export function Dashboard() {
             </div>
             <SavingsGoalPost />
             <br></br>
+            <MonthlySpending />
             <div className="container">
             <div className="row">
                 <div className="col-md-3">
@@ -43,7 +45,7 @@ export function Dashboard() {
                 </div>
                 <div className="col-md-9">
                     <p>other half</p>
-            <MonthlySpending />
+            
             <Link to="/new-diary-entry">
                 <button>Add a diary entry</button>
             </Link>

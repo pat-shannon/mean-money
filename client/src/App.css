@@ -12,3 +12,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.chart-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+  max-height:37.5rem;
+}
