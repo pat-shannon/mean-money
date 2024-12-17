@@ -9,10 +9,21 @@ import { SpendingGoalButton } from "../../components/SpendingGoalButton";
 
 import AllDiaryEntries from "../../components/AllDiaryEntries";
 import FinancialAdviceComponent from "../../components/FinancialAdvice";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Dashboard() {
 
     const userData = JSON.parse(localStorage.getItem("userData"));
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/login');
+        }
+    }, [navigate]);
 
     return (
         <>
