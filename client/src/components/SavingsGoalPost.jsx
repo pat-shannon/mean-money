@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchUserSavingsGoal } from "../services/savings_goal";
+import "../pages/Dashboard/Dashboard.css"
 
 function SavingsGoalPost() {
     const [savingsGoal, setSavingsGoal] = useState([]);
@@ -34,23 +35,34 @@ function SavingsGoalPost() {
 
     return (
         <div>
-            <h2>Your Savings Goals</h2>
-            {savingsGoal.length === 0 ? (
+            <div>
+                <div>
+                    <div className="col-md-12">{savingsGoal.length === 0 ? (
                 <p>No savings goals found.</p>
             ) : (
-                <div>
+                <div className="container">
                     {savingsGoal.map((goal) => (
                         <div key={goal._id}>
-                            <h3>{goal.savingsTitle}</h3>
-                            <p>Category: {goal.savingsCategory}</p>
-                            <p>Target: £{goal.savingsTarget.toLocaleString()}</p>
+                            
+                            
+
+                            <div className="row">
+                            <div className="col-md-4"><h2>My Savings Goal</h2></div>
+                            <div className="col-md-2">Title: <h4>{goal.savingsTitle}</h4></div>
+                            <div className="col-md-2">Category: <h4>{goal.savingsCategory}</h4></div>
+                            <div className="col-md-2">Target: <h1>£{goal.savingsTarget.toLocaleString()}</h1></div>
+                            <div className="col-md-2">Target Date: {new Date(goal.endDate).toLocaleDateString()}</div>
+
                             {/* <p>Progress: {calculateProgress(goal)}%</p> */}
-                            <p>Start Date: {new Date(goal.startDate).toLocaleDateString()}</p>
-                            <p>End Date: {new Date(goal.endDate).toLocaleDateString()}</p>
+                            {/* <p>Start Date: {new Date(goal.startDate).toLocaleDateString()}</p> */}
+                            </div>
                         </div>
                     ))}
                 </div>
             )}
+            </div>
+            </div>
+            </div>
         </div>
     );
 }
