@@ -1,5 +1,10 @@
+@font-face {
+  font-family: "DM-Sans";
+  src: url('./assets/DM_Sans/DM_Sans/DMSans-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "DM-Sans", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -13,6 +18,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  margin: 0;
+  min-width: 320px;
+  /* min-height: 100vh; */
+  font-family: inherit;
+  background-color: inherit;
+  color: inherit;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -20,12 +34,6 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  min-width: 320px; */
-  /* /* min-height: 100vh; */
 }
 
 h1 {
