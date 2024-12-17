@@ -43,7 +43,7 @@ function SavingsGoalPost() {
                         <div key={goal._id}>
                             <h3>{goal.savingsTitle}</h3>
                             <p>Category: {goal.savingsCategory}</p>
-                            <p>Target: ${goal.savingsTarget.toLocaleString()}</p>
+                            <p>Target: £{goal.savingsTarget.toLocaleString()}</p>
                             {/* <p>Progress: {calculateProgress(goal)}%</p> */}
                             <p>Start Date: {new Date(goal.startDate).toLocaleDateString()}</p>
                             <p>End Date: {new Date(goal.endDate).toLocaleDateString()}</p>

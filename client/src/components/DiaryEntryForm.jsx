@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createDiaryEntry } from "../services/diary_entry";
-// const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const DiaryEntryForm = () => {
     const [formData, setFormData] = useState({
         amount: "",
@@ -21,17 +24,29 @@ const DiaryEntryForm = () => {
     const handleChange = (event) => {
         const { name, value } = event.target;
         if (name === "amount") {
-        let currencyValue = value.replace(/[^0-9.]/g, '');
-        if (currencyValue.startsWith('-')) {
-            alert("Amount must be a positive number")
+        
+        if (value.startsWith('-')) {
+            toast.error("Amount must be a positive number", {
+                role: "alert",
+                ariaLive: "assertive"
+            });
             return;
         }
+        let currencyValue = value.replace(/[^0-9.]/g, '');
+
         const decimalParts = currencyValue.split('.');
         if (decimalParts.length > 2) {
             currencyValue = decimalParts[0] + '.' + decimalParts.slice(1).join('');
         }
         if (decimalParts.length === 2 && decimalParts[1].length > 2) {
             currencyValue = parseFloat(currencyValue).toFixed(2);
+        }
+        if (parseFloat(currencyValue) === 0) {
+            toast.error("Amount must be greater than zero", {
+                role: "alert",
+                ariaLive: "assertive"
+            });
+            return;
         }
         setFormData(prev => ({
             ...prev,
@@ -57,19 +72,30 @@ const DiaryEntryForm = () => {
         event.preventDefault();
         const token = localStorage.getItem("token");
         if (!token) {
-            alert('No authentication token found. Please log in again.');
+            toast.error('Session timed out. Please log in again.', {
+                role: "alert",
+                ariaLive: "assertive"
+            });
             navigate("/login");
             return;
         }
         const { amount, date, businessName, category } = formData;
         if (!amount || !date || !businessName || !category) {
-            alert('Please fill in all required fields');
+            toast.error('Please fill in all required fields', {
+        role: "alert",
+        ariaLive: "assertive"
+    });
             return;
         }
 try {
     const response = await createDiaryEntry(token, formData);
-                alert('Diary entry saved successfully!');
-                navigate("/dashboard");
+                toast.success('Diary entry saved successfully!', {
+                role: "alert", 
+                ariaLive: "assertive"
+                });
+                setTimeout(() => {
+                    navigate("/dashboard");
+                }, 1100);
                 setFormData({
                     amount: '',
                     date: new Date().toISOString().split('T')[0],
@@ -89,6 +115,14 @@ try {
     };
     return (
         <div className = "form-container">
+            <ToastContainer
+                  position="top-right"
+                  autoClose={3000}
+                  hideProgressBar={false}
+                  newestOnTop={true}
+                  closeOnClick
+                  pauseOnHover
+              />
             <div className = "form-container">
             <h2 className = "form-title">New Diary Entry</h2>
             <form onSubmit={handleSubmit} className = "form">
@@ -103,8 +137,6 @@ try {
                         value={formData.amount}
                         onChange={handleChange}
                         placeholder="Enter what you spent"
-                        step="0.01"
-                        min="0"
                         required
                         className="form-input"
                     />
