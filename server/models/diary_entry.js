@@ -20,8 +20,8 @@ const DiaryEntrySchema = new mongoose.Schema({
         type: String,
         enum: [
             'Food and Drink',
-            'Social Outings',
-            'Entertainment and Apps',
+            'Social and Entertainment',
+            'Shopping',
             'Holiday and Travel',
             'Health and Beauty',
             'Miscellaneous'

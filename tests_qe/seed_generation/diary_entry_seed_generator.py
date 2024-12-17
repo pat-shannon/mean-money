@@ -8,10 +8,10 @@ word = RandomWords()
 
 # Generate 25 test entries with the following fields:
 # amount (Integer), date (date), businessName (String),
-# category (String (['Food and Drink', 'Social Outings', 'Entertainment and Apps', 'Holiday and Travel', 'Health and Beauty', 'Miscellaneous'])
+# category (String (['Food and Drink', 'Social and Entertainment', 'Shopping', 'Holiday and Travel', 'Health and Beauty', 'Miscellaneous'])
 
 
-diaryCats = ['Food and Drink', 'Social Outings', 'Entertainment and Apps', 'Holiday and Travel', 'Health and Beauty', 'Miscellaneous']
+diaryCats = ['Food and Drink', 'Social and Entertainment', 'Shopping', 'Holiday and Travel', 'Health and Beauty', 'Miscellaneous']
 
 diary_entry_seed = []
 for i in range (25):

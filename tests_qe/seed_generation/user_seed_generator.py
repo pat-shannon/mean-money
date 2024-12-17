@@ -6,7 +6,7 @@ fake = Faker('en_UK')
 
 # Generate 25 test entries with the following fields:
 # name, email, password, currentSavings, disposableIncome,
-# foodAndDrinkGoal, socialOutingsGoal, entertainmentAndAppsGoal,
+# foodAndDrinkGoal, socialAndEntertainmentGoal, shoppingGoal,
 # holidayAndTravelGoal, healthAndBeautyGoal, miscGoal
 
 user_seed = []
@@ -17,8 +17,8 @@ for i in range (25):
     currentSavings = random.randint(0,1000000)
     disposableIncome = random.randint(0,1000000)
     foodAndDrinkGoal = random.randint(0,1000)
-    socialOutingsGoal = random.randint(0,1000)
-    entertainmentAndAppsGoal = random.randint(0,1000)
+    socialAndEntertainmentGoal = random.randint(0,1000)
+    shoppingGoal = random.randint(0,1000)
     holidayAndTravelGoal = random.randint(0,1000)
     healthAndBeautyGoal = random.randint(0,1000)
     miscGoal = random.randint(0,1000)
@@ -30,8 +30,8 @@ for i in range (25):
         "currentSavings": currentSavings,
         "disposableIncome": disposableIncome,
         "foodAndDrinkGoal": foodAndDrinkGoal,
-        "socialOutingsGoal": socialOutingsGoal,
-        "entertainmentAndAppsGoal": entertainmentAndAppsGoal,
+        "socialAndEntertainmentGoal": socialAndEntertainmentGoal,
+        "shoppingGoal": shoppingGoal,
         "holidayAndTravelGoal": holidayAndTravelGoal,
         "healthAndBeautyGoal": healthAndBeautyGoal,
         "miscGoal": miscGoal,
