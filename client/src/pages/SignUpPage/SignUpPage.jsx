@@ -4,6 +4,7 @@ import { submitNewUser } from "../../services/users.js";
 import "./SignUpPage.css"
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { NavBar } from "../../components/NavBar";
 
 
 export function SignUpPage() {
@@ -114,6 +115,7 @@ export function SignUpPage() {
                 closeOnClick
                 pauseOnHover
             />
+             <NavBar />
             <form className="sign-up-form" onSubmit={handleSubmit}>
                 <h2>Sign Up</h2>
                 <label htmlFor="name">Name:</label>

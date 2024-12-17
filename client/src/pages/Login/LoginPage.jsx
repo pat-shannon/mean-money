@@ -4,6 +4,7 @@ import { getMyUserDetails } from "../../services/users";
 import { login } from "../../services/authentication";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { NavBar } from "../../components/NavBar";
 
 export function LoginPage() {
   const [email, setEmail] = useState("");
@@ -63,6 +64,7 @@ export function LoginPage() {
                 closeOnClick
                 pauseOnHover
             />
+            <NavBar />
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email:</label>
