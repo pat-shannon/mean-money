@@ -19,3 +19,20 @@ export async function CreateEntry(token, body) {
     return response;
   }
   
+export async function getLastMonthSpending(token) {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    };
+  
+    const response = await fetch(`${BACKEND_URL}/get-last-month-spending`, requestOptions);
+  
+    if (response.status !== 200) {
+      throw new Error("Unable to get monthly spending");
+    }
+  
+    return response;
+  }
