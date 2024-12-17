@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { getMyUserDetails } from "../../services/users";
 import { login } from "../../services/authentication";
 
 export function LoginPage() {
@@ -13,7 +13,14 @@ export function LoginPage() {
         try {
             const token = await login(email, password);
             localStorage.setItem("token", token);
+            const userDetails = await getMyUserDetails(token);
+            const userData = userDetails.userData;
+            if (userData.currentSavings+userData.disposableIncome+userData.foodAndDrinkGoal+userData.socialOutingsGoal+userData.holidayAndTravelGoal+userData.healthAndBeautyGoal+userData.miscGoal == 0){
+                navigate("/spending-goals")
+            }
+            else{
             navigate("/dashboard");
+            }
         } catch (err) {
             console.error(err);
             navigate("/login");

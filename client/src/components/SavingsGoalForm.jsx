@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createSavingsGoal } from "../services/savings_goal";
 
 const SavingsGoalForm = () => {
     const [formData, setFormData] = useState({
@@ -30,27 +31,32 @@ const SavingsGoalForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const token = localStorage.getItem("token");
     
         const { savingsTitle, savingsTarget, savingsCategory, startDate, endDate } = formData;
+        console.log(formData);
         if (!savingsTitle || !savingsTarget || !savingsCategory || !startDate || !endDate) {
             alert('Please fill in all fields');
             return;
         }
     
         try {
-            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/savings-goal`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    savingsTitle,
-                    savingsTarget: parseFloat(savingsTarget),
-                    savingsCategory,
-                    startDate,
-                    endDate
-                })
-            });
+            const response = await createSavingsGoal(token, formData);
+            // const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/savings-goal`, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({
+            //         savingsTitle,
+            //         savingsTarget: parseFloat(savingsTarget),
+            //         savingsCategory,
+            //         startDate,
+            //         endDate
+            //     })
+            // });
+
+
     
             const responseText = await response.text();
     

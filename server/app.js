@@ -1,15 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const authenticationRouter = require("./routes/authentication")
 
+const authenticationRouter = require("./routes/authentication")
 const savingsGoalRouter = require("./routes/savings_goal");
 const diaryEntryRouter = require("./routes/diaryEntry")
+const usersRouter = require("./routes/users");
+const financialAdviceRouter = require("./routes/financialAdvice")
 
 app.use(cors());
 app.use(express.json());
 
-const usersRouter = require("./routes/users");
 
 // initial test routes:
 app.get('/',(req, res) => {
@@ -26,13 +27,14 @@ app.get("/test", (req, res) => {
 
 
 app.use("/tokens", authenticationRouter);
-
-
 app.use("/users", usersRouter);
+
 
 app.use("/diary", diaryEntryRouter);
 
+
 app.use("/", savingsGoalRouter);
+app.use("/financial-advice", financialAdviceRouter);
 
 
 module.exports = app;
