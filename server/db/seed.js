@@ -20,8 +20,8 @@ async function seedData() {
                 currentSavings: 100,
                 disposableIncome: 1500,
                 foodAndDrinkGoal: 150,
-                socialOutingsGoal: 100,
-                entertainmentAndAppsGoal: 0,
+                socialAndEntertainmentGoal: 100,
+                shoppingGoal: 0,
                 holidayAndTravelGoal: 50,
                 healthAndBeautyGoal: 0,
                 miscGoal:0
@@ -33,8 +33,8 @@ async function seedData() {
                 currentSavings: 0,
                 disposableIncome: 3000,
                 foodAndDrinkGoal: 250,
-                socialOutingsGoal: 250,
-                entertainmentAndAppsGoal: 100,
+                socialAndEntertainmentGoal: 250,
+                shoppingGoal: 100,
                 holidayAndTravelGoal: 100,
                 healthAndBeautyGoal: 100,
                 miscGoal: 0

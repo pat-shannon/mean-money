@@ -161,8 +161,8 @@ describe("User Services", () => {
         //         currentSavings: 0,
         //         disposableIncome: 0,
         //         foodAndDrinkGoal: 0,
-        //         socialOutingsGoal: 0,
-        //         entertainmentAndAppsGoal: 0,
+        //         socialAndEntertainmentGoal: 0,
+        //         shoppingGoal: 0,
         //         holidayAndTravelGoal: 0,
         //         healthAndBeautyGoal: 0,
         //         miscGoal: 0
