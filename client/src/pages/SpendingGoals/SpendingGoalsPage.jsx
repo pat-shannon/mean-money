@@ -2,6 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { NavBar } from "../../components/NavBar";
 import { useState, useEffect } from "react";
 // import { Alert } from '@mui/material/';
+import { ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+// import ConfirmToast from "./ConfirmationToast";
 import { setSpendingGoals } from "../../services/users";
 import { getMyUserDetails } from "../../services/users";
 export function SpendingGoalsPage() {
@@ -69,6 +72,9 @@ export function SpendingGoalsPage() {
         if (value.toFixed(2) != value || value < 0) {
           errorHelp = true;
           setErrorStatus(true);
+          toast.error("Please ensure all spending goals are positive, numerical amounts of money.", { 
+            role: "alert",
+            ariaLive: "assertive"});
         }
       });
       if (!errorHelp) {
@@ -207,7 +213,7 @@ export function SpendingGoalsPage() {
           />
         </div>
       </form>
-      {errorStatus && (
+      {/* {errorStatus && (
         <Alert
           severity="error"
           color="error"
@@ -218,7 +224,8 @@ export function SpendingGoalsPage() {
           Please ensure all spending goals are positive, numerical amounts of
           money.
         </Alert>
-      )}
+      )} */}
+      <ToastContainer /> 
     </>
   );
 }
