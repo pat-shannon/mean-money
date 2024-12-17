@@ -1,5 +1,7 @@
 import { useState } from "react";
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+import { useNavigate } from "react-router-dom";
+import { createDiaryEntry } from "../services/diary_entry";
+// const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const DiaryEntryForm = () => {
 
@@ -9,6 +11,10 @@ const DiaryEntryForm = () => {
         businessName: "",
         category: ""
     });
+
+    const navigate = useNavigate();
+
+
 
     const categories = [
         'Food and Drink',
@@ -25,7 +31,6 @@ const DiaryEntryForm = () => {
         if (name === "amount") {
 
         let currencyValue = value.replace(/[^0-9.]/g, '');
-
         if (currencyValue.startsWith('-')) {
             alert("Amount must be a positive number")
             return;
@@ -44,7 +49,7 @@ const DiaryEntryForm = () => {
             [name]: currencyValue
         }));
 
-    } else if (name === "businessName") {
+        } else if (name === "businessName") {
         const safebusinessName = value
         .replace(/[<>;&'"]/g, '')
         .trim()
@@ -65,47 +70,40 @@ const DiaryEntryForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            alert('No authentication token found. Please log in again.');
+            navigate("/login");
+            return;
+        }
 
         const { amount, date, businessName, category } = formData;
         if (!amount || !date || !businessName || !category) {
             alert('Please fill in all required fields');
             return;
         }
-console.log(formData)
-        try {
 
-            const response = await fetch(`${BACKEND_URL}/server/diary-entry`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    ...formData,
-                    amount: parseFloat(amount) // Ensure amount is a number
-                })
-            });
-
-            console.log('Response status:', response.status);
-
-            const responseText = await response.text();
-            console.log('Response text:', responseText);
-
-            if (response.ok) {
+try {
+    const response = await createDiaryEntry(token, formData);
                 alert('Diary entry saved successfully!');
-
+                navigate("/dashboard");
                 setFormData({
                     amount: '',
                     date: new Date().toISOString().split('T')[0],
                     businessName: '',
                     category: ''
                 });
-            } else {
-                const errorData = await response.json();
-                alert(`Error: ${errorData.message}`);
-            }
+
         } catch (error) {
             console.error('Submission error:', error);
-            alert('Failed to submit diary entry');
+            if (error.message.includes('401')) {
+                alert('Session expired. Please log in again.');
+                localStorage.removeItem('token');
+                navigate("/login");
+            } else {
+                alert('Failed to submit diary entry: ' + error.message);
+            }
         }
     };
 
