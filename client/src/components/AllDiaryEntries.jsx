@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { getDiaryEntries, deleteDiaryEntry } from "../services/diary_entry";
-import ("./AllDiaryEntries.css") 
+import "./AllDiaryEntries.css"
+import { ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import ConfirmToast from "./ConfirmationToast";
 
 function AllDiaryEntries() {
     const [diaryEntries, setDiaryEntries] = useState([]);
@@ -15,6 +18,10 @@ function AllDiaryEntries() {
 
                 if (!token) {
                     setError('Please log in to view your diary entries');
+                    toast.error('Please log in to view your diary entries', {
+                        role: "alert",
+                        ariaLive: "assertive"
+                    });
                     return;
                 }
 
@@ -41,26 +48,57 @@ function AllDiaryEntries() {
     }
 
     const handleDelete = async (entryId) => {
-        if (window.confirm("Are you sure you want to delete this entry?")) {
+        // if (window.confirm("Are you sure you want to delete this entry?")) {
+            const confirmDeletion = () => {
+                return new Promise((resolve) => {
+                    toast.warn(
+                        ({ closeToast }) => (
+                            <ConfirmToast 
+                                closeToast={closeToast}
+                                onConfirm={() => resolve(true)}
+                            />
+                        ),
+                        {
+                            autoClose: false,
+                            closeOnClick: false,
+                            draggable: false,
+                            closeButton: false
+                        }
+                    );
+                });
+            };
             try {
+                const confirmed = await confirmDeletion();
+                if (!confirmed) return;
+
                 const token = localStorage.getItem('token');
                 if (!token) {
-                    setError("No authentication token found. Please log in again.");
+                    toast.error("No authentication token found. Please log in again,", { 
+                        role: "alert",
+                        ariaLive: "assertive"});
                     return;
                 }
 
                 await deleteDiaryEntry(token, entryId);
-                window.location.reload();
+                toast.success("Entry deleted successfully", { 
+                    role: "alert",
+                    ariaLive: "assertive"});
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1100);
+      
 
             } catch (err) {
-                console.error('Delete error:', err);
-                setError(err.message || "Failed to delete entry. Please try again.");
+                toast.error("Failed to delete entry. Please try again", {
+                    role: "alert",
+                    ariaLive: "assertive"
+                });
             }
-        }
     };
 
     return (
         <section className="diary-container">
+            <ToastContainer /> 
         <header className="diary-header">
             <h1 className="diary-title">Your Diary Entries</h1>
         </header>

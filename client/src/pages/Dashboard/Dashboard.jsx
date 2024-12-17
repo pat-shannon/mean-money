@@ -12,11 +12,16 @@ import FinancialAdviceComponent from "../../components/FinancialAdvice";
 
 export function Dashboard() {
 
+    const userData = JSON.parse(localStorage.getItem("userData"));
+
     return (
         <>
         <NavBar />
         <div className="container">
-            <h1>Your Dashboard</h1>
+            <div>
+            <h1>Welcome {userData?.name || "to your dashboard" }</h1>
+            <h2>What's on the agenda for today?</h2>
+            </div>
             <SavingsGoalPost />
             <br></br>
             <div className="container">

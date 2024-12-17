@@ -43,12 +43,16 @@ function SavingsGoalPost() {
                 <div className="container">
                     {savingsGoal.map((goal) => (
                         <div key={goal._id}>
+                            
+                            
+
                             <div className="row">
                             <div className="col-md-4"><h2>My Savings Goal</h2></div>
                             <div className="col-md-2">Title: <h4>{goal.savingsTitle}</h4></div>
                             <div className="col-md-2">Category: <h4>{goal.savingsCategory}</h4></div>
                             <div className="col-md-2">Target: <h1>£{goal.savingsTarget.toLocaleString()}</h1></div>
                             <div className="col-md-2">Target Date: {new Date(goal.endDate).toLocaleDateString()}</div>
+
                             {/* <p>Progress: {calculateProgress(goal)}%</p> */}
                             {/* <p>Start Date: {new Date(goal.startDate).toLocaleDateString()}</p> */}
                             </div>
