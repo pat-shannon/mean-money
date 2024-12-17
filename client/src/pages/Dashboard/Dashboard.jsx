@@ -4,6 +4,8 @@ import { MonthlySpending } from "../../components/MonthlySpending";
 import SavingsGoalPost from "../../components/SavingsGoalPost";
 
 import { SpendingGoalButton } from "../../components/SpendingGoalButton";
+
+import AllDiaryEntries from "../../components/AllDiaryEntries";
 import FinancialAdviceComponent from "../../components/FinancialAdvice";
 
 export function Dashboard() {
@@ -27,7 +29,11 @@ export function Dashboard() {
                 <button>Add a new saving goal</button>
             </Link>
 
+            <AllDiaryEntries/>
+
+
             < FinancialAdviceComponent />
+
         </div>
         </>
     );

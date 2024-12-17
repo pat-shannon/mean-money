@@ -49,15 +49,33 @@ class FinancialAdvisorService {
             advice.push("Whoa, big spender! Your food budget is eating your wallet. Maybe cook at home once in a while?")
         }
 
+        if(categorySpending['Social and Entertainment'] > user.socialAndEntertainmentGoal * 1.2) {
+            advice.push("Whoa, go getter! Your socialising is out of control. Did you really need that extra round of drinks?")
+        }
+
+        if(categorySpending['Shopping'] > user.shoppingGoal * 1.2) {
+            advice.push("Your shopping addiction is showing!")
+        }
+
+        if(categorySpending['Holiday and Travel'] > user.holidayAndTravelGoal * 1.2){
+            advice.push("Vacation vibes or broke vibes? Your holiday spending is giving ‘too much sunshine and not enough savings’!")
+        }
+
+        if(categorySpending['Health and Beauty'] > user.healthAndBeautyGoal * 1.2) {
+            advice.push("Your beauty routine is glowing, but your bank balance is looking a little... dull. Maybe cute back on the skincare?")
+        }
+
+        if(categorySpending['Misc'] > user.miscGoal * 1.2){
+            advice.push("Miscellaneous spending? More like ‘miscellaneous debt’! Time to cut back on those random splurges.")
+        }
         return advice;
     }
 
     _checkSavingGoalProgress(user, savingsGoals) {
         const advice = [];
         savingsGoals.forEach(goal => {
-            const daysRemaining = math.ceil((goal.endDate - Date.now()) / (24 * 60 * 60 * 1000));
+            const daysRemaining = Math.ceil((goal.endDate - Date.now()) / (24 * 60 * 60 * 1000));
             const progressPercentage = (user.currentSavings / goal.savingsTarget) * 100;
-
             if (daysRemaining < 30 && progressPercentage < 50) {
                 advice.push(`Your ${goal.savingsTitle} goal is looking slim. Panic mode: activated! 🚨`)
             }
@@ -71,7 +89,7 @@ class FinancialAdvisorService {
         const totalSpending = diaryEntries.reduce((sum, entry) => sum + entry.amount, 0);
 
         if(totalSpending > monthlyDisposableIncome * 0.8) {
-            advice.push("💸 Slow down, money magician! You're burning through cash faster than a lottery winner.");
+            advice.push(`💸 Slow down, money magician! You're burning through cash faster than a lottery winner.`);
         }
         return advice;
     }

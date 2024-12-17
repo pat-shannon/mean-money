@@ -28,7 +28,11 @@ app.get("/test", (req, res) => {
 
 app.use("/tokens", authenticationRouter);
 app.use("/users", usersRouter);
-app.use(diaryEntryRouter);
+
+
+app.use("/diary", diaryEntryRouter);
+
+
 app.use("/", savingsGoalRouter);
 app.use("/financial-advice", financialAdviceRouter);
 
