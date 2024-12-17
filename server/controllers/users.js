@@ -49,8 +49,8 @@ async function findUser(req,res){
         currentSavings: user[0].currentSavings,
         disposableIncome: user[0].disposableIncome,
         foodAndDrinkGoal: user[0].foodAndDrinkGoal,
-        socialOutingsGoal: user[0].socialOutingsGoal,
-        entertainmentAndAppsGoal: user[0].entertainmentAndAppsGoal,
+        socialAndEntertainmentGoal: user[0].socialAndEntertainmentGoal,
+        shoppingGoal: user[0].shoppingGoal,
         holidayAndTravelGoal: user[0].holidayAndTravelGoal,
         healthAndBeautyGoal: user[0].healthAndBeautyGoal,
         miscGoal: user[0].miscGoal
@@ -113,8 +113,8 @@ async function setSpendingGoals(req, res){
                 currentSavings: req.body.currentSavings.toFixed(2),
                 disposableIncome: req.body.disposableIncome.toFixed(2),
                 foodAndDrinkGoal: req.body.foodAndDrinkGoal.toFixed(2),
-                socialOutingsGoal: req.body.socialOutingsGoal.toFixed(2),
-                entertainmentAndAppsGoal: req.body.entertainmentAndAppsGoal.toFixed(2),
+                socialAndEntertainmentGoal: req.body.socialAndEntertainmentGoal.toFixed(2),
+                shoppingGoal: req.body.shoppingGoal.toFixed(2),
                 holidayAndTravelGoal: req.body.holidayAndTravelGoal.toFixed(2),
                 healthAndBeautyGoal: req.body.healthAndBeautyGoal.toFixed(2),
                 miscGoal: req.body.miscGoal.toFixed(2)

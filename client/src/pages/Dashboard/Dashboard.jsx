@@ -1,12 +1,14 @@
 import { NavBar } from "../../components/NavBar";
 import { Link } from "react-router-dom";
 
-
+import { MonthlySpending } from "../../components/MonthlySpending";
 
 import SavingsGoalPost from "../../components/SavingsGoalPost";
 
 import { SpendingGoalButton } from "../../components/SpendingGoalButton";
 
+import AllDiaryEntries from "../../components/AllDiaryEntries";
+import FinancialAdviceComponent from "../../components/FinancialAdvice";
 
 export function Dashboard() {
 
@@ -21,12 +23,12 @@ export function Dashboard() {
             <div className="row">
                 <div className="col-md-3">
                     <p>one half</p>
-                    
                     <SpendingGoalButton />
                 </div>
                 <div className="col-md-9">
                     <p>other half</p>
-                    <Link to="/new-diary-entry">
+            <MonthlySpending />
+            <Link to="/new-diary-entry">
                 <button>Add a diary entry</button>
             </Link>
             <br></br>
@@ -35,6 +37,12 @@ export function Dashboard() {
             </Link>
                 </div>
             </div>
+
+            <AllDiaryEntries/>
+
+
+            < FinancialAdviceComponent />
+
         </div>
         </div>
 

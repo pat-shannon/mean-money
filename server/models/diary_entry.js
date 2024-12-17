@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 
 const DiaryEntrySchema = new mongoose.Schema({
+    user_id: { type: mongoose.Schema.Types.ObjectId, required: true},
     amount: {
         type: Number,
-        required: true,
+        required: true
     },
     date: {
         type: Date,
@@ -19,8 +20,8 @@ const DiaryEntrySchema = new mongoose.Schema({
         type: String,
         enum: [
             'Food and Drink',
-            'Social Outings',
-            'Entertainment and Apps',
+            'Social and Entertainment',
+            'Shopping',
             'Holiday and Travel',
             'Health and Beauty',
             'Miscellaneous'

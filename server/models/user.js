@@ -30,12 +30,12 @@ const UserSchema = new mongoose.Schema({
         default: 0,
         min: [0, 'Estimate cannot be negative']
     },
-    socialOutingsGoal: {
+    socialAndEntertainmentGoal: {
         type: Number,
         default: 0,
         min: [0, 'Estimate cannot be negative']
     },
-    entertainmentAndAppsGoal: {
+    shoppingGoal: {
         type: Number,
         default: 0,
         min: [0, 'Estimate cannot be negative']

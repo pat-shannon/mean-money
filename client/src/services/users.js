@@ -75,13 +75,13 @@ export const submitNewUser = async ( name, email, password ) => {
     }
 };
 
-export async function setSpendingGoals(token, currentSavings, disposableIncome, foodAndDrinkGoal, socialOutingsGoal, entertainmentAndAppsGoal, holidayAndTravelGoal, healthAndBeautyGoal, miscGoal) {
+export async function setSpendingGoals(token, currentSavings, disposableIncome, foodAndDrinkGoal, socialAndEntertainmentGoal, shoppingGoal, holidayAndTravelGoal, healthAndBeautyGoal, miscGoal) {
     const payload = {
         currentSavings: currentSavings,
         disposableIncome: disposableIncome,
         foodAndDrinkGoal: foodAndDrinkGoal,
-        socialOutingsGoal: socialOutingsGoal,
-        entertainmentAndAppsGoal: entertainmentAndAppsGoal,
+        socialAndEntertainmentGoal: socialAndEntertainmentGoal,
+        shoppingGoal: shoppingGoal,
         holidayAndTravelGoal: holidayAndTravelGoal,
         healthAndBeautyGoal: healthAndBeautyGoal,
         miscGoal: miscGoal

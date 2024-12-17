@@ -42,8 +42,8 @@ describe("User model", () => {
         expect(user.currentSavings).toEqual(0);
         expect(user.disposableIncome).toEqual(0);
         expect(user.foodAndDrinkGoal).toEqual(0);
-        expect(user.socialOutingsGoal).toEqual(0);
-        expect(user.entertainmentAndAppsGoal).toEqual(0);
+        expect(user.socialAndEntertainmentGoal).toEqual(0);
+        expect(user.shoppingGoal).toEqual(0);
         expect(user.holidayAndTravelGoal).toEqual(0);
         expect(user.healthAndBeautyGoal).toEqual(0);
         expect(user.miscGoal).toEqual(0);
@@ -59,8 +59,8 @@ describe("User model", () => {
         expect(users[0].currentSavings).toEqual(0);
         expect(users[0].disposableIncome).toEqual(0);
         expect(users[0].foodAndDrinkGoal).toEqual(0);
-        expect(users[0].socialOutingsGoal).toEqual(0);
-        expect(users[0].entertainmentAndAppsGoal).toEqual(0);
+        expect(users[0].socialAndEntertainmentGoal).toEqual(0);
+        expect(users[0].shoppingGoal).toEqual(0);
         expect(users[0].holidayAndTravelGoal).toEqual(0);
         expect(users[0].healthAndBeautyGoal).toEqual(0);
         expect(user.miscGoal).toEqual(0);
@@ -74,8 +74,8 @@ describe("User model", () => {
             currentSavings: 2000,
             disposableIncome: 500,
             foodAndDrinkGoal: 80,
-            socialOutingsGoal: 60,
-            entertainmentAndAppsGoal: 20,
+            socialAndEntertainmentGoal: 60,
+            shoppingGoal: 20,
             holidayAndTravelGoal: 200,
             healthAndBeautyGoal: 40,
             miscGoal: 20
@@ -85,8 +85,8 @@ describe("User model", () => {
         expect(users[0].currentSavings).toEqual(2000);
         expect(users[0].disposableIncome).toEqual(500);
         expect(users[0].foodAndDrinkGoal).toEqual(80);
-        expect(users[0].socialOutingsGoal).toEqual(60);
-        expect(users[0].entertainmentAndAppsGoal).toEqual(20);
+        expect(users[0].socialAndEntertainmentGoal).toEqual(60);
+        expect(users[0].shoppingGoal).toEqual(20);
         expect(users[0].holidayAndTravelGoal).toEqual(200);
         expect(users[0].healthAndBeautyGoal).toEqual(40);
         expect(user.miscGoal).toEqual(20);
