@@ -28,7 +28,7 @@ export default [
 
     {
         id : 3,
-        question : "You've been given a holiday bonus of £500 for your exceptional work this year - congrats! What would you buy to treat yourself?",
+        question : "You've been given a holiday bonus of £500 for your exceptional work this year - congrats! What are you buying to treat yourself?",
         options : [
             "First round is on me!",
             "Order in a fab takeaway and feast like a king",
@@ -40,7 +40,7 @@ export default [
 
     {
         id : 4,
-        question : "You're a little short on money this month, so you'll need to cut down on your expenses - you can only keep one!",
+        question : "You're a little short on money this month, so you'll need to cut down on your expenses - choose the one you would keep!",
         options : [
             "Catching up with my friends and family over a drink",
             "That fancy steak dinner I've been looking forward to",
@@ -79,7 +79,7 @@ export default [
         question : "Your birthday is coming up and your parents have asked for some general present ideas. What are you suggesting?",
         options : [
             "Money, as I never know when a friend might want to catch up and do something random",
-            "A paid-for meal out with family - bonus points if it's somehwere you've always wanted to go",
+            "A paid-for meal out with family - bonus points if it's somewhere you've always wanted to go",
             "A new suitcase, some sunglasses, and a hat to keep the sun out of my eyes - and don't forget the sunscreen!",
             "Something to nourish my body or make me feel confident",
             "Tickets to Thorpe Park - my parents can come if they're happy to queue with me for 'Stealth'...",
@@ -88,7 +88,7 @@ export default [
 
     {
         id : 8,
-        question : "Think of your main saving goal - at it's core, what is the money for?",
+        question : "Think of your main saving goal - at its core, what is the money for?",
         options : [
             "Nurturing my bonds with the people I love",
             "Nourishing my body",
@@ -103,7 +103,7 @@ export default [
         question : "You've got a spare couple of hours - how would you prefer to spend your time?",
         options : [
             "With other people, having a good old chat!",
-            "With others or alone, having a delicious coffee",
+            "With others or alone, having a delicious coffee and pastry",
             "Sharing pics and videos of my holiday - gosh, there's a lot to choose from...",
             "A quick pilates session to keep my body active",
             "Diving a few more chapters into my book and hoping no-one interrupts",
