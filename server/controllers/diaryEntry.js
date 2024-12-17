@@ -70,15 +70,13 @@ async function deleteDiaryEntry(req, res) {
 }
 
 
-async function getLastMonthSpending(req, res) {
+async function getSpendingForPeriod(req, res) {
     const token = generateToken(req.user_id);
     const user_id = req.user_id;
     const startDate = new Date(req.body.startDate);
     const endDate = new Date(req.body.endDate);
-    console.log(startDate, endDate);
     try{
         const spendingData = await DiaryEntry.find({user_id, date:{$gte: startDate, $lte: endDate }})
-        console.log(spendingData)
         let spendingValues = {
             'Food and Drink': 0,
             'Social and Entertainment': 0,
@@ -89,12 +87,11 @@ async function getLastMonthSpending(req, res) {
         }
         spendingData.forEach((entry) => {
             spendingValues[entry.category] += entry.amount;
-            // console.log(spendingValues);
         })
         res.status(200).json({spendingValues, token})
     } catch (error) {
-        console.error('Error retrieving monthly spending: ', error);
-        res.status(400).json({message: 'Failed to retrieve monthly spending: ', error, token: token})
+        console.error('Error retrieving spending for period: ', error);
+        res.status(400).json({message: 'Failed to retrieve spending for period: ', error, token: token})
     }
 }
 
@@ -120,6 +117,6 @@ const diaryEntryController = {
         createDiaryEntry,
         getDiaryEntries,
         deleteDiaryEntry,
-        getLastMonthSpending
+        getSpendingForPeriod
 };
     module.exports = diaryEntryController;

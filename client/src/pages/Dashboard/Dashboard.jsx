@@ -16,9 +16,9 @@ export function Dashboard() {
         <div className="home">
             <h1>WELCOME TO YOUR DASHBOARD</h1>
 
-            <SavingsGoalPost />
+            
             <MonthlySpending />
-
+            <SavingsGoalPost />
             <SpendingGoalButton />
 
             <Link to="/new-diary-entry">

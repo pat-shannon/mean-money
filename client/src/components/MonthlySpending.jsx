@@ -1,6 +1,7 @@
-import { getLastMonthSpending } from "../services/diary_entry";
+import { getSpendingForPeriod } from "../services/diary_entry";
 import { useEffect, useState } from "react";
 import { getMyUserDetails } from "../services/users";
+import { BarChart } from "./BarChart";
 export function MonthlySpending() {
     const [formData, setFormData] = useState({
         // default start date - first day of current month
@@ -28,9 +29,7 @@ export function MonthlySpending() {
     async function fetchMonthlySpending(formData) {
         try {
             const token = localStorage.getItem('token');
-            const newSpendingData = await getLastMonthSpending(token, formData);
-            console.log('our ->')
-            console.log(newSpendingData);
+            const newSpendingData = await getSpendingForPeriod(token, formData);
             setSpendingData({
                 'Food and Drink': newSpendingData['Food and Drink'].toFixed(2),
                 'Social and Entertainment': newSpendingData['Social and Entertainment'].toFixed(2),
@@ -41,8 +40,6 @@ export function MonthlySpending() {
             })
             const returnedUserDetails = await getMyUserDetails(token);
             const userDetails = returnedUserDetails.userData;
-            console.log('YOO')
-            console.log(userDetails);
             setSpendingGoals({
                 'Food and Drink': userDetails['foodAndDrinkGoal'].toFixed(2),
                 'Social and Entertainment': userDetails['socialAndEntertainmentGoal'].toFixed(2),
@@ -82,13 +79,14 @@ export function MonthlySpending() {
     }
     return (
         <div>
-            <h2>Spending data for {formData.isChanged ? 'custom period' : 'this month'}</h2>
-            <p>Food and drink: £{spendingData['Food and Drink']} while your monthly goal is £{spendingGoals['Food and Drink']}</p>
+            <h2>Spending data for {formData.isChanged ? 'custom period' : 'this month'} (£)</h2>
+            <BarChart realSpendingData={spendingData} goalData={spendingGoals} />
+            {/* <p>Food and drink: £{spendingData['Food and Drink']} while your monthly goal is £{spendingGoals['Food and Drink']}</p>
             <p>Social and Entertainment: £{spendingData['Social and Entertainment']} while your monthly goal is £{spendingGoals['Social and Entertainment']}</p>
             <p>Shopping: £{spendingData['Shopping']} while your monthly goal is £{spendingGoals['Shopping']}</p>
             <p>Holiday and Travel: £{spendingData['Holiday and Travel']} while your monthly goal is £{spendingGoals['Holiday and Travel']}</p>
             <p>Health and Beauty: £{spendingData['Health and Beauty']} while your monthly goal is £{spendingGoals['Health and Beauty']}</p>
-            <p>Miscellaneous: £{spendingData['Miscellaneous']} while your monthly goal is £{spendingGoals['Miscellaneous']}</p>
+            <p>Miscellaneous: £{spendingData['Miscellaneous']} while your monthly goal is £{spendingGoals['Miscellaneous']}</p> */}
 
             <h3>Filter by date</h3>
             <form onSubmit={handleSubmit}>
