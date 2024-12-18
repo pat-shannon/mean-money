@@ -18,7 +18,7 @@ export function QuizMainPage() {
             </ol>
 
             <div className="submit">
-                <Link className="submit-button" to="/quiz">Let's Dive In!</Link>
+                <Link className="submit-button" to="/quizquestions">Let's Dive In!</Link>
             </div>
         </div>
     );
