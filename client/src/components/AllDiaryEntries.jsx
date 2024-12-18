@@ -4,20 +4,20 @@ import "./AllDiaryEntries.css"
 import { ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import ConfirmToast from "./ConfirmationToast";
+import { Link } from "react-router-dom";
 
 function AllDiaryEntries() {
     const [diaryEntries, setDiaryEntries] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    // const [error, setError] = useState(null);
 
-    useEffect(() => {
+    
         const loadDiaryEntries = async () => {
             try {
                 setIsLoading(true);
                 const token = localStorage.getItem('token');
 
                 if (!token) {
-                    setError('Please log in to view your diary entries');
                     toast.error('Please log in to view your diary entries', {
                         role: "alert",
                         ariaLive: "assertive"
@@ -27,28 +27,25 @@ function AllDiaryEntries() {
 
                 const response = await getDiaryEntries(token);
                 setDiaryEntries(response.entries || []);
-                setError(null);
-            } catch (err) {
-            const errorMessage = err.message || 'Failed to load diary entries. Please try again later.';
-                setError(errorMessage);
+            } catch (error) {
+            const errorMessage = error.message || 'Failed to load diary entries. Please try again later.';
+                toast.error(errorMessage, {
+                    role: "alert",
+                    ariaLive: "assertive"
+                });
             } finally {
                 setIsLoading(false);
             }
         };
 
+        useEffect(() => {
+
         loadDiaryEntries();
     }, []);
 
-    if (isLoading) {
-        return (
-            <div className="loading-container">
-                <p className="loading-text">Loading your entries...</p>
-            </div>
-        );
-    }
+
 
     const handleDelete = async (entryId) => {
-        // if (window.confirm("Are you sure you want to delete this entry?")) {
             const confirmDeletion = () => {
                 return new Promise((resolve) => {
                     toast.warn(
@@ -79,28 +76,47 @@ function AllDiaryEntries() {
                     return;
                 }
 
+
                 const deleteReturned = await deleteDiaryEntry(token, entryId);
                 localStorage.setItem("token", deleteReturned.token);
+
+                setDiaryEntries(prevEntries => 
+                    prevEntries.filter(entry => entry._id !== entryId)
+                );
+
                 
                 toast.success("Entry deleted successfully", { 
                     role: "alert",
-                    ariaLive: "assertive"});
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 1100);
-      
+                    ariaLive: "polite"});
 
-            } catch (err) {
-                toast.error("Failed to delete entry. Please try again", {
+                    
+
+            } catch (error) {
+                toast.error("Failed to delete entry" + error, {
                     role: "alert",
                     ariaLive: "assertive"
                 });
             }
     };
 
+        if (isLoading) {
+        return (
+            <div className="loading-container">
+                <p className="loading-text">Loading your entries...</p>
+            </div>
+        );
+    }
+
     return (
         <section className="diary-container">
-            <ToastContainer /> 
+            <ToastContainer             
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                pauseOnHover
+            />
         <header className="diary-header">
             <h1 className="diary-title">Your Diary Entries</h1>
         </header>
@@ -108,7 +124,10 @@ function AllDiaryEntries() {
         {diaryEntries.length === 0 ? (
             <div className="empty-state">
                 <p>No diary entries found.</p>
-                <p className="empty-state-subtitle">Start adding entries to see them here!</p>
+                <p className="empty-state-subtitle">Keep track of what you're spending by adding a diary entry.</p>
+                <Link to="/new-diary-entry">
+                <button>Add a diary entry</button>
+            </Link>
             </div>
         ) : (
             <div className="entries-container">
@@ -135,7 +154,7 @@ function AllDiaryEntries() {
                             </div>
                                     <div className="entry-actions">
                                         <button onClick={() => handleDelete(entry._id)} className="delete-button">
-                                            Delete
+                                            Delete entry
                                         </button>
                                     </div>
                         </article>

@@ -30,17 +30,17 @@ export function SignUpPage() {
         return nameRegex.test(name);
     };
 
-    const handleNameChange = (e) => {
-        const newName = e.target.value;
-        setName(newName);
+    // const handleNameChange = (e) => {
+    //     const newName = e.target.value;
+    //     setName(newName);
         
-        if (newName && !validateName(newName)) {
-            toast.error("Name can only contain letters, spaces, apostrophes, hyphens", {
-                position: "top-right",
-                autoClose: 3000
-            });
-        }
-    };
+    //     if (newName && !validateName(newName)) {
+    //         toast.error("Name must not contain special characters", {
+    //            role: "alert",
+    //                 ariaLive: "assertive"
+    //         });
+    //     }
+    // };
     // const handleChange = (event) => {
     //     const { name, value } = event.target;
     //     setFormData(prev => ({
@@ -58,9 +58,9 @@ export function SignUpPage() {
             // formData.append("email", email);
             // formData.append("password", password);
             if (!validateName(name)) {
-                toast.error("Name can only contain letters, spaces, apostrophes, hyphens. Please enter a valid name", {
-                    position: "top-right",
-                    autoClose: 1000
+                toast.error("Name can only contain letters, spaces, apostrophes and hyphens. Please enter a valid name", {
+                    role: "alert",
+                    ariaLive: "assertive"
                 });
                 return;
             }
@@ -73,12 +73,8 @@ export function SignUpPage() {
         
 
             toast.success("Sign up successful! Please log in.", {
-                position: "top-right",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
+                role: "alert",
+                ariaLive: "polite"
             });
     
 
@@ -89,19 +85,15 @@ export function SignUpPage() {
 
             setTimeout(() => {
                 navigate("/login");
-            }, 1500);
+            }, 3000);
     
         } catch (error) {
             console.error("Error during signup:", error);
             setErrorMessage(error.message);
 
             toast.error(error.message || "Sign up failed. Please try again.", {
-                position: "top-right",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
+                role: "alert",
+                ariaLive: "assertive"
             });
         }
     };
@@ -120,6 +112,7 @@ export function SignUpPage() {
              <div className="form-container">
             <form className="form-container" onSubmit={handleSubmit}>
                 <h2 className="form-title">Sign Up</h2>
+                <label htmlFor="name" className="form-label">Name</label>
                 <input
                     style={{marginBottom: "20px"}}
                     placeholder="Name"
@@ -131,6 +124,7 @@ export function SignUpPage() {
                     // onChange={(handleChange)}
                     required
                 />
+                <label htmlFor="email" className="form-label">Email</label>
                 <input
                     style={{marginBottom: "20px"}}
                     placeholder="Email"
@@ -142,6 +136,7 @@ export function SignUpPage() {
                     // onChange={(handleChange)}
                     required
                 />
+                <label htmlFor="password" className="form-label">Password</label>
                 <input
                     style={{marginBottom: "8px"}}
                     placeholder="Password"

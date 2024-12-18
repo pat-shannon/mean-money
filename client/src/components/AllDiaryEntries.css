@@ -52,11 +52,12 @@
 }
 
 .entry-card {
-    border: 1px solid #e5e7eb;
+    border: 2px solid white;
     border-radius: 0.5rem;
     padding: 1rem;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     transition: box-shadow 0.2s;
+    background-color: white;
 }
 
 .entry-card:hover {
@@ -75,3 +76,20 @@
     gap: 0.5rem;
     font-size: 0.875rem;
 }
+
+.delete-button {
+        background-color: #04D1BA;
+        color: white;
+        border: none;
+        padding: 9px 24px;
+        margin: 5px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 30%;
+    }
+    
+    .delete-button:hover {
+        background-color: #FF00D5;
+        color: white;
+        border: none;
+    }

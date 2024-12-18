@@ -1,12 +1,8 @@
 import { NavBar } from "../../components/NavBar";
 import { Link } from "react-router-dom";
-
 import { MonthlySpending } from "../../components/MonthlySpending";
-
 import SavingsGoalPost from "../../components/SavingsGoalPost";
-
 import { SpendingGoalButton } from "../../components/SpendingGoalButton";
-
 import AllDiaryEntries from "../../components/AllDiaryEntries";
 import FinancialAdviceComponent from "../../components/FinancialAdvice";
 import { useEffect } from 'react';
@@ -28,45 +24,59 @@ export function Dashboard() {
     return (
         <>
         <NavBar />
+        <div style={{padding: "1rem"}}>
+            <div className="dashboard-bg" >
+                <div className="dashboard-container">
+                    <div className="left-section">
+                        <div className="profile-card">
+                            <div className="profile-avatar"></div>
+                            <h3 className="dashboard-h3">Welcome {userData?.name || "to your dashboard"}</h3>
+                            <p>What's on the agenda for today?</p>
+                            <Link to="/new-diary-entry">
+                                <button className="card-btn">Add a Diary Entry</button>
+                            </Link>
+                            <SpendingGoalButton />
+                            <Link to="/new-savings-goal">
+                                <button className="card-btn">Add a New Saving Goal</button>
+                            </Link>
+                            <Link to="/quizstart">
+                                <button className="card-btn">Spending Personality Quiz</button>
+                            </Link>
+                            <div className="financial-insights">
+                                <FinancialAdviceComponent />
+                            </div>
+                        </div>
+                    </div>
 
-        <div className="container">
-            <div>
-            <h1>Welcome {userData?.name || "to your dashboard" }</h1>
-            <h2>What's on the agenda for today?</h2>
-            </div>
-            <SavingsGoalPost />
-            <br></br>
-            <MonthlySpending />
-            <div className="container">
-            <div className="row">
-                <div className="col-md-3">
-                    <p>one half</p>
-                    <SpendingGoalButton />
+                    <div className="right-section">
+                        <div className="progress-bar">
+                            <div className="progress"></div>
+                        </div>
+
+                        <div className="center-content">
+                            <div className="graph-placeholder">
+                                <MonthlySpending />
+                            </div>
+
+                        </div>
+
+                        <div className="savings-goal-post">
+
+                        </div>
+
+                        <div className="bottom-section">
+                            <div className="savings-goals">
+                                <h1>Savings Goals</h1>
+                                <SavingsGoalPost />
+                            </div>
+                            <div className="diary-entries">
+                                <AllDiaryEntries />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="col-md-9">
-                    <p>other half</p>
-            
-            <Link to="/new-diary-entry">
-                <button>Add a diary entry</button>
-            </Link>
-            <br></br>
-            <Link to="/new-savings-goal">
-                <button>Add a new saving goal</button>
-            </Link>
-                </div>
             </div>
-
-            <AllDiaryEntries/>
-
-
-            < FinancialAdviceComponent />
-
         </div>
-        </div>
-
-        
-    
-        
         </>
     );
 }

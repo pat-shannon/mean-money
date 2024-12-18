@@ -2,6 +2,8 @@ import { getSpendingForPeriod } from "../services/diary_entry";
 import { useEffect, useState } from "react";
 import { getMyUserDetails } from "../services/users";
 import { BarChart } from "./BarChart";
+import ("./MonthlySpending.css")
+
 export function MonthlySpending() {
     const [formData, setFormData] = useState({
         // default start date - first day of current month
@@ -79,7 +81,8 @@ export function MonthlySpending() {
 
     }
     return (
-        <div>
+        <div className="monthly-spend-container">
+            <div className="monthly-spend-left-section">
             <h2>Spending data for {formData.isChanged ? 'custom period' : 'this month'} (£)</h2>
             <BarChart realSpendingData={spendingData} goalData={spendingGoals} />
             {/* <p>Food and drink: £{spendingData['Food and Drink']} while your monthly goal is £{spendingGoals['Food and Drink']}</p>
@@ -88,8 +91,9 @@ export function MonthlySpending() {
             <p>Holiday and Travel: £{spendingData['Holiday and Travel']} while your monthly goal is £{spendingGoals['Holiday and Travel']}</p>
             <p>Health and Beauty: £{spendingData['Health and Beauty']} while your monthly goal is £{spendingGoals['Health and Beauty']}</p>
             <p>Miscellaneous: £{spendingData['Miscellaneous']} while your monthly goal is £{spendingGoals['Miscellaneous']}</p> */}
-
-            <h3>Filter by date</h3>
+            </div>
+        <div className="monthly-spend-right-section">
+            <h2>Filter by date</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="startDate" className="form-label">Start date</label>
                 <input
@@ -120,6 +124,7 @@ export function MonthlySpending() {
             </form>
             <br />
             <br />
+        </div>
         </div>
     )
 }
