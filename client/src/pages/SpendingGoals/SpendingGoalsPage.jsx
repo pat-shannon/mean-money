@@ -27,21 +27,22 @@ export function SpendingGoalsPage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    console.log('test')
     getMyUserDetails(token)
-      .then((allData) => allData.userData)
+      .then((allData) => {
+        localStorage.setItem("token", allData.token);
+        return allData.userData;
+      })
       .then(
         (data) => (
           setCurrentSavings(data.currentSavings.toFixed(2)),
           setDisposableIncome(data.disposableIncome.toFixed(2)),
           setFoodAndDrinkGoal(data.foodAndDrinkGoal.toFixed(2)),
-          setsocialAndEntertainmentGoal(
-            data.socialAndEntertainmentGoal.toFixed(2)
-          ),
+          setsocialAndEntertainmentGoal(data.socialAndEntertainmentGoal.toFixed(2)),
           setshoppingGoal(data.shoppingGoal.toFixed(2)),
           setHolidayAndTravelGoal(data.holidayAndTravelGoal.toFixed(2)),
           setHealthAndBeautyGoal(data.healthAndBeautyGoal.toFixed(2)),
           setMiscGoal(data.miscGoal.toFixed(2))
-          // setLoading(false)
         )
       )
 

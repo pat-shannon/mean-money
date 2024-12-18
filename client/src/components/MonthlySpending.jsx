@@ -39,6 +39,7 @@ export function MonthlySpending() {
                 'Miscellaneous': newSpendingData['Miscellaneous'].toFixed(2),
             })
             const returnedUserDetails = await getMyUserDetails(token);
+            localStorage.setItem("token", returnedUserDetails.token);
             const userDetails = returnedUserDetails.userData;
             setSpendingGoals({
                 'Food and Drink': userDetails['foodAndDrinkGoal'].toFixed(2),

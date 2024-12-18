@@ -79,7 +79,9 @@ function AllDiaryEntries() {
                     return;
                 }
 
-                await deleteDiaryEntry(token, entryId);
+                const deleteReturned = await deleteDiaryEntry(token, entryId);
+                localStorage.setItem("token", deleteReturned.token);
+                
                 toast.success("Entry deleted successfully", { 
                     role: "alert",
                     ariaLive: "assertive"});

@@ -8,7 +8,6 @@ export async function getMyUserDetails(token) {
             "Content-Type": "application/json"
         },
     }
-    // THAT LINE: ?
     const response = await fetch(`${BACKEND_URL}/users/find`, requestOptions);
     if (response.status !== 200) {
         throw new Error("Unable to fetch user details");

@@ -4,26 +4,28 @@ const { generateToken } = require("../lib/token");
 
 
 async function createDiaryEntry(req, res) {
+    const token = generateToken(req.user_id);
     try {
         const { amount, date, businessName, category } = req.body
         const user_id = req.user_id;
 
         if (!amount || !date || !businessName || !category) {
-            return res.status(400).json({ message: 'All fields are required.' });
+            return res.status(400).json({ message: 'All fields are required.', token});
         }
 
         const newDiaryEntry = new DiaryEntry({ user_id, amount, date, businessName, category });
 
         await newDiaryEntry.save()
         // const newToken = generateToken(user_ID);
-        res.status(201).json({ message: "Diary entry created" });
+        res.status(201).json({ message: "Diary entry created", token });
     }
     catch (error) {
         console.error('Error creating diary entry:', error);
-        res.status(500).json({ message: 'Failed to create diary entry', error: error.message });
+        res.status(500).json({ message: 'Failed to create diary entry', error: error.message, token });
     }
 }
 async function getDiaryEntries(req, res) {
+    const token = generateToken(req.user_id);
     try {
         const user_id = req.user_id;
         
@@ -31,18 +33,20 @@ async function getDiaryEntries(req, res) {
         
         res.status(200).json({ 
             entries,
-            token: generateToken(user_id)  
+            token
         });
     } catch (error) {
         console.error('Error getting all diary entries:', error);
         res.status(500).json({ 
             message: 'Failed to retrieve diary entries', 
-            error: error.message 
+            error: error.message,
+            token
         });
     }
 }
 
 async function deleteDiaryEntry(req, res) {
+    const token = generateToken(req.user_id);
     try {
         const user_id = req.user_id;
         const entry_id = req.params.id;
@@ -52,19 +56,21 @@ async function deleteDiaryEntry(req, res) {
         
             if (!deletedEntry) {
                 return res.status(404).json({ 
-                    message: 'Diary entry not found or you do not have permission to delete it'
+                    message: 'Diary entry not found or you do not have permission to delete it', token
                 });
             }
             
             res.status(200).json({ 
                 message: 'Diary entry deleted successfully',
-                deletedEntry
+                deletedEntry,
+                token
             });
     } catch (error) {
         console.error('Error deleting diary entry:', error);
         res.status(500).json({ 
             message: 'Failed to delete diary entry', 
-            error: error.message 
+            error: error.message,
+            token 
         });
     }
 }
