@@ -29,17 +29,17 @@ export function SignUpPage() {
         return nameRegex.test(name);
     };
 
-    const handleNameChange = (e) => {
-        const newName = e.target.value;
-        setName(newName);
+    // const handleNameChange = (e) => {
+    //     const newName = e.target.value;
+    //     setName(newName);
         
-        if (newName && !validateName(newName)) {
-            toast.error("Name can only contain letters, spaces, apostrophes, hyphens", {
-                position: "top-right",
-                autoClose: 3000
-            });
-        }
-    };
+    //     if (newName && !validateName(newName)) {
+    //         toast.error("Name must not contain special characters", {
+    //            role: "alert",
+    //                 ariaLive: "assertive"
+    //         });
+    //     }
+    // };
     // const handleChange = (event) => {
     //     const { name, value } = event.target;
     //     setFormData(prev => ({
@@ -57,9 +57,9 @@ export function SignUpPage() {
             // formData.append("email", email);
             // formData.append("password", password);
             if (!validateName(name)) {
-                toast.error("Name can only contain letters, spaces, apostrophes, hyphens. Please enter a valid name", {
-                    position: "top-right",
-                    autoClose: 1000
+                toast.error("Name can only contain letters, spaces, apostrophes and hyphens. Please enter a valid name", {
+                    role: "alert",
+                    ariaLive: "assertive"
                 });
                 return;
             }
@@ -72,12 +72,8 @@ export function SignUpPage() {
         
 
             toast.success("Sign up successful! Please log in.", {
-                position: "top-right",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
+                role: "alert",
+                ariaLive: "polite"
             });
     
 
@@ -88,19 +84,15 @@ export function SignUpPage() {
 
             setTimeout(() => {
                 navigate("/login");
-            }, 1500);
+            }, 2000);
     
         } catch (error) {
             console.error("Error during signup:", error);
             setErrorMessage(error.message);
 
             toast.error(error.message || "Sign up failed. Please try again.", {
-                position: "top-right",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
+                role: "alert",
+                ariaLive: "assertive"
             });
         }
     };

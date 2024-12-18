@@ -91,11 +91,11 @@ try {
     const response = await createDiaryEntry(token, formData);
                 toast.success('Diary entry saved successfully!', {
                 role: "alert", 
-                ariaLive: "assertive"
+                ariaLive: "polite"
                 });
                 setTimeout(() => {
                     navigate("/dashboard");
-                }, 1100);
+                }, 2000);
                 setFormData({
                     amount: '',
                     date: new Date().toISOString().split('T')[0],
@@ -105,11 +105,17 @@ try {
         } catch (error) {
             console.error('Submission error:', error);
             if (error.message.includes('401')) {
-                alert('Session expired. Please log in again.');
+                toast.alert('Session expired. Please log in again.', {
+                    role: "alert", 
+                    ariaLive: "assertive"
+                });
                 localStorage.removeItem('token');
                 navigate("/login");
             } else {
-                alert('Failed to submit diary entry: ' + error.message);
+                toast.alert('Failed to submit diary entry: ' + error.message, {
+                    role: "alert", 
+                    ariaLive: "assertive"
+                });
             }
         }
     };
@@ -117,7 +123,7 @@ try {
         <div className = "form-container">
             <ToastContainer
                   position="top-right"
-                  autoClose={3000}
+                  autoClose={2000}
                   hideProgressBar={false}
                   newestOnTop={true}
                   closeOnClick
