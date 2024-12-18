@@ -133,7 +133,7 @@ const SavingsGoalForm = () => {
 
                 } catch (parseError) {
                     console.error('Parsing error', parseError);
-                         toast.error('Received invalid response from server', {
+                        toast.error('Received invalid response from server', {
                         role: "alert",
                         ariaLive: "assertive"
                     });

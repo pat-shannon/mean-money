@@ -62,9 +62,37 @@ async function getUserSavingsGoal(req, res) {
     }
 }
 
+async function deleteSavingGoal(req, res) {
+    try {
+        const user_id = req.user_id;
+        const goal_id = req.params.id;
+        
+        const deletedEntry = await SavingsGoal.findOneAndDelete({_id: goal_id,
+            user_id: user_id});
+        
+            if (!deletedEntry) {
+                return res.status(404).json({ 
+                    message: 'Saving goal not found or you do not have permission to delete it'
+                });
+            }
+            
+            res.status(200).json({ 
+                message: 'Saving goal deleted successfully',
+                deletedEntry
+            });
+    } catch (error) {
+        console.error('Error deleting saving goal:', error);
+        res.status(500).json({ 
+            message: 'Failed to delete saving goal', 
+            error: error.message 
+        });
+    }
+}
+
 const SavingsGoalController = {
     createSavingsGoal: createSavingsGoal,
-    getUserSavingsGoal: getUserSavingsGoal
+    getUserSavingsGoal: getUserSavingsGoal,
+    deleteSavingGoal: deleteSavingGoal
 }
 
 module.exports = SavingsGoalController
