@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { NavBar } from "../../components/NavBar";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../../FormStyling.css"
 // import { Alert } from '@mui/material/';
 import { ToastContainer, toast} from 'react-toastify'
@@ -221,7 +222,11 @@ export function SpendingGoalsPage() {
           />
         </div>
       </form>
+      <div style={{justifyContent: "center", textAlign: "left", marginTop: "30px", marginLeft: "-22px", marginBottom: "8px"}}>
+                    <Link className="next-button" to="/dashboard">◀ Return To Dashboard</Link>
+                </div>
       </div>
+      
       
       {/* {errorStatus && (
         <Alert

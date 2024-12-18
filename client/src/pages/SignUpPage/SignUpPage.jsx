@@ -112,6 +112,7 @@ export function SignUpPage() {
              <div className="form-container">
             <form className="form-container" onSubmit={handleSubmit}>
                 <h2 className="form-title">Sign Up</h2>
+                <label htmlFor="name" className="form-label">Name</label>
                 <input
                     style={{marginBottom: "20px"}}
                     placeholder="Name"
@@ -123,6 +124,7 @@ export function SignUpPage() {
                     // onChange={(handleChange)}
                     required
                 />
+                <label htmlFor="email" className="form-label">Email</label>
                 <input
                     style={{marginBottom: "20px"}}
                     placeholder="Email"
@@ -134,6 +136,7 @@ export function SignUpPage() {
                     // onChange={(handleChange)}
                     required
                 />
+                <label htmlFor="password" className="form-label">Password</label>
                 <input
                     style={{marginBottom: "8px"}}
                     placeholder="Password"

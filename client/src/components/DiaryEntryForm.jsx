@@ -4,6 +4,7 @@ import { createDiaryEntry } from "../services/diary_entry";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../../src/FormStyling.css"
+import { Link } from "react-router-dom";
 
 
 const DiaryEntryForm = () => {
@@ -197,6 +198,9 @@ try {
                 >
                     Save Diary Entry
                 </button>
+                <div style={{justifyContent: "center", textAlign: "left", marginTop: "30px", marginLeft: "-22px", marginBottom: "8px"}}>
+                    <Link className="next-button" to="/dashboard">◀ Return To Dashboard</Link>
+                </div>
             </form>
         </div>
     </div>

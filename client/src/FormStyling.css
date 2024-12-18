@@ -26,12 +26,11 @@
     text-decoration: underline;
     color: #FF00D5;
     outline: none;
-    background-color: white;
 }
 
 .form-button {
-    background-color: #00FFE1;
-    color:#1C319C;
+    background-color: #04D1BA;
+    color: white;
     border: none;
     border-radius: 8px;
     padding: 6px 24px;
