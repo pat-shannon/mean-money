@@ -41,8 +41,8 @@
 }
 
 .card-btn {
-    background-color: #00FFE1;
-    color: #1C319C;
+    background-color: #04D1BA;
+    color: white;
     border: none;
     padding: 9px 24px;
     margin: 5px 0;
@@ -117,7 +117,7 @@
 .graph-placeholder {
     background-color: rgba(231, 242, 255, 0.8);
     border-radius: 12px;
-    height: 300px;
+    height: 400px;
     padding: 20px;
 }
 

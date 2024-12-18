@@ -19,7 +19,7 @@ export const BarChart = ({ realSpendingData, goalData }) => {
                             goalData['Health and Beauty'],
                             goalData['Miscellaneous']
                         ],
-                        backgroundColor: '#4287f5',
+                        backgroundColor: '#04D1BA',
                         borderWidth: 1
                     },
                     {
@@ -33,7 +33,7 @@ export const BarChart = ({ realSpendingData, goalData }) => {
                             realSpendingData['Health and Beauty'],
                             realSpendingData['Miscellaneous']
                         ],
-                        backgroundColor: '#f57542',
+                        backgroundColor: '#FF00D5',
                         borderWidth: 1
                     }]
                 }}
@@ -44,7 +44,9 @@ export const BarChart = ({ realSpendingData, goalData }) => {
                     plugins: {
                         title: {
                             display: true,
-                            text: "spending for the allocated period vs. your monthly goals"
+                            text: "Spending for the allocated period vs. Your monthly goals",
+                            color: '#000',
+                            
                         },
                         legend: {
                             display: true,
