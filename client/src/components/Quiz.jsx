@@ -81,8 +81,8 @@ export default function Quiz() {
 
         <>
         <NavBar />
-        <div className="form-container" style={{width: "75%"}}>
-            <div className="form-container" style={{width: "75%"}}>
+        <div className="form-container" style={{width: "80%"}}>
+            <div className="form-container" style={{width: "80%"}}>
             <h2 className="form-title">Spending Personality Quiz</h2>
 
 

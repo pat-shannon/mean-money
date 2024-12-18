@@ -10,8 +10,8 @@ export function QuizMainPage() {
     return (
         <>
         <NavBar />
-        <div className="form-container" style={{width: "75%"}}>
-        <div className="form-container" style={{width: "75%"}}>
+        <div className="form-container" style={{width: "80%"}}>
+        <div className="form-container" style={{width: "80%"}}>
             <h2 className="form-title">Spending Habits Quiz</h2>
             <h5 style={{textAlign: "center", marginBottom: "30px", color: "#1C319C"}}>Welcome to the Mean Money quiz which will analyse your spending habits and determine your spending personality!</h5>
 

@@ -22,8 +22,9 @@ export function Dashboard() {
 
     return (
         <>
-            <NavBar />
-            <div className="dashboard-bg">
+        <NavBar />
+        <div style={{padding: "1rem"}}>
+            <div className="dashboard-bg" >
                 <div className="dashboard-container">
                     <div className="left-section">
                         <div className="profile-card">
@@ -74,6 +75,7 @@ export function Dashboard() {
                     </div>
                 </div>
             </div>
+        </div>
         </>
     );
 }
