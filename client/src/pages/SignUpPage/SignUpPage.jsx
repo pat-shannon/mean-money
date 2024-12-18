@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { submitNewUser } from "../../services/users.js";
+import "../../FormStyling.css"
 import "./SignUpPage.css"
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -116,11 +117,12 @@ export function SignUpPage() {
                 pauseOnHover
             />
              <NavBar />
-            <form className="sign-up-form" onSubmit={handleSubmit}>
-                <h2>Sign Up</h2>
-                <label htmlFor="name">Name:</label>
-                <br></br>
+             <div className="form-container">
+            <form className="form-container" onSubmit={handleSubmit}>
+                <h2 className="form-title">Sign Up</h2>
                 <input
+                    style={{marginBottom: "20px"}}
+                    placeholder="Name"
                     id="name"
                     type="text"
                     value={name}
@@ -129,11 +131,9 @@ export function SignUpPage() {
                     // onChange={(handleChange)}
                     required
                 />
-                <br />
-                <br />
-                <label htmlFor="email">Email:</label>
-                <br></br>
                 <input
+                    style={{marginBottom: "20px"}}
+                    placeholder="Email"
                     id="email"
                     type="email"
                     value={email}
@@ -142,11 +142,9 @@ export function SignUpPage() {
                     // onChange={(handleChange)}
                     required
                 />
-                <br />
-                <br />
-                <label htmlFor="password">Password:</label>
-                <br></br>
                 <input
+                    style={{marginBottom: "8px"}}
+                    placeholder="Password"
                     id="password"
                     type="password"
                     value={password}
@@ -158,8 +156,9 @@ export function SignUpPage() {
                 />
                 <br />
                 <br />
-                <button className="submit-button" type="submit">Join Mean Money Now!</button>
+                <button className="form-button" type="submit">Join Mean Money</button>
             </form>
+            </div>
         </div>
     );
 };

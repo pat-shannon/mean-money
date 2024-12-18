@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { NavBar } from "../../components/NavBar";
 import { useState, useEffect } from "react";
+import "../../FormStyling.css"
 // import { Alert } from '@mui/material/';
 import { ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
