@@ -116,12 +116,12 @@ const SavingsGoalForm = () => {
                     const data = JSON.parse(responseText);
                     toast.success('Savings goal added successfully', {
                         role: "alert",
-                        ariaLive: "assertive"
+                        ariaLive: "polite"
                     });
 
                     setTimeout(() => {
                         navigate("/dashboard");
-                    }, 1100);
+                    }, 2000);
 
                     setFormData({
                         savingsTitle: "",
