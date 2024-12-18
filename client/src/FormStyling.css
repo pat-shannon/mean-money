@@ -1,31 +1,67 @@
 .form-title {
     color: #1C319C;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .form-container {
     background-color: white;
     width: 60%;
-    margin: 30px auto;
+    margin: 20px auto;
     border-radius: 8px;
     padding: 2px 0;
     text-align: left;
 }
 
+.back-button, .next-button {
+    border: none;
+    border-radius: 8px;
+    padding: 6px 24px;
+    background-color: white;
+    color:#1C319C;
+    outline: none;
+}
+
+.next-button:hover, .back-button:hover {
+    text-decoration: underline;
+    color: #FF00D5;
+    outline: none;
+}
 
 .form-button {
     background-color: #00FFE1;
+    color:#1C319C;
     border: none;
     border-radius: 8px;
     padding: 6px 24px;
     width: 100%;
+    text-align: center;
+    text-decoration: none;
 }
 
 .form-button:hover {
     background-color: #FF00D5;
     color: white;
     border: none;
+    text-decoration: none;
+}
+
+.Link {
+    background-color: #00FFE1;
+    color:#1C319C;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 24px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.Link:hover {
+    background-color: #FF00D5;
+    color: white;
+    border: none;
+    text-decoration: none;
 }
 
 .form-label {
@@ -36,16 +72,18 @@
     border-radius: 8px;
 }
 
-input[type="text"], input[type="password"], input[type="date"], input[type="email"], input[type="number"] {
+input[type="text"], input[type="password"], input[type="date"], input[type="email"], input[type="number"], input[type="currency"] {
     width: 100%;
     padding: 6px;
     margin-top: 6px;
+    margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1em;
     box-sizing: border-box;
     font-family: futura;
     font-weight: 100;
+    gap: 10px;
 
 }
 

@@ -20,20 +20,20 @@ export default function Questions() {
 
     return (
         <div className="questions">
-            <h2 className="questions-text">{question.question}</h2>
+            <h5 className="questions-text" style={{color: "#1C319C", marginBottom: "30px", textAlign: "center"}}>{question.question}</h5>
 
-            <ul key={question.id}>
+            <p key={question.id}>
                 {
                     question.options.map((q, i) => (
-                        <li key={i}>
-                            <label className="text-body" htmlFor={`q${i}-option`}>{q}</label>
+                        <p key={i}>
                             <input type="radio" value={false} name="options" id={`q${i}-option`} onChange={onSelect} />
+                            <label className="text-body" htmlFor={`q${i}-option`} style={{ marginLeft: "10px" }}>{q}</label>
                             <div className="check checked"></div>
-                        </li>
+                        </p>
                     ))
                 }
 
-            </ul>
+            </p>
         </div>
     );
 };

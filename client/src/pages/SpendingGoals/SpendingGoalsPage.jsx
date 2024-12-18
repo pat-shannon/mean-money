@@ -108,11 +108,13 @@ export function SpendingGoalsPage() {
   return (
     <>
       <NavBar />
-      <h1>Spending Goals</h1>
-      <h3>Let's see what we're working with</h3>
+      <div className="form-container">
+      <div className="form-container">
+      <h2 className="form-title">Spending Goals</h2>
+      <h5 style={{marginBottom: "30px", textAlign: "center", color: "#1C319C"}}>Let's see what we're working with...</h5>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="currentSavings">Current savings</label>
+          <label htmlFor="currentSavings">Current savings (£)</label>
           <input
             id="currentSavings"
             type="text"
@@ -122,8 +124,9 @@ export function SpendingGoalsPage() {
             }
           />
           <br></br>
-          <label htmlFor="disposableIncome">Monthly disposable income</label>
+          <label htmlFor="disposableIncome">Monthly disposable income (£)</label>
           <input
+            style={{marginBottom: "40px"}}
             id="disposableIncome"
             type="text"
             value={disposableIncome}
@@ -133,10 +136,10 @@ export function SpendingGoalsPage() {
             }
           />
 
-          <h3>
+          <h6 style={{marginBottom: "20px", color: "#1C319C"}}>
             How much would you like to try and spend per month on the following
             categories?
-          </h3>
+          </h6>
 
           <label htmlFor="foodAndDrinkGoal">Food & Drink</label>
           <input
@@ -160,7 +163,7 @@ export function SpendingGoalsPage() {
             }
           />
           <br></br>
-          <label htmlFor="shoppingGoal">Entertainment & Apps</label>
+          <label htmlFor="shoppingGoal">Shopping</label>
           <input
             id="shoppingGoal"
             type="text"
@@ -192,6 +195,7 @@ export function SpendingGoalsPage() {
           <br></br>
           <label htmlFor="miscGoal">Miscellaneous</label>
           <input
+            style={{marginBottom: "20px"}}
             id="miscGoal"
             type="text"
             value={miscGoal}
@@ -201,6 +205,7 @@ export function SpendingGoalsPage() {
           />
           <br></br>
           <input
+            className="form-button" 
             role="submit-button"
             id="submit"
             type="submit"
@@ -220,6 +225,8 @@ export function SpendingGoalsPage() {
           money.
         </Alert>
       )}
+      </div>
+      </div>
     </>
   );
 }
