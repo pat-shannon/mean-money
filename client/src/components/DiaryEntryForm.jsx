@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { createDiaryEntry } from "../services/diary_entry";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "../../src/FormStyling.css"
 
 
 const DiaryEntryForm = () => {
@@ -127,22 +128,21 @@ try {
             <h2 className = "form-title">New Diary Entry</h2>
             <form onSubmit={handleSubmit} className = "form">
                 <div className ="form-group">
-                    <label htmlFor="amount" className="form-label">
-                        Amount (£):
-                    </label>
+                    <br></br>
                     <input
                         type="text"
                         id="amount"
                         name="amount"
                         value={formData.amount}
                         onChange={handleChange}
-                        placeholder="Enter what you spent"
+                        placeholder="Amount (£) - enter what you spent"
                         required
                         className="form-input"
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="date" className="form-label">Date: </label>
+                    <br></br>
                     <input
                         type="date"
                         id="date"
@@ -155,6 +155,7 @@ try {
                 </div>
                 <div className="form-group">
                     <label htmlFor="businessName" className="form-label">Business Name: </label>
+                    <br></br>
                     <input
                         type="text"
                         id="businessName"
@@ -168,7 +169,6 @@ try {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="category" className="form-label">Category: </label>
                     <select
                         id="category"
                         name="category"
@@ -187,7 +187,7 @@ try {
                 </div>
                 <button
                     type="submit"
-                    className="submit-btn"
+                    className="form-button"
                 >
                     Save Diary Entry
                 </button>

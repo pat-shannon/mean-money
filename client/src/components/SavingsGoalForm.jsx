@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createSavingsGoal } from "../services/savings_goal";
 import { ToastContainer, toast } from 'react-toastify';
+import "../FormStyling.css"
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 
@@ -153,7 +154,8 @@ const SavingsGoalForm = () => {
     };
 
     return (
-        <div>
+        <div className="form-container">
+            <div className="form-container">
               <ToastContainer 
                 position="top-right"
                 autoClose={3000}
@@ -164,31 +166,27 @@ const SavingsGoalForm = () => {
             />
             <h2 className = "form-title">Create a new saving goal</h2>
             <form onSubmit={handleSubmit}>
-            <label htmlFor="amount" className="form-label">
-                        Saving goal title:
-                    </label>
                 <input
+                    style={{marginBottom: "12px"}}
                     type="text"
                     name="savingsTitle"  
                     value={formData.savingsTitle}
                     onChange={handleChange}
-                    placeholder="E.g. a boat"
+                    placeholder="Give your goal a title (e.g. a boat)"
                     required
                 />
-                    <label htmlFor="amount" className="form-label">
-                        Savings target (£):
-                    </label>
                 <input
+                    style={{marginBottom: "12px"}}
                     type="number"
                     name="savingsTarget"  
                     value={formData.savingsTarget}
                     onChange={handleChange}
-                    placeholder="Savings Goal Target"
+                    placeholder="Savings Goal Target (£)"
                     required
                 />
                 <div className="form-label">
-                    <label className="form-label">Category: </label>
                     <select
+                        style={{marginBottom: "12px"}}
                         name="savingsCategory"  
                         value={formData.savingsCategory} 
                         onChange={handleChange}
@@ -203,10 +201,9 @@ const SavingsGoalForm = () => {
                         ))}
                     </select>
                 </div>
-                <label htmlFor="amount" className="form-label">
-                        Start date:
-                    </label>
+                <label htmlFor="amount" className="form-label">Start date:</label>
                 <input
+                    style={{marginBottom: "12px"}}
                     type="date"
                     name="startDate" 
                     value={formData.startDate}
@@ -217,13 +214,15 @@ const SavingsGoalForm = () => {
                         End date:
                     </label>
                 <input
+                    style={{marginBottom: "12px"}}
                     type="date"
                     name="endDate"  
                     value={formData.endDate}
                     onChange={handleChange}
                 />
-                <button type="submit">Create Savings Goal</button>
+                <button className="form-button" type="submit">Create Savings Goal</button>
             </form>
+        </div>
         </div>
     )
 };
