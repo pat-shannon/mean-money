@@ -55,14 +55,16 @@ const DiaryEntryForm = () => {
             [name]: currencyValue
         }));
         } else if (name === "businessName") {
-        const safebusinessName = value
+            console.log('1. Raw input:', value);
+        const safeBusinessName = value
         .replace(/[<>;'"]/g, '')
-        .trim()
         .slice(0, 50);
+        console.log('2. After processing:', safeBusinessName);
         setFormData(prev => ({
             ...prev,
-            [name]: safebusinessName
+            [name]: safeBusinessName
         }));
+        console.log('3. Form data after update:', formData);
     } else {
         setFormData(prev => ({
             ...prev,

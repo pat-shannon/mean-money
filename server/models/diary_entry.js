@@ -14,7 +14,6 @@ const DiaryEntrySchema = new mongoose.Schema({
     businessName: {
         type: String,
         required: true,
-        trim: true
     },
     category: {
         type: String,
