@@ -221,6 +221,8 @@ export function SpendingGoalsPage() {
           />
         </div>
       </form>
+      </div>
+      
       {/* {errorStatus && (
         <Alert
           severity="error"
@@ -234,8 +236,7 @@ export function SpendingGoalsPage() {
         </Alert>
 
       )}
-      </div>
-      </div>
+      
 
       )} */}
       <ToastContainer             
@@ -246,7 +247,7 @@ export function SpendingGoalsPage() {
                 closeOnClick
                 pauseOnHover
             />
-
+            </div>
     </>
   );
 }

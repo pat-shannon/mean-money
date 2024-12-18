@@ -1,5 +1,5 @@
 // file: client/src/components/QuizResultTable.jsx
-
+import "../FormStyling.css"
 import React from "react";
 
 export default function QuizResultTable({result}) {
@@ -14,8 +14,8 @@ export default function QuizResultTable({result}) {
 
     return (
         <div className="result-table">
-            <h2>{result}</h2>
-            <p>{resultBiographies[result] || "No description available."}</p>
+            <h2 className="form-title" style={{color: "#1C319C"}}>{result}</h2>
+            <p style={{textAlign: "center"}}>{resultBiographies[result] || "No description available."}</p>
         </div>
     );
 };

@@ -134,14 +134,14 @@ try {
             <h2 className = "form-title">New Diary Entry</h2>
             <form onSubmit={handleSubmit} className = "form">
                 <div className ="form-group">
-                    <br></br>
+                <label htmlFor="amount" className="form-label">Amount (£): </label>
                     <input
                         type="text"
                         id="amount"
                         name="amount"
                         value={formData.amount}
                         onChange={handleChange}
-                        placeholder="Amount (£) - enter what you spent"
+                        placeholder="Enter what you spent"
                         required
                         className="form-input"
                     />
