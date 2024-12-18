@@ -2,19 +2,21 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 export function ProtectedRoute({ children }) {
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(null);
+    const [checkingLoginStatus, setCheckingLoginStatus] = useState(true);
     useEffect(() => {
         const token = localStorage.getItem("token")
-        setIsLoggedIn(token !== null);
+        if (!token) {
+            //if no valid token
+            navigate("/login");
+        }
+        else {
+            setCheckingLoginStatus(false);
+        }
     }, []);
     
     // if token not yet confirmed/unconfirmed
-    if (isLoggedIn === null) {
-        return(<div><h2>Loading...</h2></div>)
-    }
-    // if no valid token
-    if (!isLoggedIn){
-        navigate("/login");
+    if (checkingLoginStatus) {
+        return(<div><h1>Loading...</h1></div>)
     }
     // if valid token
     return children;
