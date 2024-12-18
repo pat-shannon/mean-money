@@ -52,7 +52,7 @@ try {
     }
 
     const data = await response.json();
-    console.log('Received data:', data);
+    // console.log('Received data:', data);
     return data;
 } catch (error) {
     console.error('Detailed error:', {
@@ -87,20 +87,22 @@ export async function deleteDiaryEntry(token, entryId) {
   }
 }
   
-export async function getLastMonthSpending(token) {
+export async function getSpendingForPeriod(token, formData) {
     const requestOptions = {
-      method: "GET",
+      method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
+      body: JSON.stringify(formData),
     };
   
-    const response = await fetch(`${BACKEND_URL}/get-last-month-spending`, requestOptions);
-  
+    const response = await fetch(`${BACKEND_URL}/diary/get-spending-for-period`, requestOptions);
+    const data = await response.json()
+    
     if (response.status !== 200) {
-      throw new Error("Unable to get monthly spending");
+      throw new Error("Unable to get spending for period");
     }
   
-    return response;
+    return data.spendingValues;
   }

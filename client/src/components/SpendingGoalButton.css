@@ -1,0 +1,16 @@
+.spending-goal-btn {
+    background-color: #00FFE1;
+    color: #1C319C;
+    border: none;
+    padding: 9px 24px;
+    margin: 5px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 81%;
+}
+
+.spending-goal-btn:hover {
+    background-color: #FF00D5;
+    color: white;
+    border: none;
+}

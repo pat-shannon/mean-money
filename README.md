@@ -23,14 +23,10 @@ Step 5:
 ```
 MONGODB_URL="mongodb://0.0.0.0/mean-money"
 PORT = 9000
-```
-
-Down the line, we may also want:
-```
 NODE_ENV="development"
 JWT_SECRET="secret"
 ``` 
-so we can write code that only runs if process.env.NODE_ENV is 'development', etc. and JWT_SECRET relates to tokens when those are implemented. For now this is not used/needed.
+^so we can write code that only runs if process.env.NODE_ENV is 'development', etc. and JWT_SECRET relates to tokens
 
 Step 5:
 - navigate to the client directory (if you're in server, run `cd ../client`)

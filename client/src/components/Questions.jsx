@@ -3,31 +3,22 @@
 import React, { useEffect, useState } from "react";
 import data from "../quizData/data.jsx";
 
-export default function Questions() {
+export default function Questions({
+    currentQuestion,
+    onSelectAnswer,
+    selectedAnswers
+}) {
 
-    const [checked, setCheck] = useState(undefined)
-
-    const question = data[0]
-
-    useEffect(() => {
-        console.log(question)
-    });
-
-    function onSelect() {
-        setCheck(true)
-        console.log("radio button change")
-    };
+    const question = data[currentQuestion];
 
     return (
         <div className="questions">
             <h5 className="questions-text" style={{color: "#1C319C", marginBottom: "30px", textAlign: "center"}}>{question.question}</h5>
-
             <p key={question.id}>
-                {
-                    question.options.map((q, i) => (
+                {question.options.map((option, i) => (
                         <p key={i}>
-                            <input type="radio" value={false} name="options" id={`q${i}-option`} onChange={onSelect} />
-                            <label className="text-body" htmlFor={`q${i}-option`} style={{ marginLeft: "10px" }}>{q}</label>
+                        <input type="radio" value={i} name="options" id={`q${currentQuestion}-${i}-option`} onChange={() => {onSelectAnswer(i)}} checked={selectedAnswers[currentQuestion] === i}/>
+                            <label className={`text-body ${selectedAnswers[currentQuestion] === i ? "selected" : ""}`} htmlFor={`q${currentQuestion}-${i}-option`} style={{ marginLeft: "10px" }}>{option}</label>
                             <div className="check checked"></div>
                         </p>
                     ))

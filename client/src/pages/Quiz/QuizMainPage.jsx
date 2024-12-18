@@ -22,7 +22,8 @@ export function QuizMainPage() {
             </ol>
 
             <div>
-                <Link to="/quiz" style={{textDecoration: "none",}}><button className="form-button">Let's Dive In!</button></Link>
+                <Link to="/quizquestions" style={{textDecoration: "none",}}><button className="form-button">Let's Dive In!</button></Link>
+
             </div>
         </div>
         </div>

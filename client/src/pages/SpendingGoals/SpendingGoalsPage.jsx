@@ -3,6 +3,9 @@ import { NavBar } from "../../components/NavBar";
 import { useState, useEffect } from "react";
 import "../../FormStyling.css"
 // import { Alert } from '@mui/material/';
+import { ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+// import ConfirmToast from "./ConfirmationToast";
 import { setSpendingGoals } from "../../services/users";
 import { getMyUserDetails } from "../../services/users";
 export function SpendingGoalsPage() {
@@ -72,7 +75,12 @@ export function SpendingGoalsPage() {
           setErrorStatus(true);
         }
       });
-      if (!errorHelp) {
+      if (errorHelp){
+        toast.error("Please ensure all spending goals are positive, numerical amounts of money.", { 
+          role: "alert",
+          ariaLive: "assertive"});
+        }
+      else {
         await setSpendingGoals(
           token,
           Number(currentSavings),
@@ -213,7 +221,7 @@ export function SpendingGoalsPage() {
           />
         </div>
       </form>
-      {errorStatus && (
+      {/* {errorStatus && (
         <Alert
           severity="error"
           color="error"
@@ -224,9 +232,21 @@ export function SpendingGoalsPage() {
           Please ensure all spending goals are positive, numerical amounts of
           money.
         </Alert>
+
       )}
       </div>
       </div>
+
+      )} */}
+      <ToastContainer             
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                pauseOnHover
+            />
+
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getFinancialAdvice } from '../services/financial_advice';
+import ("./FinancialAdvice.css") 
 
 function FinancialAdviceComponent() {
     const [advice, setAdvice] = useState([]);
@@ -23,7 +24,7 @@ function FinancialAdviceComponent() {
 
     return (
         <div className="financial-advice">
-            <h2>Your Financial Insights</h2>
+            <h1 className="financial-advice">Your Financial Insights</h1>
             {advice.length > 0 ? (
                 <ul>
                     {advice.map((item, index) => (
