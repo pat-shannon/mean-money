@@ -25,6 +25,9 @@ export function QuizMainPage() {
                 <Link to="/quizquestions" style={{textDecoration: "none",}}><button className="form-button">Let's Dive In!</button></Link>
 
             </div>
+            <div style={{justifyContent: "center", textAlign: "left", marginTop: "30px", marginLeft: "-22px", marginBottom: "8px"}}>
+                    <Link className="next-button" to="/dashboard">◀ Return To Dashboard</Link>
+                </div>
         </div>
         </div>
         </>

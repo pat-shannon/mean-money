@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import "../FormStyling.css"
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SavingsGoalForm = () => {
     const [formData, setFormData] = useState({
@@ -166,6 +167,7 @@ const SavingsGoalForm = () => {
             />
             <h2 className = "form-title">Create a new saving goal</h2>
             <form onSubmit={handleSubmit}>
+            <label htmlFor="savingsTitle" className="form-label">I'm saving for</label>
                 <input
                     style={{marginBottom: "12px"}}
                     type="text"
@@ -175,6 +177,7 @@ const SavingsGoalForm = () => {
                     placeholder="Give your goal a title (e.g. a boat)"
                     required
                 />
+                <label htmlFor="savingsTarget" className="form-label">Target</label>
                 <input
                     style={{marginBottom: "12px"}}
                     type="number"
@@ -221,6 +224,9 @@ const SavingsGoalForm = () => {
                     onChange={handleChange}
                 />
                 <button className="form-button" type="submit">Create Savings Goal</button>
+                <div style={{justifyContent: "center", textAlign: "left", marginTop: "30px", marginLeft: "-22px", marginBottom: "8px"}}>
+                    <Link className="next-button" to="/dashboard">◀ Return To Dashboard</Link>
+                </div>
             </form>
         </div>
         </div>

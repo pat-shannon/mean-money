@@ -70,6 +70,7 @@ export function LoginPage() {
       
       <form className="form-container" onSubmit={handleSubmit}>
         <h2 className="form-title">Login</h2>
+        <label htmlFor="email" className="form-label">Email</label>
         <input
           style={{marginBottom: "20px"}}
           placeholder="Email"
@@ -78,7 +79,7 @@ export function LoginPage() {
           value={email}
           onChange={handleEmailChange}
         />
-
+        <label htmlFor="password" className="form-label">Password</label>
         <input
           style={{marginBottom: "20px"}}
           placeholder="Password"
