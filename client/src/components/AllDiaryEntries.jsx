@@ -76,10 +76,14 @@ function AllDiaryEntries() {
                     return;
                 }
 
-                await deleteDiaryEntry(token, entryId);
+
+                const deleteReturned = await deleteDiaryEntry(token, entryId);
+                localStorage.setItem("token", deleteReturned.token);
+
                 setDiaryEntries(prevEntries => 
                     prevEntries.filter(entry => entry._id !== entryId)
                 );
+
                 
                 toast.success("Entry deleted successfully", { 
                     role: "alert",

@@ -91,6 +91,9 @@ const DiaryEntryForm = () => {
         }
 try {
     const response = await createDiaryEntry(token, formData);
+    console.log('yeee');
+    console.log(response);
+    // localStorage.setItem("token", response.token);
                 toast.success('Diary entry saved successfully!', {
                 role: "alert", 
                 ariaLive: "polite"
