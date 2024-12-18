@@ -91,4 +91,43 @@ describe("User model", () => {
         expect(users[0].healthAndBeautyGoal).toEqual(40);
         expect(user.miscGoal).toEqual(20);
     });
+
+    it("Email with no domain can't be saved", async () => {
+        const user = new User({
+            name: "User",
+            email: "invalidemail",
+            password: "12345678",
+        })
+        try{
+            await user.save();
+        } catch(error){
+            expect(String(error)).toEqual('ValidationError: email: Invalid email format')
+        }
+    })
+
+    it("Valid email address can be saved", async () => {
+        const user = new User({
+            name: "User",
+            email: "validemail@emailsite.net",
+            password: "Password123!",
+        })
+        await user.save();
+        const users = await User.find();
+        expect (users[0].name).toEqual("User");
+        expect (users[0].email).toEqual("validemail@emailsite.net");
+        expect(bcrypt.compare(users[0].password, 'Password123!'));
+    })
+
+    it("Email with no domain can't be saved", async () => {
+        const user = new User({
+            name: "User",
+            email: "invalidemail",
+            password: "12345678",
+        })
+        try{
+            await user.save();
+        } catch(error){
+            expect(String(error)).toEqual('ValidationError: email: Invalid email format')
+        }
+    })
 });
