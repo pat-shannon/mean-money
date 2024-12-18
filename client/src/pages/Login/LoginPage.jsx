@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getMyUserDetails } from "../../services/users";
 import { login } from "../../services/authentication";
+import "../../FormStyling.css"
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { NavBar } from "../../components/NavBar";
@@ -65,24 +66,30 @@ export function LoginPage() {
                 pauseOnHover
             />
             <NavBar />
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
+            <div className="form-container">
+      
+      <form className="form-container" onSubmit={handleSubmit}>
+        <h2 className="form-title">Login</h2>
         <input
+          style={{marginBottom: "20px"}}
+          placeholder="Email"
           id="email"
           type="text"
           value={email}
           onChange={handleEmailChange}
         />
-        <label htmlFor="password">Password:</label>
+
         <input
+          style={{marginBottom: "20px"}}
+          placeholder="Password"
           id="password"
           type="password"
           value={password}
           onChange={handlePasswordChange}
         />
-        <input role="submit-button" id="submit" type="submit" value="Submit" />
+        <input className="form-button" role="submit-button" id="submit" type="submit" value="Submit" />
       </form>
+      </div>
     </>
   );
 }

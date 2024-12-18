@@ -1,5 +1,9 @@
 // file: client/src/components/Quiz.jsx
 
+import { NavBar } from "./NavBar";
+import "../FormStyling.css"
+
+
 import React, { useState, useEffect } from "react";
 import Questions from "./Questions";
 import { useNavigate } from "react-router-dom";
@@ -74,8 +78,13 @@ export default function Quiz() {
 
 // quiz page body:
     return (
-        <div className="container">
-            <h1 className="title-text">Spending Personality Quiz</h1>
+
+        <>
+        <NavBar />
+        <div className="form-container" style={{width: "75%"}}>
+            <div className="form-container" style={{width: "75%"}}>
+            <h2 className="form-title">Spending Personality Quiz</h2>
+
 
             {/* display questions: */}
             <Questions
@@ -83,12 +92,13 @@ export default function Quiz() {
                 onSelectAnswer={onSelectAnswer}
                 selectedAnswers={selectedAnswers}
             />
-
-            <div className="grid">
-                <button className="back-button" onClick={onBack} disabled={currentQuestion === 0}>Back</button>
-                <button className="next-button" onClick={onNext}>{currentQuestion === data.length - 1 ? "Submit" : "Next"}</button>
+            <div style={{display: "flex", justifyContent: "center"}}>
+                <button className="back-button" onClick={onBack} disabled={currentQuestion === 0}>◀ Back</button>
+                <button className="next-button" onClick={onNext}>{currentQuestion === data.length - 1 ? "Submit" : "Next ▶"}</button>
             </div>
 
+            </div>
         </div>
+        </>
     );
 };

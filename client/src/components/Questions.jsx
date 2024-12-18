@@ -13,19 +13,18 @@ export default function Questions({
 
     return (
         <div className="questions">
-            <h2 className="questions-text">{question.question}</h2>
-
-            <ul>
+            <h5 className="questions-text" style={{color: "#1C319C", marginBottom: "30px", textAlign: "center"}}>{question.question}</h5>
+            <p key={question.id}>
                 {question.options.map((option, i) => (
-                        <li key={i}>
-                            <label className={`text-body ${selectedAnswers[currentQuestion] === i ? "selected" : ""}`} htmlFor={`q${currentQuestion}-${i}-option`}>{option}</label>
-                            <input type="radio" value={i} name="options" id={`q${currentQuestion}-${i}-option`} onChange={() => {onSelectAnswer(i)}} checked={selectedAnswers[currentQuestion] === i}/>
+                        <p key={i}>
+                        <input type="radio" value={i} name="options" id={`q${currentQuestion}-${i}-option`} onChange={() => {onSelectAnswer(i)}} checked={selectedAnswers[currentQuestion] === i}/>
+                            <label className={`text-body ${selectedAnswers[currentQuestion] === i ? "selected" : ""}`} htmlFor={`q${currentQuestion}-${i}-option`} style={{ marginLeft: "10px" }}>{option}</label>
                             <div className="check checked"></div>
-                        </li>
+                        </p>
                     ))
                 }
 
-            </ul>
+            </p>
         </div>
     );
 };
