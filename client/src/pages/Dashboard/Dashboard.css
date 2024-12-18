@@ -30,6 +30,8 @@
     background-color: #2C358F;
     border-radius: 50%;
     margin: 10px auto 15px;
+    background-image: url('../../assets/reena_profile_pic.png');
+    background-size: cover;
 }
 
 .dashboard-h3 {

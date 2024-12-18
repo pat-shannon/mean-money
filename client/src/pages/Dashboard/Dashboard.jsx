@@ -1,6 +1,5 @@
 import { NavBar } from "../../components/NavBar";
 import { Link } from "react-router-dom";
-import { MonthlySpending } from "../../components/MonthlySpending";
 import SavingsGoalPost from "../../components/SavingsGoalPost";
 import { SpendingGoalButton } from "../../components/SpendingGoalButton";
 import AllDiaryEntries from "../../components/AllDiaryEntries";
@@ -9,8 +8,8 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export function Dashboard() {
-  
-  const userData = JSON.parse(localStorage.getItem("userData"));
+
+    const userData = JSON.parse(localStorage.getItem("userData"));
 
     const navigate = useNavigate();
 
@@ -29,9 +28,8 @@ export function Dashboard() {
                     <div className="left-section">
                         <div className="profile-card">
                             <div className="profile-avatar"></div>
-                            <h3 className="dashboard-h3">Your Dashbaord</h3>
-                            <h3 className="dashboard-h3">Welcome {userData?.name || "to your dashboard" }</h3>
-                            <h2>What's on the agenda for today?</h2>
+                            <h3 className="dashboard-h3">Welcome {userData?.name || "to your dashboard"}</h3>
+                            <p>What's on the agenda for today?</p>
                             <Link to="/new-diary-entry">
                                 <button className="card-btn">Add a Diary Entry</button>
                             </Link>
@@ -57,17 +55,16 @@ export function Dashboard() {
                             <div className="graph-placeholder">
                                 <h1>Graph Placeholder</h1>
                             </div>
-                            
+
                         </div>
 
                         <div className="savings-goal-post">
-                            
+
                         </div>
 
                         <div className="bottom-section">
                             <div className="savings-goals">
                                 <h1>Savings Goals</h1>
-                                <MonthlySpending />
                                 <SavingsGoalPost />
                             </div>
                             <div className="diary-entries">
