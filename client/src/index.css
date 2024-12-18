@@ -18,13 +18,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+html, body {
   margin: 0;
-  min-width: 320px;
-  /* min-height: 100vh; */
-  font-family: inherit;
-  background-color: inherit;
-  color: inherit;
+  padding: 0;
+  width: 100%; 
+  background-color: #858FFF; 
+  font-family: "DM-Sans", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  cursor: url('./assets/mean-money-logo-filled.png') 10 10, auto;
 }
 
 a {
