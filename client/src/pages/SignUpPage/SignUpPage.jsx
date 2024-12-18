@@ -85,7 +85,7 @@ export function SignUpPage() {
 
             setTimeout(() => {
                 navigate("/login");
-            }, 2000);
+            }, 3000);
     
         } catch (error) {
             console.error("Error during signup:", error);
