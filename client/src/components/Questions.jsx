@@ -3,31 +3,23 @@
 import React, { useEffect, useState } from "react";
 import data from "../quizData/data.jsx";
 
-export default function Questions() {
+export default function Questions({
+    currentQuestion,
+    onSelectAnswer,
+    selectedAnswers
+}) {
 
-    const [checked, setCheck] = useState(undefined)
-
-    const question = data[0]
-
-    useEffect(() => {
-        console.log(question)
-    });
-
-    function onSelect() {
-        setCheck(true)
-        console.log("radio button change")
-    };
+    const question = data[currentQuestion];
 
     return (
         <div className="questions">
             <h2 className="questions-text">{question.question}</h2>
 
-            <ul key={question.id}>
-                {
-                    question.options.map((q, i) => (
+            <ul>
+                {question.options.map((option, i) => (
                         <li key={i}>
-                            <label className="text-body" htmlFor={`q${i}-option`}>{q}</label>
-                            <input type="radio" value={false} name="options" id={`q${i}-option`} onChange={onSelect} />
+                            <label className={`text-body ${selectedAnswers[currentQuestion] === i ? "selected" : ""}`} htmlFor={`q${currentQuestion}-${i}-option`}>{option}</label>
+                            <input type="radio" value={i} name="options" id={`q${currentQuestion}-${i}-option`} onChange={() => {onSelectAnswer(i)}} checked={selectedAnswers[currentQuestion] === i}/>
                             <div className="check checked"></div>
                         </li>
                     ))
