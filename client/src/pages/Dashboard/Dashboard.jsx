@@ -1,5 +1,6 @@
 import { NavBar } from "../../components/NavBar";
 import { Link } from "react-router-dom";
+import { MonthlySpending } from "../../components/MonthlySpending";
 import SavingsGoalPost from "../../components/SavingsGoalPost";
 import { SpendingGoalButton } from "../../components/SpendingGoalButton";
 import AllDiaryEntries from "../../components/AllDiaryEntries";
@@ -53,7 +54,7 @@ export function Dashboard() {
 
                         <div className="center-content">
                             <div className="graph-placeholder">
-                                <h1>Graph Placeholder</h1>
+                                <MonthlySpending />
                             </div>
 
                         </div>
