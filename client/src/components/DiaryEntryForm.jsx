@@ -56,7 +56,7 @@ const DiaryEntryForm = () => {
         }));
         } else if (name === "businessName") {
         const safebusinessName = value
-        .replace(/[<>;&'"]/g, '')
+        .replace(/[<>;'"]/g, '')
         .trim()
         .slice(0, 50);
         setFormData(prev => ({
@@ -107,14 +107,14 @@ try {
         } catch (error) {
             console.error('Submission error:', error);
             if (error.message.includes('401')) {
-                toast.alert('Session expired. Please log in again.', {
+                toast.error('Session expired. Please log in again.', {
                     role: "alert", 
                     ariaLive: "assertive"
                 });
                 localStorage.removeItem('token');
                 navigate("/login");
             } else {
-                toast.alert('Failed to submit diary entry: ' + error.message, {
+                toast.error('Failed to submit diary entry: ' + error.message, {
                     role: "alert", 
                     ariaLive: "assertive"
                 });
