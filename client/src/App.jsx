@@ -4,49 +4,64 @@ import { LoginPage } from './pages/Login/LoginPage';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Homepage } from './pages/Homepage/Homepage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
-
 import { SpendingGoalsPage } from './pages/SpendingGoals/SpendingGoalsPage';
-
 import { SavingsGoalPage } from './pages/SavingsGoal/SavingsGoalPage';
-
+import { QuizMainPage } from "./pages/Quiz/QuizMainPage";
+import { ProtectedRoute } from './components/ProtectedRoute';
+// import quiz components:
+import Quiz from "./components/Quiz";
+import QuizResult from "./components/QuizResult";
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+
+// react routes:
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
+    element: <Homepage />
   },
 
   {
     path: "/login",
-    element: <LoginPage />,
+    element: <LoginPage />
   },
 
   {
     path: "/signup",
-    element: <SignUpPage />,
+    element: <SignUpPage />
   },
 
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <ProtectedRoute><Dashboard /></ProtectedRoute>
   },
 
   {
     path: "/spending-goals",
-    element: <SpendingGoalsPage />,
+    element: <ProtectedRoute><SpendingGoalsPage /></ProtectedRoute>
   },
   
   {
     path: "/new-savings-goal",
-    element: <SavingsGoalPage />,
+    element: <ProtectedRoute><SavingsGoalPage /></ProtectedRoute>
   },
   {
     path: "/new-diary-entry",
-    element: <DiaryEntryPage />,
-
+    element: <ProtectedRoute><DiaryEntryPage /></ProtectedRoute>
   },
+  {
+    path:"/quizstart",
+    element: <ProtectedRoute><QuizMainPage /></ProtectedRoute>
+  },
+  {
+    path: "/quizquestions",
+    element: <ProtectedRoute><Quiz /></ProtectedRoute>
+  },
+  {
+    path: "/result",
+    element: <ProtectedRoute><QuizResult /></ProtectedRoute>
+  }
 ]);
 
 function App() {

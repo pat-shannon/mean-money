@@ -1,0 +1,70 @@
+.form-title {
+    color: #1C319C;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-container {
+    background-color: white;
+    width: 60%;
+    margin: 30px auto;
+    border-radius: 8px;
+    padding: 2px 0;
+    text-align: left;
+}
+
+
+.form-button {
+    background-color: #00FFE1;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 24px;
+    width: 100%;
+}
+
+.form-button:hover {
+    background-color: #FF00D5;
+    color: white;
+    border: none;
+}
+
+.form-label {
+    border-radius: 8px;
+}
+
+.form-group {
+    border-radius: 8px;
+}
+
+input[type="text"], input[type="password"], input[type="date"], input[type="email"], input[type="number"] {
+    width: 100%;
+    padding: 6px;
+    margin-top: 6px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    font-family: futura;
+    font-weight: 100;
+
+}
+
+input::placeholder {
+    color: #999; /* Light gray color for the placeholder */
+}
+
+select {
+    width: 100%;
+    padding: 6px;
+    margin-top: 6px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    font-family: futura;
+    font-weight: 100;
+}
+
+label {
+    margin-bottom: 0px;
+}

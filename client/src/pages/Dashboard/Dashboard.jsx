@@ -5,8 +5,22 @@ import SavingsGoalPost from "../../components/SavingsGoalPost";
 import { SpendingGoalButton } from "../../components/SpendingGoalButton";
 import AllDiaryEntries from "../../components/AllDiaryEntries";
 import FinancialAdviceComponent from "../../components/FinancialAdvice";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Dashboard() {
+  
+  const userData = JSON.parse(localStorage.getItem("userData"));
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/login');
+        }
+    }, [navigate]);
+
     return (
         <>
             <NavBar />
@@ -16,6 +30,8 @@ export function Dashboard() {
                         <div className="profile-card">
                             <div className="profile-avatar"></div>
                             <h3 className="dashboard-h3">Your Dashbaord</h3>
+                            <h3 className="dashboard-h3">Welcome {userData?.name || "to your dashboard" }</h3>
+                            <h2>What's on the agenda for today?</h2>
                             <Link to="/new-diary-entry">
                                 <button className="card-btn">Add a Diary Entry</button>
                             </Link>

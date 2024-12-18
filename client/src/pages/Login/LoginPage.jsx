@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getMyUserDetails } from "../../services/users";
 import { login } from "../../services/authentication";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import { NavBar } from "../../components/NavBar";
 
 export function LoginPage() {
   const [email, setEmail] = useState("");
@@ -14,6 +17,7 @@ export function LoginPage() {
       const token = await login(email, password);
       localStorage.setItem("token", token);
       const userDetails = await getMyUserDetails(token);
+      localStorage.setItem("userData", JSON.stringify(userDetails.userData));
       const userData = userDetails.userData;
       if (
         userData.currentSavings +
@@ -31,11 +35,17 @@ export function LoginPage() {
       }
     } catch (err) {
       console.error(err);
-      navigate("/login");
-      alert("Incorrect email or password. Please try again.");
-    }
-  }
 
+      setEmail("");
+      setPassword("");
+
+      toast.error("Incorrect email or password. Please try again.", {
+        role: "alert",
+        ariaLive: "assertive"
+    });
+     
+  }
+  }
   function handleEmailChange(event) {
     setEmail(event.target.value);
   }
@@ -46,6 +56,15 @@ export function LoginPage() {
 
   return (
     <>
+        <ToastContainer 
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                pauseOnHover
+            />
+            <NavBar />
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email:</label>
