@@ -10,23 +10,25 @@ describe("/users", () => {
         await User.deleteMany({});
     });
 
-    describe("POST, when name, email and password are provided", () => {
-        test("the response code is 201", async () => {
+    describe("POST, when VALID name, email and password are provided", () => {
+        test("the response code is 201 and message indicates success", async () => {
             const response = await request(app)
                 .post("/users")
-                .send({ name: "Emailer", email: "thisisanemail@email.com", password: "1234password" });
-
+                .send({ name: "Emailer", email: "thisisanemail@email.com", password: "1234Password?" });
+            expect(response.body.message).toBe('User created successfully');
             expect(response.statusCode).toBe(201);
         });
 
-        test("a user is created", async () => {
+        test("User is created", async () => {
             await request(app)
                 .post("/users")
-                .send({ name: "Emailer", email: "thisisanemail@email.com", password: "1234password" });
+                .send({ name: "Emailer", email: "thisisanemail@email.com", password: "1234Password?" });
 
             const users = await User.find();
             const newUser = users[users.length - 1];
+            expect(newUser.name).toEqual("Emailer");
             expect(newUser.email).toEqual("thisisanemail@email.com");
+            expect(bcrypt.compare(newUser.password, '1234Password?'));
         });
     });
 
