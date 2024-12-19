@@ -130,4 +130,41 @@ describe("User model", () => {
             expect(String(error)).toEqual('ValidationError: email: Invalid email format')
         }
     })
+
+    it("Email with an @ but an invalid domain can't be saved", async () => {
+        const user = new User({
+            name: "User",
+            email: "invalidemail@site",
+            password: "12345678",
+        })
+        try{
+            await user.save();
+        } catch(error){
+            expect(String(error)).toEqual('ValidationError: email: Invalid email format')
+        }
+    })
+    it("Email with a dot but no @ can't be saved", async () => {
+        const user = new User({
+            name: "User",
+            email: "invalidemailsite.com",
+            password: "12345678",
+        })
+        try{
+            await user.save();
+        } catch(error){
+            expect(String(error)).toEqual('ValidationError: email: Invalid email format')
+        }
+    })
+    it("Email with the @ and dot in the wrong place can't be saved", async () => {
+        const user = new User({
+            name: "User",
+            email: "invalidemailsite.c@om",
+            password: "12345678",
+        })
+        try{
+            await user.save();
+        } catch(error){
+            expect(String(error)).toEqual('ValidationError: email: Invalid email format')
+        }
+    })
 });
