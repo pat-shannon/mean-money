@@ -46,12 +46,12 @@ export function Dashboard() {
                         <div className="profile-card">
                             <div className="profile-avatar"></div>
                             <h3 className="dashboard-h3">Welcome {userData?.name || "to your dashboard"}</h3>
-                            <p>What's on the agenda for today?</p>
+                            <p>What do you want to do today?</p>
                             <Link to="/new-diary-entry">
                                 <button className="card-btn">Add a Diary Entry</button>
                             </Link>
                             <Link to="/new-savings-goal">
-                                <button className="card-btn">Add a New Saving Goal</button>
+                                <button className="card-btn">Add a Saving Goal</button>
                             </Link>
                             <SpendingGoalButton />
                             
@@ -80,7 +80,11 @@ export function Dashboard() {
 
                     <div className="right-section">
                         <div className="progress-bar">
-                            <div className="progress"></div>
+                            <SavingsProgressBar 
+                                    currentSavings={5000} 
+                                    savingsTarget={1000} 
+                                    goal="Emergency Fund"
+                                />
                         </div>
 
                         <div className="center-content">
@@ -98,11 +102,6 @@ export function Dashboard() {
                             <div className="savings-goals">
                                 <h1>Savings Goals</h1>
                                 <SavingsGoalPost />
-                                  <SavingsProgressBar 
-                                    currentSavings={5000} 
-                                    savingsTarget={1000} 
-                                      goal="Emergency Fund"
-                                  />
                             </div>
                             <div className="diary-entries">
                                 <AllDiaryEntries />

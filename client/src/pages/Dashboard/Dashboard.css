@@ -1,8 +1,8 @@
 .dashboard-bg {
     background-color: white;
     min-height: 100vh;
-    padding: 20px;
-    margin: 18px;
+    padding: 28px;
+    margin: 42px;
     border-radius: 25px;
 }
 
@@ -30,7 +30,7 @@
     background-color: #2C358F;
     border-radius: 50%;
     margin: 10px auto 15px;
-    background-image: url('../../assets/reena_profile_pic.png');
+    background-image: url('../../assets/happy-shark.png');
     background-size: cover;
 }
 
@@ -92,21 +92,15 @@
     width: 72%;
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 15px;
 }
 
 .progress-bar {
-    background-color: #E7EAF2;
+    background-color: rgba(231, 242, 255, 0.8);
     height: 20px;
     border-radius: 10px;
     overflow: hidden;
     margin-top: 15px;
-}
-
-.progress {
-    width: 60%;
-    height: 100%;
-    background-color: #101357;
 }
 
 .center-content {

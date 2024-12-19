@@ -1,5 +1,8 @@
 # MeanMoney
+*The finance app that bites*
+MeanMoney is a budgeting site that allows the user to track their spending, compare it against goals, and get advice on where to cut back spending.
 
+# Setup
 Step 1: Clone the repo
 
 Step 2: Install mongodb:
@@ -40,8 +43,25 @@ VITE_BACKEND_URL="http://localhost:9000"
 ```
 
 # Running the program:
-In one terminal window, navigate to `/server`
-Then run `npm run dev`
+- In one terminal window, navigate to `/server`
+- Then run `npm run dev`
 
-Then, in another terminal window, navigate to `/client`
-Then run `npm run dev`
+- Then, in another terminal window, navigate to `/client`
+- Then run `npm run dev`
+
+# Testing the program:
+**Backend**:
+- Under `/server`, create a file `.env.test`
+- Then add the following contents to this file:
+```
+MONGODB_URL="mongodb://0.0.0.0/mean-money-test"
+```
+(this should ensure your tests use a separate test database)
+
+- In your terminal, navigate to `/server`
+- Then run `npm test` to run backend tests.
+- For a coverage report, run `npm test -- --coverage`
+
+**Frontend**:
+In your terminal, navi-gate to `/client`
+Then run `npm test` to run frontend tests.

@@ -17,14 +17,13 @@ export async function createDiaryEntry(token, formData) {
     const responseText = await response.text();
 
     if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error('UNAUTHORIZED');
+      }
       throw new Error(responseText);
     }
 
-    // try {
-    //   return JSON.parse(responseText);
-    // } catch {
-    //   return responseText;
-    // }
+  
     
     return response;
   } catch (error) {
@@ -38,10 +37,8 @@ export async function getDiaryEntries(token) {
     throw new Error("Authentication token is required");
 }
 
-const url = `${BACKEND_URL}/diary/diary-entry`;
-
 try {
-    const response = await fetch(url, {
+    const response = await fetch(`${BACKEND_URL}/diary/diary-entry`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${token}`,
@@ -56,13 +53,11 @@ try {
     }
 
     const data = await response.json();
-    // console.log('Received data:', data);
     return data;
 } catch (error) {
     console.error('Detailed error:', {
         message: error.message,
         stack: error.stack,
-        url: url,
         token: token ? 'Present' : 'Missing'
     });
     throw error;

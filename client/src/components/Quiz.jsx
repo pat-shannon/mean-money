@@ -2,12 +2,17 @@
 
 import { NavBar } from "./NavBar";
 import "../FormStyling.css"
+
 import { toast } from "react-toastify";
 import { saveQuizResult } from "../services/users";
-import React, { useState, useEffect } from "react";
+
+import { useState, useEffect } from "react";
+
 import Questions from "./Questions";
 import { useNavigate } from "react-router-dom";
 import data from "../quizData/data";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Quiz() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -41,7 +46,10 @@ export default function Quiz() {
                 calculateResult();
             }
         } else {
-            alert("Please select an answer.");
+            toast.error("Please select an answer.", {
+                role: "alert",
+                ariaLive: "assertive"
+                });
         }
     }
 
@@ -97,6 +105,14 @@ function calculateResult() {
     return (
 
         <>
+                <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                pauseOnHover
+            />
         <NavBar />
         <div className="form-container" style={{width: "80%"}}>
             <div className="form-container" style={{width: "80%"}}>
