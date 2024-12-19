@@ -50,7 +50,7 @@ class FinancialAdvisorService {
         }
 
         if(categorySpending['Social and Entertainment'] > user.socialAndEntertainmentGoal * 1.2) {
-            advice.push("Whoa, go getter! Your socialising is out of control. Did you really need that extra round of drinks?")
+            advice.push("This is an intervention. Your socialising is out of control. Did you really need that extra round of drinks?")
         }
 
         if(categorySpending['Shopping'] > user.shoppingGoal * 1.2) {
@@ -62,7 +62,7 @@ class FinancialAdvisorService {
         }
 
         if(categorySpending['Health and Beauty'] > user.healthAndBeautyGoal * 1.2) {
-            advice.push("Your beauty routine is glowing, but your bank balance is looking a little... dull. Maybe cute back on the skincare?")
+            advice.push("Your beauty routine is glowing, but your bank balance is looking a little... dull. Maybe cut back on the skincare?")
         }
 
         if(categorySpending['Misc'] > user.miscGoal * 1.2){
