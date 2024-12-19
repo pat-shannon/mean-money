@@ -53,7 +53,8 @@ async function findUser(req,res){
         shoppingGoal: user[0].shoppingGoal,
         holidayAndTravelGoal: user[0].holidayAndTravelGoal,
         healthAndBeautyGoal: user[0].healthAndBeautyGoal,
-        miscGoal: user[0].miscGoal
+        miscGoal: user[0].miscGoal,
+        quizResult: user[0].quizResult
     }
     res.status(200).json({userData: returnUserData, token: token });
 }
@@ -127,11 +128,80 @@ async function setSpendingGoals(req, res){
     }
 }
 
+
+// Saves user quiz result
+
+async function saveQuizResult(req, res) {
+    const token = generateToken(req.user_id);
+    const { quizResult } = req.body;
+
+    try {
+        // Validate quiz result
+        if (!quizResult) {
+            return res.status(400).json({ message: "Quiz result is required." });
+        }
+
+        // Update the user's quiz result
+        const updatedUser = await User.findByIdAndUpdate(
+            req.user_id, // User ID from token middleware
+            { $set: { quizResult: quizResult } },
+            { new: true } // Return the updated document
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        return res.status(201).json({ 
+            message: "Quiz result saved successfully", 
+            token: token 
+        });
+            
+    } catch (error) {
+        console.error("Error saving quiz result:", error);
+        return res.status(500).json({ 
+            message: "Error saving user quiz result", 
+            token: token 
+        });
+    }
+}
+
+async function getQuizResult(req, res) {
+    try {
+        const user = await User.findById(req.user_id);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // If no quiz result has been set yet
+        if (!user.quizResult) {
+            return res.status(200).json({ 
+                message: "No quiz result found", 
+                quizResult: null 
+            });
+        }
+
+        return res.status(200).json({ 
+            message: "Quiz result retrieved successfully", 
+            quizResult: user.quizResult 
+        });
+    } catch (error) {
+        console.error("Error retrieving quiz result:", error);
+        return res.status(500).json({ 
+            message: "Error retrieving quiz result", 
+            error: error.message 
+        });
+    }
+}
+
 const UsersController = {
     create: create,
     findByEmail,
     findById,
     setSpendingGoals,
     findUser,
+    saveQuizResult,
+    getQuizResult
 };
 module.exports = UsersController;

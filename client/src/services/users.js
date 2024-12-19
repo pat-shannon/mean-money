@@ -1,5 +1,6 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
+
 export async function getMyUserDetails(token) {
     const requestOptions = {
         method: "GET",
@@ -105,3 +106,26 @@ export async function setSpendingGoals(token, currentSavings, disposableIncome, 
         )
     }
 }
+
+export async function saveQuizResult(token, quizResult) {  // Changed parameter name from saveQuizResult to quizResult
+    const payload = {
+        quizResult: quizResult,  // Match the key to what the backend expects
+    }
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
+    };
+    const response = await fetch(`${BACKEND_URL}/users/quiz-result`, requestOptions)
+    
+    if (response.status === 201){
+        return await response.json();
+    } else {
+        throw new Error(
+            `Received status ${response.status} when attempting to save quiz result. Expected 201`
+        )
+    }
+};

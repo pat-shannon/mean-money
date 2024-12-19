@@ -54,6 +54,10 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 0,
         min: [0, 'Estimate cannot be negative']
+    },
+    quizResult: {
+        type: String,
+        default: "",
     }
 });
 

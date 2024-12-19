@@ -24,6 +24,7 @@ export function Dashboard() {
             navigate('/login');
         } else {
             const storedUserData = JSON.parse(localStorage.getItem("userData"));
+            console.log("StoredUserData:", storedUserData);
             if (storedUserData) {
                 setUserData(storedUserData);
             }
@@ -49,13 +50,27 @@ export function Dashboard() {
                             <Link to="/new-diary-entry">
                                 <button className="card-btn">Add a Diary Entry</button>
                             </Link>
-                            <SpendingGoalButton />
                             <Link to="/new-savings-goal">
                                 <button className="card-btn">Add a Saving Goal</button>
                             </Link>
-                            <Link to="/quizstart">
-                                <button className="card-btn">Spending Personality Quiz</button>
-                            </Link>
+                            <SpendingGoalButton />
+                            
+                            {userData?.quizResult ? (
+    <p style={{marginTop: "20px"}}>
+        Your spending personality is...<br/>
+        <h3>{userData.quizResult}</h3>
+        <Link to="/quizstart">
+            <button className="card-btn">Take the test again</button>
+        </Link>
+    </p>
+) : (
+    <>
+        <p className="dashboard-h3">Take the Spending Personality Quiz</p>
+        <Link to="/quizstart">
+            <button className="card-btn">Spending Personality Quiz</button>
+        </Link>
+    </>
+)}
                             <div className="financial-insights">
                                 <FinancialAdviceComponent />
                             </div>
