@@ -45,7 +45,8 @@ export function Dashboard() {
                     <div className="left-section">
                         <div className="profile-card">
                             <div className="profile-avatar"></div>
-                            <h3 className="dashboard-h3">Welcome {userData?.name || "to your dashboard"}</h3>
+                            <p className="dashboard-h3">Welcome</p>
+                            <h2 className="dashboard-h2" style={{marginBottom: "20px"}}>{userData?.name || "to your dashboard"}</h2>
                             <p>What do you want to do today?</p>
                             <Link to="/new-diary-entry">
                                 <button className="card-btn">Add a Diary Entry</button>
