@@ -45,13 +45,13 @@ export function Dashboard() {
                         <div className="profile-card">
                             <div className="profile-avatar"></div>
                             <h3 className="dashboard-h3">Welcome {userData?.name || "to your dashboard"}</h3>
-                            <p>What's on the agenda for today?</p>
+                            <p>What do you want to do today?</p>
                             <Link to="/new-diary-entry">
                                 <button className="card-btn">Add a Diary Entry</button>
                             </Link>
                             <SpendingGoalButton />
                             <Link to="/new-savings-goal">
-                                <button className="card-btn">Add a New Saving Goal</button>
+                                <button className="card-btn">Add a Saving Goal</button>
                             </Link>
                             <Link to="/quizstart">
                                 <button className="card-btn">Spending Personality Quiz</button>

@@ -69,7 +69,7 @@ function SavingsGoalPost() {
             toast.success("Goal deleted successfully", { 
                 role: "alert",
                 ariaLive: "polite"});
-  
+
                 
 
         } catch (error) {
