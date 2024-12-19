@@ -35,8 +35,8 @@
 }
 
 .dashboard-h3 {
-    font-size: 1.75rem;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    margin-bottom: 15px;
     margin-top: 30px;
 }
 
@@ -48,7 +48,7 @@
     margin: 5px 0;
     border-radius: 8px;
     cursor: pointer;
-    width: 81%;
+    width: 83%;
 }
 
 .card-btn:hover {
