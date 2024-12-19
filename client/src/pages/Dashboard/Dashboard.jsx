@@ -65,7 +65,11 @@ export function Dashboard() {
 
                     <div className="right-section">
                         <div className="progress-bar">
-                            <div className="progress"></div>
+                            <SavingsProgressBar 
+                                    currentSavings={5000} 
+                                    savingsTarget={1000} 
+                                    goal="Emergency Fund"
+                                />
                         </div>
 
                         <div className="center-content">
@@ -83,11 +87,6 @@ export function Dashboard() {
                             <div className="savings-goals">
                                 <h1>Savings Goals</h1>
                                 <SavingsGoalPost />
-                                  <SavingsProgressBar 
-                                    currentSavings={5000} 
-                                    savingsTarget={1000} 
-                                      goal="Emergency Fund"
-                                  />
                             </div>
                             <div className="diary-entries">
                                 <AllDiaryEntries />
