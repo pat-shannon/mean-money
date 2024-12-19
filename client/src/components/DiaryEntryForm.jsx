@@ -139,6 +139,9 @@ const DiaryEntryForm = () => {
                 pauseOnHover
             />
             <div className="form-container">
+            <div style={{justifyContent: "center", textAlign: "center"}}>
+            <img src="../src/assets/saving-shark.png" style={{height: "200px"}}></img>
+            </div>
                 <h2 className="form-title">New Diary Entry</h2>
                 <form onSubmit={handleSubmit} className="form">
                     <div className="form-group">
