@@ -3,7 +3,6 @@
 import { NavBar } from "./NavBar";
 import "../FormStyling.css"
 
-import { toast } from "react-toastify";
 import { saveQuizResult } from "../services/users";
 
 import { useState, useEffect } from "react";
