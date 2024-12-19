@@ -10,6 +10,8 @@ router.get("/find/:email", UsersController.findByEmail);
 router.get("/findById/:id", UsersController.findById);
 router.post("/set-spending-goals", tokenChecker, UsersController.setSpendingGoals)
 router.get("/find", tokenChecker, UsersController.findUser);
+router.post("/quiz-result", tokenChecker, UsersController.saveQuizResult)
+router.get("/quiz-result", tokenChecker, UsersController.getQuizResult)
 
 
 module.exports = router;

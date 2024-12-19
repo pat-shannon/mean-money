@@ -9,7 +9,9 @@ import QuizResultTable from "./QuizResultTable.jsx";
 
 export default function QuizResult() {
 
-    const result = localStorage.getItem("quizResult") || "We Don't Know Your Personality - Take The Quiz Now!";
+    const userData = JSON.parse(localStorage.getItem("userData")) || {};
+    const result = userData.quizResult || "We Don't Know Your Personality - Take The Quiz Now!";
+
 
     return (
         <>

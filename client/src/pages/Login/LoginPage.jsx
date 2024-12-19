@@ -27,7 +27,8 @@ export function LoginPage() {
           userData.socialAndEntertainmentGoal +
           userData.holidayAndTravelGoal +
           userData.healthAndBeautyGoal +
-          userData.miscGoal ==
+          userData.miscGoal +
+          userData.quizResult ==
         0
       ) {
         navigate("/spending-goals");

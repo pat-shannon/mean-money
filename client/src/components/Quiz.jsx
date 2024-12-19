@@ -2,8 +2,8 @@
 
 import { NavBar } from "./NavBar";
 import "../FormStyling.css"
-
-
+import { toast } from "react-toastify";
+import { saveQuizResult } from "../services/users";
 import React, { useState, useEffect } from "react";
 import Questions from "./Questions";
 import { useNavigate } from "react-router-dom";
@@ -53,29 +53,46 @@ export default function Quiz() {
     };
 
 // track total of points for each option and find result
-    function calculateResult() {
-        const optionCounts = [0, 0, 0, 0, 0];
-        selectedAnswers.forEach(answer => {
-            if (answer !== undefined) {
-                optionCounts[answer]++;
-            }
-        });
+function calculateResult() {
+    const optionCounts = [0, 0, 0, 0, 0];
+    selectedAnswers.forEach(answer => {
+        if (answer !== undefined) {
+            optionCounts[answer]++;
+        }
+    });
 
-        const mostFrequentOptionIndex = optionCounts.indexOf(Math.max(...optionCounts));
+    const mostFrequentOptionIndex = optionCounts.indexOf(Math.max(...optionCounts));
 
-        const personalities = [
-            "Life of the Party",
-            "Fine Diner",
-            "Jet Setter",
-            "Self-Care Guru",
-            "Fun Seeker"
-        ];
+    const personalities = [
+        "Life of the Party",
+        "Fine Diner",
+        "Jet Setter",
+        "Self-Care Guru",
+        "Fun Seeker"
+    ];
 
-        localStorage.setItem("quizResult", personalities[mostFrequentOptionIndex]);
+    const result = personalities[mostFrequentOptionIndex];
+    const userData = JSON.parse(localStorage.getItem("userData")) || {};
+    userData.quizResult = result;
+    localStorage.setItem("userData", JSON.stringify(userData));
 
-        navigate("/result");
+    // Get the token from localStorage
+    const token = localStorage.getItem("token");
+
+    // Call the saveQuizResult service
+    async function submitQuizResult() {
+        try {
+            await saveQuizResult(token, result);
+            navigate("/result");
+        } catch (error) {
+            console.error("Error submitting quiz result:", error);
+            toast.error("Failed to save quiz result", { role: "alert", ariaLive: "assertive" });
+        }
     }
 
+    submitQuizResult();
+
+}
 // quiz page body:
     return (
 
