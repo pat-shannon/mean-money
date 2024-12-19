@@ -92,8 +92,9 @@ export function Dashboard() {
 
                         <div className="bottom-section">
                             <div className="savings-goals">
+
                             <img src="../src/assets/angel-shark-2.png" style={{height: "125px"}}></img>
-                                <h1>Savings Goals</h1>
+                                <h1 style={{color: "#1C319C", fontWeight: "normal"}}>Your Savings Goals</h1>
                                 <SavingsGoalPost />
                             </div>
                             

@@ -24,7 +24,7 @@ function FinancialAdviceComponent() {
 
     return (
         <div className="financial-advice">
-            <h1 className="financial-advice">Your Financial Insights</h1>
+            <h1 className="financial-advice" style={{color: "#1C319C"}}>Your Financial Insights</h1>
             {advice.length > 0 ? (
                 <ul>
                     {advice.map((item, index) => (

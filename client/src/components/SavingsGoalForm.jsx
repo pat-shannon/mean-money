@@ -208,7 +208,7 @@ const SavingsGoalForm = () => {
                         ))}
                     </select>
                 </div>
-                <label htmlFor="amount" className="form-label">Start date:</label>
+                <label htmlFor="amount" className="form-label">Start date</label>
                 <input
                     style={{marginBottom: "12px"}}
                     type="date"
@@ -218,7 +218,7 @@ const SavingsGoalForm = () => {
                     min={new Date().toISOString().split('T')[0]}
                 />
                     <label htmlFor="amount" className="form-label">
-                        End date:
+                        End date
                     </label>
                 <input
                     style={{marginBottom: "12px"}}

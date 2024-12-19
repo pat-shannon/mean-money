@@ -21,7 +21,7 @@ const SavingsProgressBar = ({ currentSavings, savingsTarget, goal }) => {
 
     return (
         <div className="savings-progress-container">
-            <h2>Savings Goal: {goal}</h2>
+            <h2 style={{color: "#1C319C", fontWeight: "normal"}}>Savings Goal: {goal}</h2>
             <div className="progress-details mb-4">
                 <div className="flex justify-between">
                     <span>Current Savings: £{currentSavings}</span>
