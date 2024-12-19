@@ -18,7 +18,7 @@ export default [
         id : 2,
         question : "You really don't fancy going to your friend's cat's 5th birthday party - what's your number one worry?",
         options : [
-            "Will anyone I know be there to talk to?",
+            "Will I know anyone to talk to?",
             "Will there be refreshments or just cat treats?",
             "Where is it? What's the weather like?",
             "Will I have time to go to the gym still?",
@@ -52,7 +52,7 @@ export default [
 
     {
         id : 5,
-        question : "You're tired after a long day. It's wednesday and you want to relax and unwind. How do you chill?",
+        question : "You're tired after a long day. It's Wednesday and you want to relax and unwind. How do you chill?",
         options : [
             "Make the most of two-for-one drinks at my local karaoke bar and belting out a duet with my BFF (I'm Danny, they're Sandy)",
             "Make my perfect dinner and enjoy the taste sensation, then finish strong with something sweet - maybe ice cream?",

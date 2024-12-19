@@ -11,7 +11,7 @@ function AllDiaryEntries() {
     const [isLoading, setIsLoading] = useState(true);
     // const [error, setError] = useState(null);
 
-    useEffect(() => {
+    
         const loadDiaryEntries = async () => {
             try {
                 setIsLoading(true);
@@ -38,16 +38,12 @@ function AllDiaryEntries() {
             }
         };
 
+        useEffect(() => {
+
         loadDiaryEntries();
     }, []);
 
-    if (isLoading) {
-        return (
-            <div className="loading-container">
-                <p className="loading-text">Loading your entries...</p>
-            </div>
-        );
-    }
+
 
     const handleDelete = async (entryId) => {
             const confirmDeletion = () => {
@@ -80,13 +76,20 @@ function AllDiaryEntries() {
                     return;
                 }
 
-                await deleteDiaryEntry(token, entryId);
+
+                const deleteReturned = await deleteDiaryEntry(token, entryId);
+                localStorage.setItem("token", deleteReturned.token);
+
+                setDiaryEntries(prevEntries => 
+                    prevEntries.filter(entry => entry._id !== entryId)
+                );
+
+                
                 toast.success("Entry deleted successfully", { 
                     role: "alert",
                     ariaLive: "polite"});
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 2000);
+
+                    
 
             } catch (error) {
                 toast.error("Failed to delete entry" + error, {
@@ -95,6 +98,14 @@ function AllDiaryEntries() {
                 });
             }
     };
+
+        if (isLoading) {
+        return (
+            <div className="loading-container">
+                <p className="loading-text">Loading your entries...</p>
+            </div>
+        );
+    }
 
     return (
         <section className="diary-container">
@@ -113,7 +124,7 @@ function AllDiaryEntries() {
         {diaryEntries.length === 0 ? (
             <div className="empty-state">
                 <p>No diary entries found.</p>
-                <p className="empty-state-subtitle">Track your spending by adding a diary entry.</p>
+                <p className="empty-state-subtitle">Keep track of what you're spending by adding a diary entry.</p>
                 <Link to="/new-diary-entry">
                 <button>Add a diary entry</button>
             </Link>
@@ -143,7 +154,7 @@ function AllDiaryEntries() {
                             </div>
                                     <div className="entry-actions">
                                         <button onClick={() => handleDelete(entry._id)} className="delete-button">
-                                            Delete
+                                            Delete entry
                                         </button>
                                     </div>
                         </article>
