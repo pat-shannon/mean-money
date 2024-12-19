@@ -63,7 +63,8 @@
 
 .financial-insights {
     /* background-color: white; */
-    background-image: url(../../assets/financial-advice-section.png);
+    background-image: url(../../assets/financial-advice-4.png);
+    background-color: white;
     background-size: cover;
     border-radius: 12px;
     height: 85vh;
