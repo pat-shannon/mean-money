@@ -20,6 +20,8 @@ export function SignUpPage() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const  [passwordErrorMessage, setPasswordErrorMessage] = useState("")
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&#])[a-zA-Z\d@$!%*?&#]{8,}$/;
 
 
     const [errorMessage, setErrorMessage] = useState("");
@@ -51,6 +53,7 @@ export function SignUpPage() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log("Form submitted")
 
 
             // const formData = new FormData();
@@ -61,6 +64,27 @@ export function SignUpPage() {
                 toast.error("Name can only contain letters, spaces, apostrophes and hyphens. Please enter a valid name", {
                     role: "alert",
                     ariaLive: "assertive"
+                });
+                return;
+            }
+
+            if (!passwordRegex.test(password)) {
+                setPasswordErrorMessage("password is not valid");
+                toast.error("Password must include: one lowercase letter, one uppercase letter, one number, one special character, and be at least 8 characters long.", {
+                    position: "top-right",       
+                    autoClose: 4000,            
+                    hideProgressBar: true,      // Remove the progress bar for a cleaner look
+                    closeOnClick: true,         // Allow clicking to dismiss
+                    pauseOnHover: true,         // Pause when hovered over
+                    role: "alert",
+                    ariaLive: "assertive",
+                    style: {
+                        backgroundColor: "#f8d7da",
+                        color: "#721c24",
+                        border: "1px solid #f5c6cb",
+                        borderRadius: "5px",
+                        fontSize: "14px",
+                    },
                 });
                 return;
             }
@@ -147,7 +171,7 @@ export function SignUpPage() {
                     // value={formStuff.password}
                     // onChange={(handleChange)}
                     required
-                    minLength={4}
+                    // minLength={4}
                 />
                 <br />
                 <br />

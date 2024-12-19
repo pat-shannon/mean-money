@@ -16,7 +16,7 @@ async function seedData() {
             {
                 name: "Reena",
                 email: "reena@example.com",
-                password: "123456789",
+                password: "Password123!",
                 currentSavings: 100,
                 disposableIncome: 1500,
                 foodAndDrinkGoal: 150,
