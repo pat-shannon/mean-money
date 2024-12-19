@@ -166,6 +166,9 @@ const SavingsGoalForm = () => {
                 closeOnClick
                 pauseOnHover
             />
+            <div style={{justifyContent: "center", textAlign: "center"}}>
+            <img src="../src/assets/saving-shark.png" style={{height: "200px"}}></img>
+            </div>
             <h2 className = "form-title">Create a new saving goal</h2>
             <form onSubmit={handleSubmit}>
             <label htmlFor="savingsTitle" className="form-label">I'm saving for</label>
