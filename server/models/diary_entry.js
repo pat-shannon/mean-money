@@ -27,7 +27,11 @@ const DiaryEntrySchema = new mongoose.Schema({
         ],
         required: true
     },
-});
+    isSavingsContribution: {
+        type: Boolean,
+        default: false
+    },
+}, {timestamps: true});
 
 const DiaryEntry = mongoose.model("DiaryEntry", DiaryEntrySchema);
 module.exports = DiaryEntry;

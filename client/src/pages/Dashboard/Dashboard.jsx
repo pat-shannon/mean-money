@@ -3,14 +3,18 @@ import { Link } from "react-router-dom";
 import { MonthlySpending } from "../../components/MonthlySpending";
 import SavingsGoalPost from "../../components/SavingsGoalPost";
 import { SpendingGoalButton } from "../../components/SpendingGoalButton";
+import SavingsProgressBar from '../../components/SavingsProgressBar';
 import AllDiaryEntries from "../../components/AllDiaryEntries";
 import FinancialAdviceComponent from "../../components/FinancialAdvice";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export function Dashboard() {
+    const [loading, setLoading] = useState(true);
+    const [userData, setUserData] = useState(null);
 
-    const userData = JSON.parse(localStorage.getItem("userData"));
+
+    // const userData = JSON.parse(localStorage.getItem("userData"));
 
     const navigate = useNavigate();
 
@@ -18,8 +22,18 @@ export function Dashboard() {
         const token = localStorage.getItem('token');
         if (!token) {
             navigate('/login');
+        } else {
+            const storedUserData = JSON.parse(localStorage.getItem("userData"));
+            if (storedUserData) {
+                setUserData(storedUserData);
+            }
         }
+        setLoading(false);
     }, [navigate]);
+
+    if (loading) {
+        return <div>Loading Dashboard...</div>;
+    }
 
     return (
         <>
@@ -48,6 +62,7 @@ export function Dashboard() {
                         </div>
                     </div>
 
+
                     <div className="right-section">
                         <div className="progress-bar">
                             <div className="progress"></div>
@@ -68,6 +83,11 @@ export function Dashboard() {
                             <div className="savings-goals">
                                 <h1>Savings Goals</h1>
                                 <SavingsGoalPost />
+                                  <SavingsProgressBar 
+                                    currentSavings={5000} 
+                                    savingsTarget={1000} 
+                                      goal="Emergency Fund"
+                                  />
                             </div>
                             <div className="diary-entries">
                                 <AllDiaryEntries />

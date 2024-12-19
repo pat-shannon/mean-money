@@ -110,3 +110,28 @@ export async function getSpendingForPeriod(token, formData) {
   
     return data.spendingValues;
   }
+
+  export async function getSavingsContributions(token) {
+    const url = `${BACKEND_URL}/diary/savings-contributions`;
+
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorisation: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText || "Unable to get savings contributions.");
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("savings contribution error", error);
+      throw error;
+    }
+  }
