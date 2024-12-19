@@ -1,3 +1,5 @@
+
+
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function createDiaryEntry(token, formData) {
@@ -18,11 +20,13 @@ export async function createDiaryEntry(token, formData) {
       throw new Error(responseText);
     }
 
-    try {
-      return JSON.parse(responseText);
-    } catch {
-      return responseText;
-    }
+    // try {
+    //   return JSON.parse(responseText);
+    // } catch {
+    //   return responseText;
+    // }
+    
+    return response;
   } catch (error) {
     console.error('Create diary entry error:', error);
     throw error;
@@ -79,8 +83,8 @@ export async function deleteDiaryEntry(token, entryId) {
           const errorText = await response.text();
           throw new Error(errorText || "Unable to delete diary entry");
       }
-
-      return true;
+      const deleteResponse = await response.json();
+      return deleteResponse;
   } catch (error) {
       console.error('Delete diary entry error:', error);
       throw error;

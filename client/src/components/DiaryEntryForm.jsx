@@ -4,6 +4,7 @@ import { createDiaryEntry } from "../services/diary_entry";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../../src/FormStyling.css"
+import { Link } from "react-router-dom";
 
 
 const DiaryEntryForm = () => {
@@ -54,14 +55,16 @@ const DiaryEntryForm = () => {
             [name]: currencyValue
         }));
         } else if (name === "businessName") {
-        const safebusinessName = value
-        .replace(/[<>;&'"]/g, '')
-        .trim()
+            console.log('1. Raw input:', value);
+        const safeBusinessName = value
+        .replace(/[<>;'"]/g, '')
         .slice(0, 50);
+        console.log('2. After processing:', safeBusinessName);
         setFormData(prev => ({
             ...prev,
-            [name]: safebusinessName
+            [name]: safeBusinessName
         }));
+        console.log('3. Form data after update:', formData);
     } else {
         setFormData(prev => ({
             ...prev,
@@ -90,13 +93,16 @@ const DiaryEntryForm = () => {
         }
 try {
     const response = await createDiaryEntry(token, formData);
+    console.log('yeee');
+    console.log(response);
+    // localStorage.setItem("token", response.token);
                 toast.success('Diary entry saved successfully!', {
                 role: "alert", 
-                ariaLive: "assertive"
+                ariaLive: "polite"
                 });
                 setTimeout(() => {
                     navigate("/dashboard");
-                }, 1100);
+                }, 2000);
                 setFormData({
                     amount: '',
                     date: new Date().toISOString().split('T')[0],
@@ -106,11 +112,17 @@ try {
         } catch (error) {
             console.error('Submission error:', error);
             if (error.message.includes('401')) {
-                alert('Session expired. Please log in again.');
+                toast.error('Session expired. Please log in again.', {
+                    role: "alert", 
+                    ariaLive: "assertive"
+                });
                 localStorage.removeItem('token');
                 navigate("/login");
             } else {
-                alert('Failed to submit diary entry: ' + error.message);
+                toast.error('Failed to submit diary entry: ' + error.message, {
+                    role: "alert", 
+                    ariaLive: "assertive"
+                });
             }
         }
     };
@@ -118,7 +130,7 @@ try {
         <div className = "form-container">
             <ToastContainer
                   position="top-right"
-                  autoClose={3000}
+                  autoClose={2000}
                   hideProgressBar={false}
                   newestOnTop={true}
                   closeOnClick
@@ -128,14 +140,14 @@ try {
             <h2 className = "form-title">New Diary Entry</h2>
             <form onSubmit={handleSubmit} className = "form">
                 <div className ="form-group">
-                    <br></br>
+                <label htmlFor="amount" className="form-label">Amount (£): </label>
                     <input
                         type="text"
                         id="amount"
                         name="amount"
                         value={formData.amount}
                         onChange={handleChange}
-                        placeholder="Amount (£) - enter what you spent"
+                        placeholder="Enter what you spent"
                         required
                         className="form-input"
                     />
@@ -191,6 +203,9 @@ try {
                 >
                     Save Diary Entry
                 </button>
+                <div style={{justifyContent: "center", textAlign: "left", marginTop: "30px", marginLeft: "-22px", marginBottom: "8px"}}>
+                    <Link className="next-button" to="/dashboard">◀ Return To Dashboard</Link>
+                </div>
             </form>
         </div>
     </div>
