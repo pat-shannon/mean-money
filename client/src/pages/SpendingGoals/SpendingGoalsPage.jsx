@@ -151,7 +151,7 @@ export function SpendingGoalsPage() {
             categories?
           </h6>
 
-          <label htmlFor="foodAndDrinkGoal">Food & Drink</label>
+          <label htmlFor="foodAndDrinkGoal">Food & Drink (£)</label>
           <input
             id="foodAndDrinkGoal"
             type="currency"
@@ -162,7 +162,7 @@ export function SpendingGoalsPage() {
           />
           <br></br>
           <label htmlFor="socialAndEntertainmentGoal">
-            Social and Entertainment
+            Social and Entertainment (£)
           </label>
           <input
             id="socialAndEntertainmentGoal"
@@ -173,7 +173,7 @@ export function SpendingGoalsPage() {
             }
           />
           <br></br>
-          <label htmlFor="shoppingGoal">Shopping</label>
+          <label htmlFor="shoppingGoal">Shopping (£)</label>
           <input
             id="shoppingGoal"
             type="text"
@@ -183,7 +183,7 @@ export function SpendingGoalsPage() {
             }
           />
           <br></br>
-          <label htmlFor="holidayAndTravelGoal">Holiday & Travel</label>
+          <label htmlFor="holidayAndTravelGoal">Holiday & Travel (£)</label>
           <input
             id="holidayAndTravelGoal"
             type="text"
@@ -193,7 +193,7 @@ export function SpendingGoalsPage() {
             }
           />
           <br></br>
-          <label htmlFor="healthAndBeautyGoal">Health & Beauty</label>
+          <label htmlFor="healthAndBeautyGoal">Health & Beauty (£)</label>
           <input
             id="healthAndBeautyGoal"
             type="text"
@@ -203,7 +203,7 @@ export function SpendingGoalsPage() {
             }
           />
           <br></br>
-          <label htmlFor="miscGoal">Miscellaneous</label>
+          <label htmlFor="miscGoal">Miscellaneous (£)</label>
           <input
             style={{marginBottom: "20px"}}
             id="miscGoal"

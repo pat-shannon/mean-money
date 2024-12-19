@@ -118,7 +118,7 @@ function AllDiaryEntries() {
                 pauseOnHover
             />
         <header className="diary-header">
-            <h1 className="diary-title">Your Diary Entries</h1>
+            <h1 className="diary-title" style={{color: "#1C319C", fontWeight: "normal"}}>Your Diary Entries</h1>
         </header>
 
         {diaryEntries.length === 0 ? (

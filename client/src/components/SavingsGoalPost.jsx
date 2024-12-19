@@ -111,7 +111,11 @@ function SavingsGoalPost() {
                             <div className="savings-title"><h4>{goal.savingsTitle}</h4></div>
                             <div className="savings-category">Category: <p>{goal.savingsCategory}</p></div>
                             <div className="savings-target">Target: <p>£{goal.savingsTarget.toLocaleString()}</p></div>
-                            <div className="savings-date"><p>Target Date: {new Date(goal.endDate).toLocaleDateString()}</p></div>
+                            <div className="savings-date"><p>Target Date: {new Date(goal.endDate).toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                })}</p></div>
                             {/* <p>Progress: {calculateProgress(goal)}%</p> */}
                             {/* <p>Start Date: {new Date(goal.startDate).toLocaleDateString()}</p> */}
                             </div>

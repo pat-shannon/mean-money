@@ -83,7 +83,7 @@ export function MonthlySpending() {
     return (
         <div className="monthly-spend-container">
             <div className="monthly-spend-left-section">
-            <h2>Spending data for {formData.isChanged ? 'custom period' : 'this month'} (£)</h2>
+            <h2 style={{color: "#1C319C", fontWeight: "normal"}}>Spending data for {formData.isChanged ? 'custom period' : 'this month'} (£)</h2>
             <BarChart realSpendingData={spendingData} goalData={spendingGoals} />
             {/* <p>Food and drink: £{spendingData['Food and Drink']} while your monthly goal is £{spendingGoals['Food and Drink']}</p>
             <p>Social and Entertainment: £{spendingData['Social and Entertainment']} while your monthly goal is £{spendingGoals['Social and Entertainment']}</p>
@@ -93,7 +93,7 @@ export function MonthlySpending() {
             <p>Miscellaneous: £{spendingData['Miscellaneous']} while your monthly goal is £{spendingGoals['Miscellaneous']}</p> */}
             </div>
         <div className="monthly-spend-right-section">
-            <h2>Filter by date</h2>
+            <h2 style={{color: "#1C319C", fontWeight: "normal"}}>Filter by date</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="startDate" className="form-label">Start date</label>
                 <input

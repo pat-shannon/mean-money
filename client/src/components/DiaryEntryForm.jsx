@@ -142,7 +142,7 @@ const DiaryEntryForm = () => {
                 <h2 className="form-title">New Diary Entry</h2>
                 <form onSubmit={handleSubmit} className="form">
                     <div className="form-group">
-                        <label htmlFor="amount" className="form-label">Amount (£): </label>
+                        <label htmlFor="amount" className="form-label">Amount (£) </label>
                         <input
                             type="text"
                             id="amount"
@@ -155,7 +155,7 @@ const DiaryEntryForm = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="date" className="form-label">Date: </label>
+                        <label htmlFor="date" className="form-label">Date</label>
                         <br></br>
                         <input
                             type="date"
@@ -168,7 +168,7 @@ const DiaryEntryForm = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="businessName" className="form-label">Business Name: </label>
+                        <label htmlFor="businessName" className="form-label">Business Name</label>
                         <br></br>
                         <input
                             type="text"
@@ -183,7 +183,7 @@ const DiaryEntryForm = () => {
                         />
                     </div>
                     <div className="form-group">
-                    <label htmlFor="category" className="form-label">Category: </label>
+                    <label htmlFor="category" className="form-label">Category </label>
                         <select
                             id="category"
                             name="category"
