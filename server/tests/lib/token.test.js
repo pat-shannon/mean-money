@@ -1,72 +1,26 @@
-const JWT = require("jsonwebtoken");
 const { generateToken, decodeToken } = require("../../lib/token");
 
-jest.mock("jsonwebtoken");
 
-describe("Token Module", () => {
-    const mockSecret = "mockSecret";
-    const mockUserId = "mockUserId";
-    const mockToken = "mockGeneratedToken";
+describe("TokenGenerator", () => {
+    describe("jsonwebtoken", () => {
+        test("returns a token containing user_id that is valid for 10 minutes", () => {
+            const id_1 = 1;
+            const id_2 = 2;
 
-    beforeEach(() => {
-        jest.clearAllMocks();
-        process.env.JWT_SECRET = mockSecret;
-    });
+            // Encode tokens
+            const token_1 = generateToken(id_1);
+            const token_2 = generateToken(id_2);
+            expect(token_1).not.toEqual(token_2);
 
-    describe("generateToken Function", () => {
-        // test("should generate a token with correct payload", () => {
-        //     const mockPayload = {
-        //         user_id: mockUserId,
-        //         iat: expect.any(Number),
-        //         exp: expect.any(Number),
-        //     };
+            // Decode tokens
+            const payload_1 = decodeToken(token_1);
+            const payload_2 = decodeToken(token_2);
 
-        //     JWT.sign.mockReturnValue(mockToken);
+            expect(payload_1.user_id).toEqual(id_1);
+            expect(payload_2.user_id).toEqual(id_2);
 
-        //     const token = generateToken(mockUserId);
-
-        //     expect(JWT.sign).toHaveBeenCalledWith(
-        //         expect.objectContaining(mockPayload),
-        //         mockSecret
-        //     );
-        //     expect(token).toBe(mockToken);
-        // });
-
-        test("should set token to expire in 10 minutes", () => {
-            const now = Math.floor(Date.now() / 1000);
-            JWT.sign.mockImplementation((payload, secret) => {
-                return `mockTokenWithExp_${payload.exp}`;
-            });
-
-            const token = generateToken(mockUserId);
-            const expectedExp = now + 10 * 60;
-
-            expect(token).toContain(expectedExp.toString());
+            // Token is valid for 600 seconds (10 minutes)
+            expect(payload_1.exp - payload_1.iat).toEqual(600);
         });
     });
-
-    // describe("decodeToken Function", () => {
-//         test("should decode token with correct secret", () => {
-//             const mockDecodedPayload = { user_id: mockUserId };
-
-//             // Mock JWT.decode to return mockDecodedPayload
-//             JWT.decode.mockReturnValue(mockDecodedPayload);
-
-//             const decoded = decodeToken(mockToken);
-
-//             // Check that JWT.decode was called with the correct token and secret
-//             expect(JWT.decode).toHaveBeenCalledWith(mockToken, mockSecret);
-//             expect(decoded).toEqual(mockDecodedPayload); // Ensure the decoded payload matches
-//         });
-
-//         test("should return null if token is invalid", () => {
-//             JWT.decode.mockReturnValue(null);
-
-//             const decoded = decodeToken("invalidToken");
-
-//             // Check that JWT.decode was called with the invalid token and secret
-//             expect(JWT.decode).toHaveBeenCalledWith("invalidToken", mockSecret);
-//             expect(decoded).toBeNull(); // Ensure that an invalid token returns null
-//         });
-//     });
 });
