@@ -14,3 +14,5 @@ function listenForRequests() {
 connectToDatabase().then(() => {
     listenForRequests();
 });
+
+module.exports = app;
